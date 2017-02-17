@@ -7,12 +7,12 @@ Nagisa is distributed under the MIT License beacuse I hope the Nagisa project ca
 OS Version: Windows 10 Build 10240 or later
 
 # Unfininshed Features
-BitTorrent Support
-FTP Support
-ED2K Support
-HTTP Support
-Cortana Integration
-Muitl-language Support
+- HTTP Support
+- FTP Support
+- BitTorrent Support
+- ED2K Support
+- Cortana Integration
+- Muitl-language Support
 
 # The List of Contributors
-Mouri_Naruto (Mouri_Naruto@Outlook.com)
+- Mouri_Naruto (Mouri_Naruto@Outlook.com)
