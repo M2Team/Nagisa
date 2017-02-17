@@ -2,4 +2,9 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
-/AppPackages/Nagisa/Nagisa_0.1.1702.0_Test
+
+/Nagisa.sdf
+/Nagisa.VC.opendb
+/Nagisa/Generated Files
+/Nagisa/ARM/Debug
+/.vs/Nagisa/v14
