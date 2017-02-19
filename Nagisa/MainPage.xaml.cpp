@@ -26,6 +26,9 @@ using namespace Windows::UI::ViewManagement;
 
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
+// Nagisa's User Agent
+// Mozilla/5.0 (Windows NT 10.0; Nagisa/0.1.1702.17) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240
+
 MainPage::MainPage()
 {
 	InitializeComponent();
