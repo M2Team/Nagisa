@@ -12,7 +12,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="NagisaTitleBar" Height="32" VerticalAlignment="Top" Background="LightGray">
+        <Grid x:Name="NagisaTitleBar" Height="32" Background="LightGray">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -27,7 +27,7 @@
             <Grid x:Name="NagisaTitleBarBackground" Background="Transparent" Grid.Column="1">
                 <TextBlock Margin="8" FontSize="12" Text="Nagisa" />
             </Grid>
-            <AutoSuggestBox Grid.Column="2" PlaceholderText="Search" QueryIcon="Find" Width="160"/>
+            
         </Grid>
 
         <SplitView x:Name="NagisaSplitView" Grid.Row="1">
@@ -46,28 +46,50 @@
             </SplitView.Pane>
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <ListView x:Name="listView">
+
+                <AutoSuggestBox Grid.Row="0" Height="32" PlaceholderText="Search Downloads" QueryIcon="Find" />
+
+                <ListView x:Name="listView" Grid.Row="1">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
 
                     <ListViewItem>
+
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Test Item X"/>
-                            <AppBarToggleButton Grid.Column="1" Icon="Pause" />
-                            <AppBarToggleButton Grid.Column="2" Icon="Delete"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock VerticalAlignment="Center" Text="Test Item X"/>
+                            <ProgressBar VerticalAlignment="Bottom" Value="50"  Grid.Row="1" Grid.ColumnSpan="4"/>
+                            <AppBarButton Grid.Column="1" Icon="Pause" Label="Pause"/>
+                            <AppBarButton Grid.Column="2" Icon="Delete" Label="Delete"/>
+                            <AppBarButton Grid.Column="3" Icon="OpenLocal" Label="Open Folder"/>
                         </Grid>
                     </ListViewItem>
 
                     <ListViewItem Content="Test Item1"/>
                     <ListViewItem Content="Test Item2"/>
+                    
+                    
                 </ListView>
-                <CommandBar Grid.Row="1">
+                <CommandBar Grid.Row="2">
+                    
                     <AppBarToggleButton Icon="Add" Label="Add Task" />
                     <AppBarToggleButton Icon="Clear" Label="Clear List"/>
                     <CommandBar.Content>
