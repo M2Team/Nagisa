@@ -1,15 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Common">
-      <UniqueIdentifier>7095e1ce-496e-4306-b0aa-dde2f305ee77</UniqueIdentifier>
-    </Filter>
     <Filter Include="Assets">
       <UniqueIdentifier>a972ae12-f0af-4bdc-98b3-2224e7d5ba27</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
-    </Filter>
-    <Filter Include="Nagisa.Core">
-      <UniqueIdentifier>{0450f0fe-5f25-40e5-a3cb-e0770ff9c8d9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,18 +13,12 @@
     <ClCompile Include="App.xaml.cpp" />
     <ClCompile Include="MainPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Nagisa.Core.cpp">
-      <Filter>Nagisa.Core</Filter>
-    </ClCompile>
     <ClCompile Include="AddNewTaskDialog.xaml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h" />
     <ClInclude Include="MainPage.xaml.h" />
-    <ClInclude Include="Nagisa.Core.h">
-      <Filter>Nagisa.Core</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="AddNewTaskDialog.xaml.h" />
   </ItemGroup>
