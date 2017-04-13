@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="c4d8298d-c53d-4c47-b6bb-53c12e5ac294" Publisher="CN=M2-Team" Version="0.1.1702.0" />
+  <Identity Name="M2.Nagisa" Publisher="CN=M2-Team" Version="0.1.10.0" />
   <mp:PhoneIdentity PhoneProductId="c4d8298d-c53d-4c47-b6bb-53c12e5ac294" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Project Nagisa</DisplayName>
+    <DisplayName>Nagisa</DisplayName>
     <PublisherDisplayName>M2-Team</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

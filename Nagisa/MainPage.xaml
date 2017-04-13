@@ -6,97 +6,132 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Nagisa.Xaml.Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <Grid x:Name="NagisaTitleBar" Height="32" Background="LightGray">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <ToggleButton x:Name="toggleButton" 
-                              IsChecked="{Binding ElementName=NagisaSplitView, Path=IsPaneOpen, Mode=TwoWay}">
-                <ToggleButton.Content>
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Foreground="White" Glyph="&#xE700;"/>
-                </ToggleButton.Content>
-            </ToggleButton>
-            <Grid x:Name="NagisaTitleBarBackground" Background="Transparent" Grid.Column="1">
-                <TextBlock Margin="8" FontSize="12" Text="Nagisa" />
-            </Grid>
-            
-        </Grid>
-
-        <SplitView x:Name="NagisaSplitView" Grid.Row="1">
-            <SplitView.Pane>
-                <StackPanel VerticalAlignment="Stretch" Margin="8">
-                    <TextBlock Text="About"/>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Nagisa [Version 0.1.1702.17]"
-                                   Margin="8,8,0,0"
-                                   TextWrapping="Wrap"/>
-                        <TextBlock Text="&#xA9; 2017 M2-Team"
-                                   Margin="8,8,0,0"
-                                   TextWrapping="Wrap"/>
-                    </StackPanel>
+        
+        <RelativePanel>
+            <RelativePanel x:Name="NagisaCommandBar"
+                           Background="LightGray"
+                           RelativePanel.AlignTopWithPanel="True"
+                           RelativePanel.AlignLeftWithPanel="True"
+                           RelativePanel.AlignRightWithPanel="True">
+                <StackPanel x:Name="NagisaButtons"
+                        Orientation="Horizontal" 
+                        RelativePanel.AlignTopWithPanel="True" 
+                        RelativePanel.AlignLeftWithPanel="True">
+                    <AppBarToggleButton Label="Menu"
+                                    IsChecked="{Binding ElementName=NagisaSplitView, Path=IsPaneOpen, Mode=TwoWay}"
+                                        Style="{StaticResource NagisaAppBarToggleButtonStyle}">
+                        <AppBarToggleButton.Icon>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;"/>
+                        </AppBarToggleButton.Icon>
+                    </AppBarToggleButton>
+                    <AppBarButton Icon="Add" Label="Add Task" Click="AppBarToggleButton_Click" Style="{StaticResource NagisaAppBarButtonStyle}"/>
+                    <AppBarButton Icon="Clear" Label="Clear List" Style="{StaticResource NagisaAppBarButtonStyle}"/>
+                    <AppBarButton Icon="OpenLocal" Label="Open Downloads Folder" Style="{StaticResource NagisaAppBarButtonStyle}"/>
                 </StackPanel>
-            </SplitView.Pane>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
 
-                <AutoSuggestBox Grid.Row="0" Height="32" PlaceholderText="Search Downloads" QueryIcon="Find" />
+                <AutoSuggestBox PlaceholderText="Search Downloads"
+                                QueryIcon="Find"
+                                RelativePanel.AlignRightWithPanel="True"
+                                RelativePanel.AlignBottomWithPanel="True"
+                                MinWidth="256" Margin="8,4"/>
+            </RelativePanel>
 
-                <ListView x:Name="listView" Grid.Row="1">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
+            <SplitView x:Name="NagisaSplitView"
+                       RelativePanel.Below="NagisaCommandBar"
+                       RelativePanel.Above="NagisaStatusBar"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True">
+                <SplitView.Pane>
+                    <StackPanel VerticalAlignment="Stretch" Margin="8">
+                        <TextBlock Text="About"/>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Nagisa [Version 0.1.10]"
+                                   Margin="8,8,0,0"
+                                   TextWrapping="Wrap"/>
+                            <TextBlock Text="&#xA9; 2017 M2-Team"
+                                   Margin="8,8,0,0"
+                                   TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </StackPanel>
+                </SplitView.Pane>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <ListView x:Name="listView" Grid.Row="1">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ListViewItem>
+                            <RelativePanel>
+                                <TextBlock Text="Test Item X" 
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                <StackPanel Orientation="Horizontal" 
+                                        RelativePanel.AlignRightWithPanel="True">
+                                    <AppBarButton Icon="Pause" Label="Pause"/>
+                                    <AppBarButton Icon="Delete" Label="Delete"/>
+                                    <AppBarButton Icon="OpenLocal" Label="Open Folder"/>
+                                </StackPanel>
+                                <ProgressBar Value="50" 
+                                         RelativePanel.AlignBottomWithPanel="True" 
+                                         RelativePanel.AlignLeftWithPanel="True" 
+                                         RelativePanel.AlignRightWithPanel="True"/>
+                            </RelativePanel>
+                        </ListViewItem>
+                    </ListView>
+                </Grid>
+            </SplitView>
 
 
-                    <ListViewItem>
+            <RelativePanel x:Name="NagisaStatusBar"
+                           Background="LightGray"
+                           RelativePanel.AlignBottomWithPanel="True"
+                           RelativePanel.AlignLeftWithPanel="True"
+                           RelativePanel.AlignRightWithPanel="True">
+                <TextBlock Text="Total Bandwidth: 1024 KiB/s" Margin="8"/>
+            </RelativePanel>
+        </RelativePanel>
+        
+        
 
+        
 
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock VerticalAlignment="Center" Text="Test Item X"/>
-                            <ProgressBar VerticalAlignment="Bottom" Value="50"  Grid.Row="1" Grid.ColumnSpan="4"/>
-                            <AppBarButton Grid.Column="1" Icon="Pause" Label="Pause"/>
-                            <AppBarButton Grid.Column="2" Icon="Delete" Label="Delete"/>
-                            <AppBarButton Grid.Column="3" Icon="OpenLocal" Label="Open Folder"/>
-                        </Grid>
-                    </ListViewItem>
+        
 
-                    <ListViewItem Content="Test Item1"/>
-                    <ListViewItem Content="Test Item2"/>
-                    
-                    
-                </ListView>
-                <CommandBar Grid.Row="2">
-                    
-                    <AppBarToggleButton Icon="Add" Label="Add Task" />
-                    <AppBarToggleButton Icon="Clear" Label="Clear List"/>
-                    <CommandBar.Content>
-                        <TextBlock Text="Total Bandwidth: 1024 KiB/s" Margin="12,14"/>
-                    </CommandBar.Content>
-                </CommandBar>
-            </Grid>
-        </SplitView>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                       
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>

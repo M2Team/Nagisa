@@ -1,0 +1,26 @@
+﻿<ContentDialog
+    x:Class="Nagisa.AddNewTaskDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nagisa"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Add a new task to Nagisa"
+    PrimaryButtonText="OK"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+    <StackPanel Margin="0,8">
+        <TextBox Header="Download Link:" PlaceholderText="Please input the download link"/>
+        <TextBox Header="File Name:" PlaceholderText="Please input the file name"/>
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Header="Save Path:" IsReadOnly="True" Text="I:\Downloads" Grid.Column="0"/>
+            <Button Content="Browse" VerticalAlignment="Bottom" Grid.Column="1"/>
+        </Grid>
+    </StackPanel>
+</ContentDialog>

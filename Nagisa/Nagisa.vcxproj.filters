@@ -22,6 +22,7 @@
     <ClCompile Include="Nagisa.Core.cpp">
       <Filter>Nagisa.Core</Filter>
     </ClCompile>
+    <ClCompile Include="AddNewTaskDialog.xaml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -31,12 +32,15 @@
       <Filter>Nagisa.Core</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="AddNewTaskDialog.xaml.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nagisa_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml" />
+    <Page Include="AddNewTaskDialog.xaml" />
+    <Page Include="Nagisa.Xaml.Styles.xaml" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Nagisa.rc" />

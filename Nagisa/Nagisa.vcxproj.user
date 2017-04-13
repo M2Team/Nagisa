@@ -5,4 +5,34 @@
     <AppxShowAllApps>False</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <DebuggerMachineName>192.168.1.110</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <DebuggerMachineName>192.168.1.110</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <DebuggerMachineName>192.168.1.110</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <DebuggerMachineName>192.168.1.110</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerMachineName>192.168.1.110</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebuggerMachineName>192.168.1.110</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>

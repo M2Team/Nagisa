@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "Nagisa.Core.h"
 #include "MainPage.xaml.h"
+#include "AddNewTaskDialog.xaml.h"
 
 using namespace Nagisa;
 
@@ -33,36 +34,26 @@ MainPage::MainPage()
 {
 	InitializeComponent();
 
-	auto WindowSize = Size(540.0, 320.0);
+	//auto WindowSize = Size(16.0, 16.0);
 	auto appCurrentView = ApplicationView::GetForCurrentView();
 	auto appTitleBar = appCurrentView->TitleBar;
-	auto coreTitleBar = CoreApplication::GetCurrentView()->TitleBar;
 	
-	appCurrentView->SetPreferredMinSize(WindowSize);
-	appCurrentView->PreferredLaunchViewSize = WindowSize;
-	appCurrentView->PreferredLaunchWindowingMode = 
-		ApplicationViewWindowingMode::PreferredLaunchViewSize;
-	
-	appTitleBar->ButtonBackgroundColor = Colors::Transparent;
-	appTitleBar->ButtonInactiveBackgroundColor = Colors::Transparent;
-	appTitleBar->ButtonHoverBackgroundColor = Colors::DarkGray;
+	//appCurrentView->SetPreferredMinSize(WindowSize);
+	//appCurrentView->PreferredLaunchViewSize = WindowSize;
+	//appCurrentView->PreferredLaunchWindowingMode = 
+		//ApplicationViewWindowingMode::PreferredLaunchViewSize;
 
-	coreTitleBar->ExtendViewIntoTitleBar = true;
-	coreTitleBar->LayoutMetricsChanged += 
-		ref new TypedEventHandler<CoreApplicationViewTitleBar^, Object^>(
-			this, &MainPage::CoreTitleBar_LayoutMetricsChanged);
-	
-	Window::Current->SetTitleBar(NagisaTitleBarBackground);
+	//appCurrentView->Title = L"Nagisa 0.3";
+
+	appTitleBar->BackgroundColor = Colors::LightGray;
+	appTitleBar->InactiveBackgroundColor = Colors::LightGray;
+	appTitleBar->ButtonBackgroundColor = Colors::LightGray;
+	appTitleBar->ButtonInactiveBackgroundColor = Colors::LightGray;
+	appTitleBar->ButtonHoverBackgroundColor = Colors::DarkGray;
 }
 
-void Nagisa::MainPage::CoreTitleBar_LayoutMetricsChanged(
-	Windows::ApplicationModel::Core::CoreApplicationViewTitleBar^ sender, 
-	Platform::Object^ e)
+void Nagisa::MainPage::AppBarToggleButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	NagisaTitleBar->Height = sender->Height;
-	NagisaTitleBar->Padding = Thickness(
-		sender->SystemOverlayLeftInset,
-		0.0,
-		sender->SystemOverlayRightInset,
-		0.0);
+	AddNewTaskDialog^ Dialog = ref new AddNewTaskDialog();
+	Dialog->ShowAsync();
 }
