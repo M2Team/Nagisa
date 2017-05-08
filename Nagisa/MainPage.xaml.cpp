@@ -4,7 +4,6 @@
 //
 
 #include "pch.h"
-#include "Nagisa.Core.h"
 #include "MainPage.xaml.h"
 #include "AddNewTaskDialog.xaml.h"
 
@@ -23,7 +22,10 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
+using namespace concurrency;
 using namespace Windows::UI::ViewManagement;
+using namespace Windows::System;
+using namespace Windows::Storage;
 
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
@@ -56,4 +58,17 @@ void Nagisa::MainPage::AppBarToggleButton_Click(Platform::Object^ sender, Window
 {
 	AddNewTaskDialog^ Dialog = ref new AddNewTaskDialog();
 	Dialog->ShowAsync();
+}
+
+
+void Nagisa::MainPage::AppBarButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	create_task(
+		DownloadsFolder::CreateFolderAsync(
+			L"NagisaDownloads", CreationCollisionOption::OpenIfExists))
+		.then([this](task<StorageFolder^> task)
+	{
+		StorageFolder^ NagisaDownloads = task.get();
+		Launcher::LaunchFolderAsync(NagisaDownloads);
+	});
 }

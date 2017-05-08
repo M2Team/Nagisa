@@ -35,7 +35,7 @@
                     </AppBarToggleButton>
                     <AppBarButton Icon="Add" Label="Add Task" Click="AppBarToggleButton_Click" Style="{StaticResource NagisaAppBarButtonStyle}"/>
                     <AppBarButton Icon="Clear" Label="Clear List" Style="{StaticResource NagisaAppBarButtonStyle}"/>
-                    <AppBarButton Icon="OpenLocal" Label="Open Downloads Folder" Style="{StaticResource NagisaAppBarButtonStyle}"/>
+                    <AppBarButton Icon="OpenLocal" Label="Open Downloads Folder" Style="{StaticResource NagisaAppBarButtonStyle}" Click="AppBarButton_Click"/>
                 </StackPanel>
 
                 <AutoSuggestBox PlaceholderText="Search Downloads"
