@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Source>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</Source>
+    <SmallTileSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</SmallTileSource>
+    <MediumTileSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</MediumTileSource>
+    <WideTileSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</WideTileSource>
+    <LargeTileSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</LargeTileSource>
+    <AppIconSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</AppIconSource>
+    <SplashScreenSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</SplashScreenSource>
+    <BadgeLogoSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</BadgeLogoSource>
+    <PackageLogoSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</PackageLogoSource>
+  </PropertyGroup>
+</Project>

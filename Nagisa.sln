@@ -3,7 +3,50 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa", "Nagisa\Nagisa.vcxproj", "{8B490B07-60CB-45A0-91F8-8605ABA29C83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nagisa.Icon", "Nagisa.Icon", "{FCCCDA7A-C4F5-4D02-A775-08AEA06A0AFC}"
+	ProjectSection(SolutionItems) = preProject
+		Nagisa.Icon\Nagisa.png = Nagisa.Icon\Nagisa.png
+		Nagisa.Icon\Nagisa.xcf = Nagisa.Icon\Nagisa.xcf
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nagisa.Root", "Nagisa.Root", "{4D5AA480-6E5E-447A-BFC1-E159FB6B8DDB}"
+	ProjectSection(SolutionItems) = preProject
+		Changelog.md = Changelog.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Debug|ARM.ActiveCfg = Debug|ARM
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Debug|ARM.Build.0 = Debug|ARM
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Debug|ARM.Deploy.0 = Debug|ARM
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Debug|x64.ActiveCfg = Debug|x64
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Debug|x64.Build.0 = Debug|x64
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Debug|x64.Deploy.0 = Debug|x64
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Debug|x86.ActiveCfg = Debug|Win32
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Debug|x86.Build.0 = Debug|Win32
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Debug|x86.Deploy.0 = Debug|Win32
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|ARM.ActiveCfg = Release|ARM
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|ARM.Build.0 = Release|ARM
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|ARM.Deploy.0 = Release|ARM
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|x64.ActiveCfg = Release|x64
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|x64.Build.0 = Release|x64
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|x64.Deploy.0 = Release|x64
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|x86.ActiveCfg = Release|Win32
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|x86.Build.0 = Release|Win32
+		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|x86.Deploy.0 = Release|Win32
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
