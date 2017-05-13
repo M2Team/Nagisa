@@ -21,6 +21,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h" />
     <ClInclude Include="MainPage.xaml.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nagisa_TemporaryKey.pfx" />
@@ -167,5 +168,8 @@
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Nagisa.rc" />
   </ItemGroup>
 </Project>
