@@ -17,5 +17,7 @@ namespace Nagisa
 	public:
 		MainPage();
 
+	private:
+		void Nagisa_Test_SaveAsButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

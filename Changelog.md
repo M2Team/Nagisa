@@ -1,5 +1,8 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.3**
+- Add the FilePicker and some controls to UI
+
 **Nagisa 0.1.2**
 - Modify the Icon to improve effects in Start
 - Add the Version Info

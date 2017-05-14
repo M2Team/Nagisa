@@ -9,16 +9,19 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Margin="8">
-            <TextBlock Text="M2-Team Nagisa 0.1.2" FontSize="32"/>
+            <TextBlock Text="M2-Team Nagisa 0.1.3" FontSize="32"/>
             <TextBlock Text="The developer has recognized the interface is rough because it's still in alpha stage and he wants to implement the core features first. He hopes you can understand his thoughts." TextWrapping="Wrap" FontSize="16" Foreground="#FFC00000"/>
             <TextBlock/>
             <TextBlock Text="How to test Nagisa" FontSize="24"/>
-            <TextBlock Text="1.Input the download link"/>
+            <TextBlock Text="1.Input the download link and file name which you want to named"/>
             <TextBox PlaceholderText="Please input the download link here"/>
+            <TextBox PlaceholderText="Please input the save file name here"/>
             <TextBlock Text="2.Click the Save As button"/>
-            <Button Content="Save As"/>
+            <Button Content="Save As" Click="Nagisa_Test_SaveAsButton_Click"/>
             <TextBlock Text="3.Wait for the Progress Bar"/>
             <ProgressBar Value="2"/>
+
+            <TextBlock x:Name="OutputConsole"/>
         </StackPanel>
 
     </Grid>
