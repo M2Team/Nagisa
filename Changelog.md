@@ -1,5 +1,10 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.4**
+- Add the Default Save Folder Settings
+- Add the Console for Debug
+- Start implementing FileWriter
+
 **Nagisa 0.1.3**
 - Add the FilePicker and some controls to UI
 
