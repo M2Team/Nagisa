@@ -21,85 +21,64 @@ using namespace Windows::UI::Xaml::Navigation;
 
 using namespace concurrency;
 using namespace Platform::Collections;
+using namespace Windows::ApplicationModel::Core;
 using namespace Windows::Storage;
 using namespace Windows::Storage::AccessCache;
 using namespace Windows::Storage::Pickers;
+using namespace Windows::System::Threading;
+using namespace Windows::UI::Core;
 
-// https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
+#include <string>
+using namespace std;
 
 MainPage::MainPage()
 {
 	InitializeComponent();
-
-	create_async([this]()
-	{
-		this->ConsoleContent += L"M2-Team Nagisa Version 0.1.4\r\n© M2-Team. All rights reserved.\r\n";
-		
-		auto FutureAccessList = StorageApplicationPermissions::FutureAccessList;
-		auto LocalSettings = ApplicationData::Current->LocalSettings;
-		auto token = dynamic_cast<String^>(LocalSettings->Values->Lookup(L"CurrentSaveFolderToken"));
-
-		if (token != nullptr && FutureAccessList->ContainsItem(token))
-		{
-			auto GetFolderTask = create_task(FutureAccessList->GetFolderAsync(token));
-			GetFolderTask.wait();
-			StorageFolder^ folder = GetFolderTask.get();
-
-			if (folder)
-			{
-				this->CurrentSaveFolder = folder;
-			}
-		}
-
-		if (this->CurrentSaveFolder)
-		{
-			this->ConsoleContent += "Current: " + this->CurrentSaveFolder->Path + L"\r\n";
-		}
-		else
-		{
-			this->ConsoleContent += "Current: None" + L"\r\n";
-		}
-
-		this->OutputConsole->Text = ConsoleContent;
-	});
 }
 
 
+void Nagisa::MainPage::ConsoleWriteLine(Platform::String ^ String)
+{
+	this->OutputConsole->Text += String + L"\r\n";
+}
+
 void Nagisa::MainPage::Nagisa_Test_SaveAsButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	if (this->CurrentSaveFolder)
+	if (this->m_Config->DownloadsFolder)
 	{
 		if (FileNameTextBox->Text == L"")
 		{
-			this->ConsoleContent += "Invaild File Name." + L"\r\n";
+			ConsoleWriteLine(L"Invaild File Name.");
 		}
 		else
 		{
-			create_task(this->CurrentSaveFolder->CreateFileAsync(FileNameTextBox->Text)).then([this](StorageFile^ file)
+			ThreadPool::RunAsync(ref new WorkItemHandler([this](IAsyncAction^ workItem)
 			{
+				//Uri^ uri = ref new Uri((L"ed2k://|file|cn_windows_8_1_enterprise_x64_dvd_2971863.iso|4039327744|08BAF18320B8FFC58D4C35BCC7A32012|/"));
+				//String^ x = uri->SchemeName;
+				
+				auto asyncOperation = this->m_Config->DownloadsFolder->CreateFileAsync(FileNameTextBox->Text);
+				while (asyncOperation->Status == AsyncStatus::Started)
+				{
+					SwitchToThread();
+				}
+
+				StorageFile^ file = asyncOperation->GetResults();
 				if (file)
 				{
-					create_task(FileIO::WriteTextAsync(file, L"Nagisa Test")).then([this](task<void> task)
+					IAsyncAction^ asyncAction = FileIO::WriteTextAsync(file, L"Nagisa Test");
+					while (asyncAction->Status == AsyncStatus::Started)
 					{
-						try
-						{
-							task.get();
-						}
-						catch (COMException^ ex)
-						{
-
-						}
-					});
+						SwitchToThread();
+					}
 				}
-			});
+			}));
 		}
 	}
 	else
 	{
-		this->ConsoleContent += "Invaild Root Folder. Please set the root." + L"\n";
+		ConsoleWriteLine(L"Invaild Root Folder. Please set the root.");
 	}
-
-	this->OutputConsole->Text = ConsoleContent;
 }
 
 
@@ -109,32 +88,45 @@ void Nagisa::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 	picker->FileTypeFilter->Append(L"*");
 	picker->SuggestedStartLocation = PickerLocationId::DocumentsLibrary;
 
-	create_task(picker->PickSingleFolderAsync()).then([this](StorageFolder^ folder)
+	(picker->PickSingleFolderAsync())->Completed =
+		ref new AsyncOperationCompletedHandler<StorageFolder^>(
+			[this](IAsyncOperation<StorageFolder^>^ asyncInfo, AsyncStatus asyncStatus)
 	{
-		if (folder)
+		StorageFolder^ folder = asyncInfo->GetResults();
+		CoreApplication::MainView->CoreWindow->Dispatcher->RunAsync(
+			CoreDispatcherPriority::Normal, ref new DispatchedHandler([this, folder]()
 		{
-			auto FutureAccessList = StorageApplicationPermissions::FutureAccessList;
-			auto LocalSettings = ApplicationData::Current->LocalSettings;
-
-			if (this->CurrentSaveFolder)
+			if (folder)
 			{
-				auto token = dynamic_cast<String^>(LocalSettings->Values->Lookup(L"CurrentSaveFolderToken"));
-				if (token != nullptr && FutureAccessList->ContainsItem(token))
-				{
-					FutureAccessList->Remove(token);
-				}
+				this->m_Config->DownloadsFolder = folder;
+
+				ConsoleWriteLine(L"Current: " + this->m_Config->DownloadsFolder->Path);
 			}
+			else
+			{
+				ConsoleWriteLine(L"Operation cancelled.");
+			}
+		}));
+	});
+}
 
-			LocalSettings->Values->Insert(L"CurrentSaveFolderToken", FutureAccessList->Add(folder));
-			this->CurrentSaveFolder = folder;
 
-			this->ConsoleContent += "Current: " + this->CurrentSaveFolder->Path + L"\r\n";
+void Nagisa::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	ConsoleWriteLine(L"M2-Team Nagisa Version 0.1.5");
+	ConsoleWriteLine(L"© M2-Team. All rights reserved.");
+	ConsoleWriteLine(L"");
+
+	this->m_Config = ref new Configuration();
+	if (this->m_Config)
+	{
+		if (this->m_Config->DownloadsFolder)
+		{
+			ConsoleWriteLine(L"Current: " + this->m_Config->DownloadsFolder->Path);
 		}
 		else
 		{
-			this->ConsoleContent += "Operation cancelled." + L"\r\n";
+			ConsoleWriteLine(L"Current: None");
 		}
-
-		this->OutputConsole->Text = ConsoleContent;
-	});
+	}
 }

@@ -1,5 +1,12 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.5**
+- Add Nagisa.Configuration Class
+- Fix Debug Console can't display any content when loaded
+- Fix crash when the Root Folder was deleted
+- Remove C++/CX PPL library to Reduce the binary size
+- Add ConsoleWriteLine function for print text to the Debug Console
+
 **Nagisa 0.1.4**
 - Add the Default Save Folder Settings
 - Add the Console for Debug

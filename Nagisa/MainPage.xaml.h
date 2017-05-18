@@ -6,6 +6,7 @@
 #pragma once
 
 #include "MainPage.g.h"
+#include "Nagisa.Configuration.h"
 
 namespace Nagisa
 {
@@ -19,11 +20,12 @@ namespace Nagisa
 		MainPage();
 
 	private:
-		Windows::Storage::StorageFolder^ CurrentSaveFolder = nullptr;
-		Platform::String^ ConsoleContent = L"";
-		
+		Configuration^ m_Config = nullptr;
+
+		void ConsoleWriteLine(Platform::String^ String);
 
 		void Nagisa_Test_SaveAsButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }
