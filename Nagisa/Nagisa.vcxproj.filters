@@ -8,9 +8,6 @@
       <UniqueIdentifier>c441ff7a-d72e-4e9e-a911-46127849559f</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
     </Filter>
-    <Filter Include="Nagisa.Configuration">
-      <UniqueIdentifier>{b8a52254-7099-49e9-9dd9-14c7d8bf36bd}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -19,18 +16,12 @@
     <ClCompile Include="App.xaml.cpp" />
     <ClCompile Include="MainPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Nagisa.Configuration.cpp">
-      <Filter>Nagisa.Configuration</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h" />
     <ClInclude Include="MainPage.xaml.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Nagisa.Configuration.h">
-      <Filter>Nagisa.Configuration</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Nagisa_TemporaryKey.pfx" />

@@ -1,5 +1,9 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.6**
+- Add NagisaCore Component
+- Move Nagisa.Configuration Class to NagisaCore.Configuration Class
+
 **Nagisa 0.1.5**
 - Add Nagisa.Configuration Class
 - Fix Debug Console can't display any content when loaded

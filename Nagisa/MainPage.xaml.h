@@ -6,7 +6,6 @@
 #pragma once
 
 #include "MainPage.g.h"
-#include "Nagisa.Configuration.h"
 
 namespace Nagisa
 {
@@ -20,7 +19,7 @@ namespace Nagisa
 		MainPage();
 
 	private:
-		Configuration^ m_Config = nullptr;
+		NagisaCore::Configuration^ m_Config = nullptr;
 
 		void ConsoleWriteLine(Platform::String^ String);
 

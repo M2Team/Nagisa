@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Nagisa.Configuration.h"
+#include "NagisaCore.Configuration.h"
 
 using namespace concurrency;
 using namespace Platform;
@@ -8,7 +8,7 @@ using namespace Windows::Storage;
 using namespace Windows::Storage::AccessCache;
 
 
-Nagisa::Configuration::Configuration()
+NagisaCore::Configuration::Configuration()
 {
 	m_FutureAccessList = StorageApplicationPermissions::FutureAccessList;
 	m_LocalSettings = ApplicationData::Current->LocalSettings;
@@ -16,7 +16,7 @@ Nagisa::Configuration::Configuration()
 	m_DownloadsFolder = GetDownloadsFolder();
 }
 
-StorageFolder^ Nagisa::Configuration::GetDownloadsFolder()
+StorageFolder^ NagisaCore::Configuration::GetDownloadsFolder()
 {
 	StorageFolder^ Folder = nullptr;
 	
@@ -37,7 +37,7 @@ StorageFolder^ Nagisa::Configuration::GetDownloadsFolder()
 	return Folder;
 }
 
-void Nagisa::Configuration::SetDownloadsFolder(StorageFolder ^ Folder)
+void NagisaCore::Configuration::SetDownloadsFolder(StorageFolder ^ Folder)
 {
 	m_FutureAccessList->AddOrReplace(L"Nagisa.DownloadsFolder", Folder);
 	

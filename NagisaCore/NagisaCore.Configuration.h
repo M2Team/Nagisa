@@ -3,9 +3,9 @@
 using namespace Windows::Storage;
 using namespace Windows::Storage::AccessCache;
 
-namespace Nagisa
+namespace NagisaCore
 {
-	ref class Configuration sealed
+	public ref class Configuration sealed
 	{
 	private:
 		StorageItemAccessList^ m_FutureAccessList = nullptr;
@@ -31,7 +31,5 @@ namespace Nagisa
 				SetDownloadsFolder(value);
 			}
 		}
-
-		
 	};
 }

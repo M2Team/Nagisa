@@ -19,6 +19,7 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
+using namespace NagisaCore;
 using namespace concurrency;
 using namespace Platform::Collections;
 using namespace Windows::ApplicationModel::Core;
@@ -43,7 +44,7 @@ void Nagisa::MainPage::ConsoleWriteLine(Platform::String ^ String)
 }
 
 void Nagisa::MainPage::Nagisa_Test_SaveAsButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
-{
+{	
 	if (this->m_Config->DownloadsFolder)
 	{
 		if (FileNameTextBox->Text == L"")
@@ -54,7 +55,7 @@ void Nagisa::MainPage::Nagisa_Test_SaveAsButton_Click(Platform::Object^ sender, 
 		{
 			ThreadPool::RunAsync(ref new WorkItemHandler([this](IAsyncAction^ workItem)
 			{
-				//Uri^ uri = ref new Uri((L"ed2k://|file|cn_windows_8_1_enterprise_x64_dvd_2971863.iso|4039327744|08BAF18320B8FFC58D4C35BCC7A32012|/"));
+				//Uri^ uri = ref new Uri(L"ed2k://|file|cn_windows_8_1_enterprise_x64_dvd_2971863.iso|4039327744|08BAF18320B8FFC58D4C35BCC7A32012|/");
 				//String^ x = uri->SchemeName;
 				
 				auto asyncOperation = this->m_Config->DownloadsFolder->CreateFileAsync(FileNameTextBox->Text);
@@ -113,7 +114,7 @@ void Nagisa::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 
 void Nagisa::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	ConsoleWriteLine(L"M2-Team Nagisa Version 0.1.5");
+	ConsoleWriteLine(L"M2-Team Nagisa Version 0.1.6");
 	ConsoleWriteLine(L"© M2-Team. All rights reserved.");
 	ConsoleWriteLine(L"");
 
