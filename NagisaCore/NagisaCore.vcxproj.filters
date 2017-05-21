@@ -8,11 +8,17 @@
     <Filter Include="NagisaCore.Configuration">
       <UniqueIdentifier>{f214d819-ed04-4946-a82e-e54cef2557a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="NagisaCore.BackgroundTask">
+      <UniqueIdentifier>{9b33052b-1bf1-4d81-9825-e24740576ea4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="NagisaCore.Configuration.cpp">
       <Filter>NagisaCore.Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="NagisaCore.BackgroundTask.cpp">
+      <Filter>NagisaCore.BackgroundTask</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -20,6 +26,9 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="NagisaCore.Configuration.h">
       <Filter>NagisaCore.Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="NagisaCore.BackgroundTask.h">
+      <Filter>NagisaCore.BackgroundTask</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

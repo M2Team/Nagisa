@@ -1,5 +1,10 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.7**
+- Remove year in the LegalCopyright element in Version Resources
+- Add NagisaCore.BackgroundTask Class
+- Add BackgroundTask to AppX manifest
+
 **Nagisa 0.1.6**
 - Add NagisaCore Component
 - Move Nagisa.Configuration Class to NagisaCore.Configuration Class
