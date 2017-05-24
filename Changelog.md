@@ -1,5 +1,8 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.8**
+- Add and start implementing SocketDemo
+
 **Nagisa 0.1.7**
 - Remove year in the LegalCopyright element in Version Resources
 - Add NagisaCore.BackgroundTask Class

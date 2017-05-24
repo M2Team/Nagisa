@@ -20,6 +20,7 @@
             <TextBox x:Name="FileNameTextBox" PlaceholderText="Please input the save file name here"/>
             <TextBlock Text="2.Click the Save As button"/>
             <Button Content="Save As" Click="Nagisa_Test_SaveAsButton_Click"/>
+            <Button Content="SocketDemo" Click="Button_Click_1"/>
             <TextBlock Text="3.Wait for the Progress Bar"/>
             <ProgressBar Value="2"/>
             <TextBlock Text="Console Output:"/>
