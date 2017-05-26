@@ -2,6 +2,7 @@
 
 **Nagisa 0.1.8**
 - Add and start implementing SocketDemo
+- SocketDemo now can save http request in a file 
 
 **Nagisa 0.1.7**
 - Remove year in the LegalCopyright element in Version Resources

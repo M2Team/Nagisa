@@ -47,7 +47,7 @@ void Nagisa::MainPage::ConsoleWriteLine(Platform::String ^ String)
 }
 
 void Nagisa::MainPage::Nagisa_Test_SaveAsButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
-{	
+{
 	if (this->m_Config->DownloadsFolder)
 	{
 		if (FileNameTextBox->Text == L"")
@@ -134,10 +134,12 @@ void Nagisa::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::
 }
 
 
+
 void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	ThreadPool::RunAsync(ref new WorkItemHandler([this](IAsyncAction^ workItem)
 	{
+	
 		Uri^ uri = ref new Uri(L"http://avatar.csdn.net/0/0/0/1_hulele2009.jpg");
 
 
@@ -156,71 +158,78 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 		socket->Control->KeepAlive = true;
 
-		(socket->ConnectAsync(hostName, uri->Port.ToString()))->Completed = 
+		(socket->ConnectAsync(hostName, uri->Port.ToString()))->Completed =
 			ref new AsyncActionCompletedHandler(
-			[this,uri,socket](IAsyncAction^ asyncInfo, AsyncStatus asyncStatus)
+				[this, uri, socket](IAsyncAction^ asyncInfo, AsyncStatus asyncStatus)
 		{
 			if (asyncStatus == AsyncStatus::Completed)
 			{
+				
 				DataWriter^ writer = ref new DataWriter(socket->OutputStream);
 
-				String^ stringSend = 
-					
-					L"GET " + uri->Path +" HTTP/1.1" L"\r\n"
+				String^ stringSend =
+
+					L"GET " + uri->Path + " HTTP/1.1" L"\r\n"
 					L"Host: " + uri->Host + L"\r\n"
 					L"Connection: Keep-Alive"
-					L"User-Agent: Mozilla/5.0 (Windows NT 10.0; Nagisa/0.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240" L"\r\n"		
+					L"User-Agent: Mozilla/5.0 (Windows NT 10.0; Nagisa/0.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240" L"\r\n"
 					L"Accept:*/*" L"\r\n"
 					L"Accept-Encoding:gzip, deflate" L"\r\n"
 					L"Accept-Language:zh-CN" L"\r\n"
-					L"Range:bytes=0-" L"\r\n"				;
+					L"Range:bytes=0-" L"\r\n"
+					L"\r\n";
 
 				writer->UnicodeEncoding = UnicodeEncoding::Utf8;
 				writer->WriteString(stringSend);
 
-				(writer->StoreAsync())->Completed =
-					ref new AsyncOperationCompletedHandler<unsigned int>(
-						[this, socket, writer](IAsyncOperation<unsigned int>^ asyncInfo, AsyncStatus asyncStatus)
+				auto StoreAsyncOperation = writer->StoreAsync();
+				while (StoreAsyncOperation->Status == AsyncStatus::Started)
 				{
-					writer->DetachBuffer();
-					
-					//unsigned int size = asyncInfo->GetResults();
+					SwitchToThread();
+				}
 
+				//writer->DetachBuffer();
+
+				auto asyncOperation = this->m_Config->DownloadsFolder->CreateFileAsync(L"1.jpg");
+
+				
+
+				while (asyncOperation->Status == AsyncStatus::Started)
+				{
+					SwitchToThread();
+				}
+
+				StorageFile^ file = asyncOperation->GetResults();
+				if (file)
+				{
 					DataReader^ reader = ref new DataReader(socket->InputStream);
 
-					//reader->InputStreamOptions = InputStreamOptions::Partial;
+					reader->InputStreamOptions = InputStreamOptions::Partial;
 
-					auto asyncOperation = this->m_Config->DownloadsFolder->CreateFileAsync(L"1.jpg");
-					while (asyncOperation->Status == AsyncStatus::Started)
+					
+					
+					reader->LoadAsync(4096)->Completed =
+						ref new AsyncOperationCompletedHandler<unsigned int>(
+							[this, reader, file](IAsyncOperation<unsigned int>^ asyncInfo, AsyncStatus asyncStatus)
 					{
-						SwitchToThread();
-					}
+						auto y = reader->UnconsumedBufferLength;
 
-					StorageFile^ file = asyncOperation->GetResults();
-					if (file)
-					{
-						IAsyncAction^ asyncAction = FileIO::WriteBufferAsync(file, reader->ReadBuffer(asyncInfo->GetResults()));
+						//char x[4096];
+						auto x = ref new Platform::Array<unsigned char>(4096);
+
+						reader->ReadBytes(x);
+
+						IAsyncAction^ asyncAction = FileIO::WriteBytesAsync(file, x);
 						while (asyncAction->Status == AsyncStatus::Started)
 						{
 							SwitchToThread();
 						}
-					}
 
-					/*(reader->LoadAsync(reader->ReadUInt32()))->Completed =
-						ref new AsyncOperationCompletedHandler<unsigned int>(
-							[this, reader](IAsyncOperation<unsigned int>^ asyncInfo, AsyncStatus asyncStatus)
-					{
-						
-						
-						
-						
-					});*/
-					
-				});
 
-				
-
+					});
+				}
 			}
 		});
+
 	}));
 }
