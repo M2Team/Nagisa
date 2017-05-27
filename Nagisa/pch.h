@@ -9,3 +9,5 @@
 #include <ppltasks.h>
 
 #include "App.xaml.h"
+
+#include <M2AsyncWait.h>

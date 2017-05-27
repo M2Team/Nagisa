@@ -40,7 +40,6 @@ MainPage::MainPage()
 	InitializeComponent();
 }
 
-
 void Nagisa::MainPage::ConsoleWriteLine(Platform::String ^ String)
 {
 	this->OutputConsole->Text += String + L"\r\n";
@@ -50,28 +49,22 @@ void Nagisa::MainPage::Nagisa_Test_SaveAsButton_Click(Platform::Object^ sender, 
 {
 	if (this->m_Config->DownloadsFolder)
 	{
-		if (FileNameTextBox->Text == L"")
+		String^ FileName = FileNameTextBox->Text;
+		
+		if (FileName == L"")
 		{
 			ConsoleWriteLine(L"Invaild File Name.");
 		}
 		else
-		{
-			ThreadPool::RunAsync(ref new WorkItemHandler([this](IAsyncAction^ workItem)
-			{
-				auto asyncOperation = this->m_Config->DownloadsFolder->CreateFileAsync(FileNameTextBox->Text);
-				while (asyncOperation->Status == AsyncStatus::Started)
-				{
-					SwitchToThread();
-				}
-
-				StorageFile^ file = asyncOperation->GetResults();
+		{	
+			ThreadPool::RunAsync(ref new WorkItemHandler([this, FileName](IAsyncAction^ workItem)
+			{	
+				StorageFile^ file = M2AsyncWait(
+					this->m_Config->DownloadsFolder->CreateFileAsync(FileName));
+				
 				if (file)
 				{
-					IAsyncAction^ asyncAction = FileIO::WriteTextAsync(file, L"Nagisa Test");
-					while (asyncAction->Status == AsyncStatus::Started)
-					{
-						SwitchToThread();
-					}
+					M2AsyncWait(FileIO::WriteTextAsync(file, L"Nagisa Test"));
 				}
 			}));
 		}
@@ -133,15 +126,46 @@ void Nagisa::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::
 	}
 }
 
+/*void WriteLog(
+	_In_z_ _Printf_format_string_ wchar_t const* const _Format,
+	...)
+{
+	if (nullptr != _Format)
+	{
+		va_list _ArgList = nullptr;
+		va_start(_ArgList, _Format);
 
+		// 获取格式化字符串长度
+		size_t nLength = _vscwprintf(_Format, _ArgList) + 1;
+
+		// 创建用于存储格式化字符串的内存空间
+		std::vector<wchar_t> Buffer(nLength, L'\0');
+
+		// 按格式输出字符串
+		int nWritten = _vsnwprintf_s(
+			&Buffer[0],
+			Buffer.size(),
+			nLength,
+			_Format,
+			_ArgList);
+		if (nWritten > 0)
+		{
+			WriteLogRaw(&Buffer[0]);
+		}
+
+		va_end(_ArgList);
+	}
+}*/
 
 void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	ThreadPool::RunAsync(ref new WorkItemHandler([this](IAsyncAction^ workItem)
 	{
-	
-		Uri^ uri = ref new Uri(L"http://avatar.csdn.net/0/0/0/1_hulele2009.jpg");
+		//CAsyncSession Test;
+		
+		//Uri^ uri = ref new Uri(L"http://avatar.csdn.net/0/0/0/1_hulele2009.jpg");
 
+		Uri^ uri = ref new Uri(L"http://dldir1.qq.com/qqfile/qq/TIM1.1.0/20843/TIM1.1.0.exe");
 
 		HostName^ hostName = nullptr;
 		try
@@ -158,78 +182,118 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 		socket->Control->KeepAlive = true;
 
-		(socket->ConnectAsync(hostName, uri->Port.ToString()))->Completed =
-			ref new AsyncActionCompletedHandler(
-				[this, uri, socket](IAsyncAction^ asyncInfo, AsyncStatus asyncStatus)
+		M2AsyncWait(socket->ConnectAsync(hostName, uri->Port.ToString()));
+
+		DataWriter^ writer = ref new DataWriter(socket->OutputStream);
+
+		String^ stringSend =
+
+			L"GET " + uri->Path + " HTTP/1.1" L"\r\n"
+			L"Host: " + uri->Host + L"\r\n"
+			L"Connection: Keep-Alive"
+			L"User-Agent: Mozilla/5.0 (Windows NT 10.0; Nagisa/0.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240" L"\r\n"
+			L"Accept:*/*" L"\r\n"
+			L"Range:bytes=0-" L"\r\n"
+			L"\r\n";
+
+		writer->UnicodeEncoding = UnicodeEncoding::Utf8;
+		writer->WriteString(stringSend);
+
+		auto ActualSendSize = M2AsyncWait(writer->StoreAsync());
+
+		StorageFile^ file = M2AsyncWait(
+			this->m_Config->DownloadsFolder->CreateFileAsync(
+				L"2.exe",
+				CreationCollisionOption::ReplaceExisting));
+
+		
+		if (file)
 		{
-			if (asyncStatus == AsyncStatus::Completed)
+			
+			
+			unsigned long long position = 0;
+			
+			auto randomstream = M2AsyncWait(file->OpenAsync(FileAccessMode::ReadWrite));
+			
+			bool GetHeader = true;
+
+			while (true)
 			{
+				auto outputstream = randomstream->GetOutputStreamAt(position);
 				
-				DataWriter^ writer = ref new DataWriter(socket->OutputStream);
+				Buffer^ buffer = ref new Buffer(4096);
 
-				String^ stringSend =
-
-					L"GET " + uri->Path + " HTTP/1.1" L"\r\n"
-					L"Host: " + uri->Host + L"\r\n"
-					L"Connection: Keep-Alive"
-					L"User-Agent: Mozilla/5.0 (Windows NT 10.0; Nagisa/0.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240" L"\r\n"
-					L"Accept:*/*" L"\r\n"
-					L"Accept-Encoding:gzip, deflate" L"\r\n"
-					L"Accept-Language:zh-CN" L"\r\n"
-					L"Range:bytes=0-" L"\r\n"
-					L"\r\n";
-
-				writer->UnicodeEncoding = UnicodeEncoding::Utf8;
-				writer->WriteString(stringSend);
-
-				auto StoreAsyncOperation = writer->StoreAsync();
-				while (StoreAsyncOperation->Status == AsyncStatus::Started)
+				M2AsyncWait(socket->InputStream->ReadAsync(buffer, 4096, InputStreamOptions::Partial));
+	
+				if (GetHeader)
 				{
-					SwitchToThread();
-				}
+					auto buf = ref new Platform::Array<unsigned char>(4096);
 
-				//writer->DetachBuffer();
+					auto reader = DataReader::FromBuffer(buffer);
 
-				auto asyncOperation = this->m_Config->DownloadsFolder->CreateFileAsync(L"1.jpg");
+					reader->ReadBytes(buf);
 
-				
 
-				while (asyncOperation->Status == AsyncStatus::Started)
-				{
-					SwitchToThread();
-				}
+					auto a = ref new String();
 
-				StorageFile^ file = asyncOperation->GetResults();
-				if (file)
-				{
-					DataReader^ reader = ref new DataReader(socket->InputStream);
-
-					reader->InputStreamOptions = InputStreamOptions::Partial;
-
-					
-					
-					reader->LoadAsync(4096)->Completed =
-						ref new AsyncOperationCompletedHandler<unsigned int>(
-							[this, reader, file](IAsyncOperation<unsigned int>^ asyncInfo, AsyncStatus asyncStatus)
+					for (size_t i = 0; i < buf->Length; ++i)
 					{
-						auto y = reader->UnconsumedBufferLength;
-
-						//char x[4096];
-						auto x = ref new Platform::Array<unsigned char>(4096);
-
-						reader->ReadBytes(x);
-
-						IAsyncAction^ asyncAction = FileIO::WriteBytesAsync(file, x);
-						while (asyncAction->Status == AsyncStatus::Started)
+						if (buf[i] == '\r' && buf[i + 1] == '\n' && buf[i + 2] == '\r' && buf[i + 3] == '\n')
 						{
-							SwitchToThread();
+							a += L"\r\n\r\n";
+							break;
 						}
+						else
+						{
+							a += (wchar_t)buf[i];
+						}
+					}
+
+					auto ResponseHeaderLength = a->Length();
+
+					auto newBuf = ArrayReference<unsigned char>(&buf[ResponseHeaderLength], 4096 - ResponseHeaderLength);
+
+					this->Dispatcher->RunAsync(
+						CoreDispatcherPriority::Normal, ref new DispatchedHandler([this, a]()
+					{
+						ConsoleWriteLine(a);
+
+					}));
+
+					DataWriter^ writer = ref new DataWriter(outputstream);
+
+					writer->WriteBytes(newBuf);
+
+					M2AsyncWait(writer->StoreAsync());
+
+					position += 4096 - ResponseHeaderLength;
 
 
-					});
+					GetHeader = false;
 				}
+				else
+				{
+					auto ActualSize = buffer->Length;
+
+					if (ActualSize == 0)
+					{
+						break;
+					}
+
+					outputstream->WriteAsync(buffer);
+
+					position += ActualSize;
+				}
+
+
+				//M2AsyncWait(outputstream->FlushAsync());
 			}
-		});
+
+			//M2AsyncWait(randomstream->FlushAsync());
+
+
+
+		}
 
 	}));
 }

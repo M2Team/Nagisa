@@ -22,16 +22,8 @@ StorageFolder^ NagisaCore::Configuration::GetDownloadsFolder()
 	
 	if (m_FutureAccessList->ContainsItem(L"Nagisa.DownloadsFolder"))
 	{
-		auto asyncOperation = m_FutureAccessList->GetFolderAsync(L"Nagisa.DownloadsFolder");
-		while (asyncOperation->Status == AsyncStatus::Started)
-		{
-			SwitchToThread();
-		}
-
-		if (asyncOperation->Status == AsyncStatus::Completed)
-		{
-			Folder = asyncOperation->GetResults();
-		}
+		Folder = M2AsyncWait(
+			m_FutureAccessList->GetFolderAsync(L"Nagisa.DownloadsFolder"));
 	}
 
 	return Folder;
