@@ -108,7 +108,7 @@ void Nagisa::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 
 void Nagisa::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	ConsoleWriteLine(L"M2-Team Nagisa Version 0.1.8");
+	ConsoleWriteLine(L"M2-Team Nagisa Version 0.1.9");
 	ConsoleWriteLine(L"© M2-Team. All rights reserved.");
 	ConsoleWriteLine(L"");
 
