@@ -108,7 +108,7 @@ void Nagisa::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 
 void Nagisa::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	ConsoleWriteLine(L"M2-Team Nagisa Version 0.1.9");
+	ConsoleWriteLine(L"M2-Team Nagisa Version 0.1.10");
 	ConsoleWriteLine(L"© M2-Team. All rights reserved.");
 	ConsoleWriteLine(L"");
 
@@ -165,7 +165,11 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 		
 		//Uri^ uri = ref new Uri(L"http://avatar.csdn.net/0/0/0/1_hulele2009.jpg");
 
-		Uri^ uri = ref new Uri(L"http://dldir1.qq.com/qqfile/qq/TIM1.1.0/20843/TIM1.1.0.exe");
+		//Uri^ uri = ref new Uri(L"http://dldir1.qq.com/qqfile/qq/TIM1.1.0/20843/TIM1.1.0.exe");
+
+		//Uri^ uri = ref new Uri(L"https://www.baidu.com/search/error.html");
+		Uri^ uri = ref new Uri(L"https://www.bilibili.com/");
+		
 
 		HostName^ hostName = nullptr;
 		try
@@ -184,6 +188,8 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 		M2AsyncWait(socket->ConnectAsync(hostName, uri->Port.ToString()));
 
+		M2AsyncWait(socket->UpgradeToSslAsync(SocketProtectionLevel::SslAllowNullEncryption, hostName));
+
 		DataWriter^ writer = ref new DataWriter(socket->OutputStream);
 
 		String^ stringSend =
@@ -201,9 +207,31 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 		auto ActualSendSize = M2AsyncWait(writer->StoreAsync());
 
+
+
+		using namespace Windows::Security::Cryptography::Certificates;
+		
+
+		auto xxx = socket->Information->ServerCertificate;
+
+
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
 		StorageFile^ file = M2AsyncWait(
 			this->m_Config->DownloadsFolder->CreateFileAsync(
-				L"2.exe",
+				L"3.html",
 				CreationCollisionOption::ReplaceExisting));
 
 		
@@ -227,27 +255,51 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 	
 				if (GetHeader)
 				{
-					auto buf = ref new Platform::Array<unsigned char>(4096);
+					auto buf = ref new Platform::Array<unsigned char>(buffer->Length);
 
 					auto reader = DataReader::FromBuffer(buffer);
 
 					reader->ReadBytes(buf);
 
 
-					auto a = ref new String();
+					string ResponseHeader;
 
 					for (size_t i = 0; i < buf->Length; ++i)
 					{
-						if (buf[i] == '\r' && buf[i + 1] == '\n' && buf[i + 2] == '\r' && buf[i + 3] == '\n')
+						if (memcmp(&buf[i], "\r\n\r\n",4) == 0)
 						{
-							a += L"\r\n\r\n";
+							ResponseHeader += "\r\n\r\n";
 							break;
 						}
 						else
 						{
-							a += (wchar_t)buf[i];
+							ResponseHeader += buf[i];
 						}
 					}
+
+					wstring WideResponseHeader(ResponseHeader.length(), L'\0');
+
+
+					MultiByteToWideChar(
+						CP_UTF8,
+						0,
+						ResponseHeader.c_str(),
+						ResponseHeader.length(),
+						&WideResponseHeader[0],
+						WideResponseHeader.length());
+
+
+					auto a = ref new String(WideResponseHeader.c_str(), WideResponseHeader.length());
+
+
+
+					auto x = wcslen(a->Data());
+
+
+
+
+
+
 
 					auto ResponseHeaderLength = a->Length();
 

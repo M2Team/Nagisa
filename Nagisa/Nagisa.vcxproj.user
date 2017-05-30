@@ -11,4 +11,34 @@
     <BadgeLogoSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</BadgeLogoSource>
     <PackageLogoSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</PackageLogoSource>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+    <DebuggerMachineName>192.168.1.107:4022 (DESKTOP-CHGKDOI)</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <DebuggerMachineName>192.168.1.107:4022 (DESKTOP-CHGKDOI)</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <DebuggerMachineName>192.168.1.107:4022 (DESKTOP-CHGKDOI)</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <DebuggerMachineName>192.168.1.107:4022 (DESKTOP-CHGKDOI)</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerMachineName>192.168.1.107:4022 (DESKTOP-CHGKDOI)</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebuggerMachineName>192.168.1.107:4022 (DESKTOP-CHGKDOI)</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
 </Project>
