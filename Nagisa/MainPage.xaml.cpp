@@ -168,8 +168,8 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 		//Uri^ uri = ref new Uri(L"http://dldir1.qq.com/qqfile/qq/TIM1.1.0/20843/TIM1.1.0.exe");
 
 		//Uri^ uri = ref new Uri(L"https://www.baidu.com/search/error.html");
-		Uri^ uri = ref new Uri(L"https://www.bilibili.com/");
-		
+		//Uri^ uri = ref new Uri(L"https://www.bilibili.com/");
+		Uri^ uri = ref new Uri(L"https://www.m2soft.com/");
 
 		HostName^ hostName = nullptr;
 		try
@@ -189,6 +189,8 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 		M2AsyncWait(socket->ConnectAsync(hostName, uri->Port.ToString()));
 
 		M2AsyncWait(socket->UpgradeToSslAsync(SocketProtectionLevel::SslAllowNullEncryption, hostName));
+
+
 
 		DataWriter^ writer = ref new DataWriter(socket->OutputStream);
 

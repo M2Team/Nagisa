@@ -12,7 +12,7 @@
     <PackageLogoSource>F:\Projects\Nagisa\Nagisa.Icon\Nagisa.png</PackageLogoSource>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+    <DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>
     <DebuggerMachineName>192.168.1.107:4022 (DESKTOP-CHGKDOI)</DebuggerMachineName>
     <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
   </PropertyGroup>

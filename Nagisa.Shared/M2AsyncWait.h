@@ -8,7 +8,7 @@ using namespace Windows::Foundation;
 
 template<typename TResult>
 inline TResult M2AsyncWait(IAsyncOperation<TResult>^ Operation)
-{	
+{
 	TResult value;
 
 	HANDLE hEvent = CreateEventExW(nullptr, nullptr, 0, EVENT_ALL_ACCESS);
@@ -17,6 +17,9 @@ inline TResult M2AsyncWait(IAsyncOperation<TResult>^ Operation)
 		Operation->Completed = ref new AsyncOperationCompletedHandler<TResult>(
 			[hEvent, &value](IAsyncOperation<TResult>^ asyncInfo, AsyncStatus asyncStatus)
 		{
+			if (asyncStatus == AsyncStatus::Error)
+				throw ref new COMException(asyncInfo->ErrorCode.Value);
+			
 			value = asyncInfo->GetResults();
 			SetEvent(hEvent);
 		});
@@ -40,7 +43,10 @@ inline void M2AsyncWait(IAsyncAction^ Action)
 	{
 		Action->Completed = ref new AsyncActionCompletedHandler(
 			[hEvent](IAsyncAction^ asyncInfo, AsyncStatus asyncStatus)
-		{
+		{		
+			if (asyncStatus == AsyncStatus::Error)
+				throw ref new COMException(asyncInfo->ErrorCode.Value);
+			
 			SetEvent(hEvent);
 		});
 
@@ -65,6 +71,9 @@ inline TResult M2AsyncWait(IAsyncOperationWithProgress<TResult, TProgress>^ Oper
 		Operation->Completed = ref new AsyncOperationWithProgressCompletedHandler<TResult, TProgress>(
 			[hEvent, &value](IAsyncOperationWithProgress<TResult, TProgress>^ asyncInfo, AsyncStatus asyncStatus)
 		{
+			if (asyncStatus == AsyncStatus::Error)
+				throw ref new COMException(asyncInfo->ErrorCode.Value);
+			
 			value = asyncInfo->GetResults();
 			SetEvent(hEvent);
 		});
@@ -90,6 +99,9 @@ inline void M2AsyncWait(IAsyncActionWithProgress<TProgress>^ Action)
 		Action->Completed = ref new AsyncActionWithProgressCompletedHandler<TProgress>(
 			[hEvent](IAsyncActionWithProgress<TProgress>^ asyncInfo, AsyncStatus asyncStatus)
 		{
+			if (asyncStatus == AsyncStatus::Error)
+				throw ref new COMException(asyncInfo->ErrorCode.Value);
+			
 			SetEvent(hEvent);
 		});
 
