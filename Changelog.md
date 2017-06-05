@@ -1,5 +1,10 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.11**
+- Add M2-Team Common Library (m2base.h) for charset encoding convertion
+- Add Nagisa.Version.h for synchronizing the version number
+- Set compiler options for all sub-projects: /W4 /WX
+
 **Nagisa 0.1.10**
 - Add support for HTTPS
 - Add get ErrorCode by COMException for await for C++/CX in Nagisa.Shared\M2AsyncWait.h

@@ -15,5 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)M2AsyncWait.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)m2base.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Nagisa.Version.h" />
   </ItemGroup>
 </Project>

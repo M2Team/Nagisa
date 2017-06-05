@@ -35,6 +35,10 @@ using namespace Windows::UI::Core;
 #include <string>
 using namespace std;
 
+#include <m2base.h>
+
+#include <Nagisa.Version.h>
+
 MainPage::MainPage()
 {
 	InitializeComponent();
@@ -86,6 +90,8 @@ void Nagisa::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 		ref new AsyncOperationCompletedHandler<StorageFolder^>(
 			[this](IAsyncOperation<StorageFolder^>^ asyncInfo, AsyncStatus asyncStatus)
 	{
+		UNREFERENCED_PARAMETER(asyncStatus);
+		
 		StorageFolder^ folder = asyncInfo->GetResults();
 
 		this->Dispatcher->RunAsync(
@@ -108,7 +114,7 @@ void Nagisa::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 
 void Nagisa::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	ConsoleWriteLine(L"M2-Team Nagisa Version 0.1.10");
+	ConsoleWriteLine(L"M2-Team Nagisa Version " NAGISA_VERSION_STRING);
 	ConsoleWriteLine(L"© M2-Team. All rights reserved.");
 	ConsoleWriteLine(L"");
 
@@ -125,37 +131,6 @@ void Nagisa::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::
 		}
 	}
 }
-
-/*void WriteLog(
-	_In_z_ _Printf_format_string_ wchar_t const* const _Format,
-	...)
-{
-	if (nullptr != _Format)
-	{
-		va_list _ArgList = nullptr;
-		va_start(_ArgList, _Format);
-
-		// 获取格式化字符串长度
-		size_t nLength = _vscwprintf(_Format, _ArgList) + 1;
-
-		// 创建用于存储格式化字符串的内存空间
-		std::vector<wchar_t> Buffer(nLength, L'\0');
-
-		// 按格式输出字符串
-		int nWritten = _vsnwprintf_s(
-			&Buffer[0],
-			Buffer.size(),
-			nLength,
-			_Format,
-			_ArgList);
-		if (nWritten > 0)
-		{
-			WriteLogRaw(&Buffer[0]);
-		}
-
-		va_end(_ArgList);
-	}
-}*/
 
 void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
@@ -207,28 +182,11 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 		writer->UnicodeEncoding = UnicodeEncoding::Utf8;
 		writer->WriteString(stringSend);
 
-		auto ActualSendSize = M2AsyncWait(writer->StoreAsync());
+		M2AsyncWait(writer->StoreAsync());
 
 
-
-		using namespace Windows::Security::Cryptography::Certificates;
-		
-
-		auto xxx = socket->Information->ServerCertificate;
-
-
-
-			
-
-
-
-
-
-
-
-
-
-
+		//using namespace Windows::Security::Cryptography::Certificates;
+		//auto xxx = socket->Information->ServerCertificate;
 
 
 		StorageFile^ file = M2AsyncWait(
@@ -279,29 +237,9 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 						}
 					}
 
-					wstring WideResponseHeader(ResponseHeader.length(), L'\0');
-
-
-					MultiByteToWideChar(
-						CP_UTF8,
-						0,
-						ResponseHeader.c_str(),
-						ResponseHeader.length(),
-						&WideResponseHeader[0],
-						WideResponseHeader.length());
-
-
+					wstring WideResponseHeader = m2_base_utf8_to_utf16(ResponseHeader);
+					
 					auto a = ref new String(WideResponseHeader.c_str(), WideResponseHeader.length());
-
-
-
-					auto x = wcslen(a->Data());
-
-
-
-
-
-
 
 					auto ResponseHeaderLength = a->Length();
 
@@ -314,11 +252,11 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 					}));
 
-					DataWriter^ writer = ref new DataWriter(outputstream);
+					DataWriter^ writer2 = ref new DataWriter(outputstream);
 
-					writer->WriteBytes(newBuf);
+					writer2->WriteBytes(newBuf);
 
-					M2AsyncWait(writer->StoreAsync());
+					M2AsyncWait(writer2->StoreAsync());
 
 					position += 4096 - ResponseHeaderLength;
 
