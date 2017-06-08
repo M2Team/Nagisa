@@ -4,6 +4,7 @@
 - Add M2-Team Common Library (m2base.h) for charset encoding convertion
 - Add Nagisa.Version.h for synchronizing the version number
 - Set compiler options for all sub-projects: /W4 /WX
+- Ignore *.user
 
 **Nagisa 0.1.10**
 - Add support for HTTPS
