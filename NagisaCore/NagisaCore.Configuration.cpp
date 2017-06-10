@@ -11,7 +11,7 @@ using namespace Windows::Storage::AccessCache;
 NagisaCore::Configuration::Configuration()
 {
 	m_FutureAccessList = StorageApplicationPermissions::FutureAccessList;
-	m_LocalSettings = ApplicationData::Current->LocalSettings;
+	//m_LocalSettings = ApplicationData::Current->LocalSettings;
 
 	m_DownloadsFolder = GetDownloadsFolder();
 }
@@ -29,9 +29,13 @@ StorageFolder^ NagisaCore::Configuration::GetDownloadsFolder()
 	return Folder;
 }
 
-void NagisaCore::Configuration::SetDownloadsFolder(StorageFolder ^ Folder)
+StorageFolder^ NagisaCore::Configuration::DownloadsFolder::get()
 {
-	m_FutureAccessList->AddOrReplace(L"Nagisa.DownloadsFolder", Folder);
-	
-	m_DownloadsFolder = Folder;
+	return m_DownloadsFolder;
+}
+
+void NagisaCore::Configuration::DownloadsFolder::set(StorageFolder^ value)
+{
+	m_FutureAccessList->AddOrReplace(L"Nagisa.DownloadsFolder", value);
+	m_DownloadsFolder = value;
 }

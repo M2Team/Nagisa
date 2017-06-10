@@ -1,10 +1,14 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.12**
+- Modify the implementation of NagisaCore.Configuration Class
+- Ignore *.user for privacy
+
 **Nagisa 0.1.11**
 - Add M2-Team Common Library (m2base.h) for charset encoding convertion
 - Add Nagisa.Version.h for synchronizing the version number
 - Set compiler options for all sub-projects: /W4 /WX
-- Ignore *.user
+- Remove *.user for privacy
 
 **Nagisa 0.1.10**
 - Add support for HTTPS
