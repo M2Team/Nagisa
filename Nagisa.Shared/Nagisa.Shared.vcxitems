@@ -14,7 +14,7 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)M2AsyncWait.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)m2async.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)m2base.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Nagisa.Version.h" />
   </ItemGroup>

@@ -3,4 +3,4 @@
 #include <collection.h>
 #include <ppltasks.h>
 
-#include <M2AsyncWait.h>
+#include <m2async.h>

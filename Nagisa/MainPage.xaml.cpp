@@ -19,8 +19,12 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
+//#include <wrl.h>  
+#include <robuffer.h>  
+
 using namespace NagisaCore;
 using namespace concurrency;
+using namespace Microsoft::WRL;
 using namespace Platform::Collections;
 using namespace Windows::ApplicationModel::Core;
 using namespace Windows::Networking;
@@ -31,6 +35,8 @@ using namespace Windows::Storage::Pickers;
 using namespace Windows::Storage::Streams;
 using namespace Windows::System::Threading;
 using namespace Windows::UI::Core;
+
+
 
 #include <string>
 using namespace std;
@@ -63,12 +69,12 @@ void Nagisa::MainPage::Nagisa_Test_SaveAsButton_Click(Platform::Object^ sender, 
 		{	
 			ThreadPool::RunAsync(ref new WorkItemHandler([this, FileName](IAsyncAction^ workItem)
 			{	
-				StorageFile^ file = M2AsyncWait(
+				StorageFile^ file = m2_await(
 					this->m_Config->DownloadsFolder->CreateFileAsync(FileName));
 				
 				if (file)
 				{
-					M2AsyncWait(FileIO::WriteTextAsync(file, L"Nagisa Test"));
+					m2_await(FileIO::WriteTextAsync(file, L"Nagisa Test"));
 				}
 			}));
 		}
@@ -143,8 +149,8 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 		//Uri^ uri = ref new Uri(L"http://dldir1.qq.com/qqfile/qq/TIM1.1.0/20843/TIM1.1.0.exe");
 
 		//Uri^ uri = ref new Uri(L"https://www.baidu.com/search/error.html");
-		//Uri^ uri = ref new Uri(L"https://www.bilibili.com/");
-		Uri^ uri = ref new Uri(L"https://www.m2soft.com/");
+		Uri^ uri = ref new Uri(L"https://www.bilibili.com/");
+		//Uri^ uri = ref new Uri(L"https://www.m2soft.com/");
 
 		HostName^ hostName = nullptr;
 		try
@@ -161,9 +167,9 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 		socket->Control->KeepAlive = true;
 
-		M2AsyncWait(socket->ConnectAsync(hostName, uri->Port.ToString()));
+		m2_await(socket->ConnectAsync(hostName, uri->Port.ToString()));
 
-		M2AsyncWait(socket->UpgradeToSslAsync(SocketProtectionLevel::SslAllowNullEncryption, hostName));
+		m2_await(socket->UpgradeToSslAsync(SocketProtectionLevel::SslAllowNullEncryption, hostName));
 
 
 
@@ -182,14 +188,14 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 		writer->UnicodeEncoding = UnicodeEncoding::Utf8;
 		writer->WriteString(stringSend);
 
-		M2AsyncWait(writer->StoreAsync());
+		m2_await(writer->StoreAsync());
 
 
 		//using namespace Windows::Security::Cryptography::Certificates;
 		//auto xxx = socket->Information->ServerCertificate;
 
 
-		StorageFile^ file = M2AsyncWait(
+		StorageFile^ file = m2_await(
 			this->m_Config->DownloadsFolder->CreateFileAsync(
 				L"3.html",
 				CreationCollisionOption::ReplaceExisting));
@@ -201,7 +207,7 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 			
 			unsigned long long position = 0;
 			
-			auto randomstream = M2AsyncWait(file->OpenAsync(FileAccessMode::ReadWrite));
+			auto randomstream = m2_await(file->OpenAsync(FileAccessMode::ReadWrite));
 			
 			bool GetHeader = true;
 
@@ -211,11 +217,19 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 				
 				Buffer^ buffer = ref new Buffer(4096);
 
-				M2AsyncWait(socket->InputStream->ReadAsync(buffer, 4096, InputStreamOptions::Partial));
+				m2_await(socket->InputStream->ReadAsync(buffer, 4096, InputStreamOptions::Partial));
 	
 				if (GetHeader)
-				{
-					auto buf = ref new Platform::Array<unsigned char>(buffer->Length);
+				{			
+					// Query the IBufferByteAccess interface.  
+					ComPtr<IBufferByteAccess> bufferByteAccess;
+					reinterpret_cast<IInspectable*>(buffer)->QueryInterface(IID_PPV_ARGS(&bufferByteAccess));
+
+					// Retrieve the buffer data.  
+					byte* bufarray = nullptr;
+					bufferByteAccess->Buffer(&bufarray);
+					
+					/*auto buf = ref new Platform::Array<unsigned char>(buffer->Length);
 
 					auto reader = DataReader::FromBuffer(buffer);
 
@@ -235,6 +249,21 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 						{
 							ResponseHeader += buf[i];
 						}
+					}*/
+
+					string ResponseHeader;
+
+					for (size_t i = 0; i < buffer->Length; ++i)
+					{
+						if (memcmp(&bufarray[i], "\r\n\r\n", 4) == 0)
+						{
+							ResponseHeader += "\r\n\r\n";
+							break;
+						}
+						else
+						{
+							ResponseHeader += bufarray[i];
+						}
 					}
 
 					wstring WideResponseHeader = m2_base_utf8_to_utf16(ResponseHeader);
@@ -243,7 +272,7 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 					auto ResponseHeaderLength = a->Length();
 
-					auto newBuf = ArrayReference<unsigned char>(&buf[ResponseHeaderLength], 4096 - ResponseHeaderLength);
+					auto newBuf = ArrayReference<unsigned char>(&bufarray[ResponseHeaderLength], 4096 - ResponseHeaderLength);
 
 					this->Dispatcher->RunAsync(
 						CoreDispatcherPriority::Normal, ref new DispatchedHandler([this, a]()
@@ -256,7 +285,7 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 					writer2->WriteBytes(newBuf);
 
-					M2AsyncWait(writer2->StoreAsync());
+					m2_await(writer2->StoreAsync());
 
 					position += 4096 - ResponseHeaderLength;
 
@@ -272,7 +301,7 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 						break;
 					}
 
-					outputstream->WriteAsync(buffer);
+					m2_await(outputstream->WriteAsync(buffer));
 
 					position += ActualSize;
 				}

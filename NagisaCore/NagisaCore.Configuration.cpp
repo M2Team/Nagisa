@@ -16,13 +16,15 @@ NagisaCore::Configuration::Configuration()
 	m_DownloadsFolder = GetDownloadsFolder();
 }
 
+
+
 StorageFolder^ NagisaCore::Configuration::GetDownloadsFolder()
 {
 	StorageFolder^ Folder = nullptr;
 	
 	if (m_FutureAccessList->ContainsItem(L"Nagisa.DownloadsFolder"))
 	{
-		Folder = M2AsyncWait(
+		Folder = m2_await(
 			m_FutureAccessList->GetFolderAsync(L"Nagisa.DownloadsFolder"));
 	}
 

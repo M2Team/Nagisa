@@ -1,5 +1,12 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.13**
+- Add m2_await function for waiting asynchronous call in m2async.h
+- Remove M2AsyncWait.h because M2AsyncWait function is replaced by m2_await;
+- Fix a bug from SocketDemo
+- Using IBufferByteAccess to read IBuffer instead of DataReader::FromBuffer
+- Add comment in m2base.h
+
 **Nagisa 0.1.12**
 - Modify the implementation of NagisaCore.Configuration Class
 - Ignore *.user for privacy
