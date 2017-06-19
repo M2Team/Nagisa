@@ -270,8 +270,8 @@
     <ResourceCompile Include="Nagisa.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NagisaCore\NagisaCore.vcxproj">
-      <Project>{695a01d7-4a41-4ff4-ae9c-e781e31c9eb7}</Project>
+    <ProjectReference Include="..\Assassin\Assassin.vcxproj">
+      <Project>{abe71eb7-2cb8-44ca-997f-98a0c0a66113}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

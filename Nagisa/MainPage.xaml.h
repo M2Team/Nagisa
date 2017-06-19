@@ -19,7 +19,7 @@ namespace Nagisa
 		MainPage();
 
 	private:
-		NagisaCore::Configuration^ m_Config = nullptr;
+		Assassin::Configurations^ m_Config = nullptr;
 
 		void ConsoleWriteLine(Platform::String^ String);
 

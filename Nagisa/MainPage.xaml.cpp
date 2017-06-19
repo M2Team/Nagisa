@@ -22,7 +22,7 @@ using namespace Windows::UI::Xaml::Navigation;
 //#include <wrl.h>  
 #include <robuffer.h>  
 
-using namespace NagisaCore;
+using namespace Assassin;
 using namespace concurrency;
 using namespace Microsoft::WRL;
 using namespace Platform::Collections;
@@ -42,8 +42,6 @@ using namespace Windows::UI::Core;
 using namespace std;
 
 #include <m2base.h>
-
-#include <Nagisa.Version.h>
 
 MainPage::MainPage()
 {
@@ -120,13 +118,13 @@ void Nagisa::MainPage::Button_Click(Platform::Object^ sender, Windows::UI::Xaml:
 
 void Nagisa::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	ConsoleWriteLine(L"M2-Team Nagisa Version " NAGISA_VERSION_STRING);
-	ConsoleWriteLine(L"© M2-Team. All rights reserved.");
-	ConsoleWriteLine(L"");
-
-	this->m_Config = ref new Configuration();
+	this->m_Config = ref new Configurations();
 	if (this->m_Config)
 	{
+		ConsoleWriteLine(L"M2-Team Nagisa Version " + this->m_Config->Version);
+		ConsoleWriteLine(L"© M2-Team. All rights reserved.");
+		ConsoleWriteLine(L"");
+		
 		if (this->m_Config->DownloadsFolder)
 		{
 			ConsoleWriteLine(L"Current: " + this->m_Config->DownloadsFolder->Path);
@@ -148,8 +146,8 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 		//Uri^ uri = ref new Uri(L"http://dldir1.qq.com/qqfile/qq/TIM1.1.0/20843/TIM1.1.0.exe");
 
-		//Uri^ uri = ref new Uri(L"https://www.baidu.com/search/error.html");
-		Uri^ uri = ref new Uri(L"https://www.bilibili.com/");
+		Uri^ uri = ref new Uri(L"https://www.baidu.com/search/error.html");
+		//Uri^ uri = ref new Uri(L"https://www.bilibili.com/");
 		//Uri^ uri = ref new Uri(L"https://www.m2soft.com/");
 
 		HostName^ hostName = nullptr;
@@ -167,10 +165,28 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 
 		socket->Control->KeepAlive = true;
 
-		m2_await(socket->ConnectAsync(hostName, uri->Port.ToString()));
+		
 
-		m2_await(socket->UpgradeToSslAsync(SocketProtectionLevel::SslAllowNullEncryption, hostName));
+		try
+		{
+			m2_await(socket->ConnectAsync(hostName, uri->Port.ToString(), SocketProtectionLevel::Tls12));
+		}
+		catch (COMException^ e)
+		{
+			try
+			{
+				m2_await(socket->ConnectAsync(hostName, uri->Port.ToString(), SocketProtectionLevel::SslAllowNullEncryption));
+			}
+			catch (COMException^ e)
+			{
+				auto a = SocketError::GetStatus(e->HResult);
 
+				a = a;
+			}
+		}
+
+
+		
 
 
 		DataWriter^ writer = ref new DataWriter(socket->OutputStream);
@@ -180,7 +196,7 @@ void Nagisa::MainPage::Button_Click_1(Platform::Object^ sender, Windows::UI::Xam
 			L"GET " + uri->Path + " HTTP/1.1" L"\r\n"
 			L"Host: " + uri->Host + L"\r\n"
 			L"Connection: Keep-Alive"
-			L"User-Agent: Mozilla/5.0 (Windows NT 10.0; Nagisa/0.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240" L"\r\n"
+			L"User-Agent: " + this->m_Config->UserAgent + L"\r\n"
 			L"Accept:*/*" L"\r\n"
 			L"Range:bytes=0-" L"\r\n"
 			L"\r\n";

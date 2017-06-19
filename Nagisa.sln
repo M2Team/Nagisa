@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa", "Nagisa\Nagisa.vcxproj", "{8B490B07-60CB-45A0-91F8-8605ABA29C83}"
 EndProject
@@ -18,14 +18,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nagisa.Root", "Nagisa.Root"
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NagisaCore", "NagisaCore\NagisaCore.vcxproj", "{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa.Shared", "Nagisa.Shared\Nagisa.Shared.vcxitems", "{CA66B9BD-454C-4F8B-9CDB-0AC8C2FE2C14}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assassin", "Assassin\Assassin.vcxproj", "{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Nagisa.Shared\Nagisa.Shared.vcxitems*{695a01d7-4a41-4ff4-ae9c-e781e31c9eb7}*SharedItemsImports = 4
 		Nagisa.Shared\Nagisa.Shared.vcxitems*{8b490b07-60cb-45a0-91f8-8605aba29c83}*SharedItemsImports = 4
+		Nagisa.Shared\Nagisa.Shared.vcxitems*{abe71eb7-2cb8-44ca-997f-98a0c0a66113}*SharedItemsImports = 4
 		Nagisa.Shared\Nagisa.Shared.vcxitems*{ca66b9bd-454c-4f8b-9cdb-0ac8c2fe2c14}*SharedItemsImports = 9
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,18 +55,18 @@ Global
 		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|x86.ActiveCfg = Release|Win32
 		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|x86.Build.0 = Release|Win32
 		{8B490B07-60CB-45A0-91F8-8605ABA29C83}.Release|x86.Deploy.0 = Release|Win32
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Debug|ARM.ActiveCfg = Debug|ARM
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Debug|ARM.Build.0 = Debug|ARM
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Debug|x64.ActiveCfg = Debug|x64
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Debug|x64.Build.0 = Debug|x64
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Debug|x86.ActiveCfg = Debug|Win32
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Debug|x86.Build.0 = Debug|Win32
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Release|ARM.ActiveCfg = Release|ARM
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Release|ARM.Build.0 = Release|ARM
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Release|x64.ActiveCfg = Release|x64
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Release|x64.Build.0 = Release|x64
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Release|x86.ActiveCfg = Release|Win32
-		{695A01D7-4A41-4FF4-AE9C-E781E31C9EB7}.Release|x86.Build.0 = Release|Win32
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Debug|ARM.ActiveCfg = Debug|ARM
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Debug|ARM.Build.0 = Debug|ARM
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Debug|x64.ActiveCfg = Debug|x64
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Debug|x64.Build.0 = Debug|x64
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Debug|x86.ActiveCfg = Debug|Win32
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Debug|x86.Build.0 = Debug|Win32
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Release|ARM.ActiveCfg = Release|ARM
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Release|ARM.Build.0 = Release|ARM
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Release|x64.ActiveCfg = Release|x64
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Release|x64.Build.0 = Release|x64
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Release|x86.ActiveCfg = Release|Win32
+		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

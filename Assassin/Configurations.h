@@ -1,11 +1,12 @@
-#pragma once
+﻿#pragma once
 
-using namespace Windows::Storage;
-using namespace Windows::Storage::AccessCache;
-
-namespace NagisaCore
+namespace Assassin
 {
-	public ref class Configuration sealed
+	using namespace Platform;
+	using namespace Windows::Storage;
+	using namespace Windows::Storage::AccessCache;
+	
+	public ref class Configurations sealed
 	{
 	private:
 		StorageItemAccessList^ m_FutureAccessList = nullptr;
@@ -16,12 +17,22 @@ namespace NagisaCore
 		StorageFolder^ GetDownloadsFolder();
 
 	public:
-		Configuration();
+		Configurations();
 
 		property StorageFolder^ DownloadsFolder
 		{
 			StorageFolder^ get();
 			void set(StorageFolder^ value);
+		}
+
+		property String^ Version
+		{
+			String^ get();
+		}
+
+		property String^ UserAgent
+		{
+			String^ get();
 		}
 	};
 }

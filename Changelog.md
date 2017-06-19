@@ -1,8 +1,15 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.14**
+- Add Assassin project for replacing NagisaCore project
+- Move NagisaCore.Configuration class to Assassin.Configurations class
+- Add Version property in Assassin.Configurations class
+- Add UserAgent property in Assassin.Configurations class
+- Remove NagisaCore project
+
 **Nagisa 0.1.13**
 - Add m2_await function for waiting asynchronous call in m2async.h
-- Remove M2AsyncWait.h because M2AsyncWait function is replaced by m2_await;
+- Remove M2AsyncWait.h because M2AsyncWait function is replaced by m2_await
 - Fix a bug from SocketDemo
 - Using IBufferByteAccess to read IBuffer instead of DataReader::FromBuffer
 - Add comment in m2base.h
