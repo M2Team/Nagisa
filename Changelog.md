@@ -4,12 +4,16 @@
 - Improve the implemention of m2_async function
   - Add m2_remove_cx_ref for get asynchronous completed hander type 
     - Thanks to Pointer@[Vczh]GacUI讨论群
-	- Thanks to vczh.Iskandar@[Vczh]GacUI讨论群 (https://github.com/vczh)
+	- Thanks to Zihan Chen (https://github.com/vczh)
   - Add m2_await_internal for streamlining the code
 - Using "using namespace Assassin;" in Assassin project for streamlining the code
 - Add Assassin.BackgroundWorker class for implementing the background task
 - Change the previous description of Changelog.md
-- Change the license
+- Change the license to Simplified Free Software Reciprocal License 1.0 or later.
+  - Thanks to bianyifan (https://github.com/bianyifan) for license text advice
+  - Thanks to Eugene Wang Jiun-yau (https://github.com/ewjy) for modify the license text
+  - Thanks to Force.Charlie-I (https://github.com/fcharlie) for license text advice
+  - Thanks to Zihan Chen (https://github.com/vczh) for license text advice
 
 **Nagisa 0.1.14**
 - Add Assassin project for replacing NagisaCore project
@@ -31,7 +35,7 @@
 
 **Nagisa 0.1.11**
 - Add M2-Team Common Library (m2base.h) for charset encoding convertion
-  - Thanks to fcharlie (https://github.com/fcharlie)
+  - Thanks to Force.Charlie-I (https://github.com/fcharlie)
 - Add Nagisa.Version.h for synchronizing the version number
 - Set compiler options for all sub-projects: /W4 /WX
 - Remove *.user for privacy
