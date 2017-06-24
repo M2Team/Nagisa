@@ -9,6 +9,7 @@
 - Using "using namespace Assassin;" in Assassin project for streamlining the code
 - Add Assassin.BackgroundWorker class for implementing the background task
 - Change the previous description of Changelog.md
+- Change the license
 
 **Nagisa 0.1.14**
 - Add Assassin project for replacing NagisaCore project
