@@ -12,14 +12,15 @@ Major Description of this license:
 
 The reason why I use this license:
 - I hope the Nagisa project can help you when you develop an app for the Windows Universal Platform with C++.
-- I want to use the source code of all free software product derived from the Nagisa project.
+- I want to obtain the right of using the source code of all free software products derived from the Nagisa project.
 
 # System Requirement
 OS Version: Windows 10 Build 10240 or later
 
 # Unfininshed Features
-- HTTP Support
-- FTP Support
+- HTTP/HTTPS Support
+- FTP/FTPS/SFTP Support
+- WebSocket Support
 - BitTorrent Support
 - ED2K Support
 - Cortana Integration
