@@ -1,13 +1,15 @@
 ﻿#include "pch.h"
 #include "Configurations.h"
 
+using namespace Assassin;
+
 using namespace concurrency;
 using namespace Platform;
 using namespace Windows::Foundation;
 using namespace Windows::Storage;
 using namespace Windows::Storage::AccessCache;
 
-Assassin::Configurations::Configurations()
+Configurations::Configurations()
 {
 	m_FutureAccessList = StorageApplicationPermissions::FutureAccessList;
 	//m_LocalSettings = ApplicationData::Current->LocalSettings;
@@ -15,7 +17,7 @@ Assassin::Configurations::Configurations()
 	m_DownloadsFolder = GetDownloadsFolder();
 }
 
-StorageFolder^ Assassin::Configurations::GetDownloadsFolder()
+StorageFolder^ Configurations::GetDownloadsFolder()
 {
 	StorageFolder^ Folder = nullptr;
 
@@ -28,23 +30,23 @@ StorageFolder^ Assassin::Configurations::GetDownloadsFolder()
 	return Folder;
 }
 
-StorageFolder^ Assassin::Configurations::DownloadsFolder::get()
+StorageFolder^ Configurations::DownloadsFolder::get()
 {
 	return m_DownloadsFolder;
 }
 
-void Assassin::Configurations::DownloadsFolder::set(StorageFolder^ value)
+void Configurations::DownloadsFolder::set(StorageFolder^ value)
 {
 	m_FutureAccessList->AddOrReplace(L"Nagisa.DownloadsFolder", value);
 	m_DownloadsFolder = value;
 }
 
-String^ Assassin::Configurations::Version::get()
+String^ Configurations::Version::get()
 {
 	return NAGISA_VERSION_STRING;
 }
 
-String^ Assassin::Configurations::UserAgent::get()
+String^ Configurations::UserAgent::get()
 {
 	return 
 		L"Mozilla/5.0 "

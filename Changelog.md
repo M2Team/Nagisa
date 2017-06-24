@@ -1,10 +1,20 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.15**
+- Improve the implemention of m2_async function
+  - Add m2_remove_cx_ref for get asynchronous completed hander type 
+    - Thanks to Pointer@[Vczh]GacUI讨论群
+	- Thanks to vczh.Iskandar@[Vczh]GacUI讨论群 (https://github.com/vczh)
+  - Add m2_await_internal for streamlining the code
+- Using "using namespace Assassin;" in Assassin project for streamlining the code
+- Add Assassin.BackgroundWorker class for implementing the background task
+- Change the previous description of Changelog.md
+
 **Nagisa 0.1.14**
 - Add Assassin project for replacing NagisaCore project
-- Move NagisaCore.Configuration class to Assassin.Configurations class
-- Add Version property in Assassin.Configurations class
-- Add UserAgent property in Assassin.Configurations class
+  - Move NagisaCore.Configuration class to Assassin.Configurations class
+  - Add Version property in Assassin.Configurations class
+  - Add UserAgent property in Assassin.Configurations class
 - Remove NagisaCore project
 
 **Nagisa 0.1.13**
@@ -20,6 +30,7 @@
 
 **Nagisa 0.1.11**
 - Add M2-Team Common Library (m2base.h) for charset encoding convertion
+  - Thanks to fcharlie (https://github.com/fcharlie)
 - Add Nagisa.Version.h for synchronizing the version number
 - Set compiler options for all sub-projects: /W4 /WX
 - Remove *.user for privacy

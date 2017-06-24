@@ -9,11 +9,13 @@
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Configurations.cpp" />
+    <ClCompile Include="BackgroundWorker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Configurations.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="BackgroundWorker.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Assassin.rc">
