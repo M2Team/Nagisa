@@ -12,7 +12,7 @@ Major Description of this license:
 
 The reason why I use this license:
 - I hope the Nagisa project can help you when you develop an app for the Windows Universal Platform with C++.
-- I want to use the source code of a free software product under a copyleft license derived from the Nagisa project.
+- I want to use the source code of all free software product derived from the Nagisa project.
 
 # System Requirement
 OS Version: Windows 10 Build 10240 or later
