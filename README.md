@@ -2,7 +2,7 @@
 
 # License
 
-Nagisa is distributed under Nagisa Project License. For more information, please read LICENSE file.
+Nagisa is distributed under Nagisa Project Open Source License. For more information, please read LICENSE file.
 
 # System Requirement
 OS Version: Windows 10 Build 10240 or later
