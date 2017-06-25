@@ -2,8 +2,9 @@
 
 # License
 
-Nagisa is distributed under the MIT license. For more information, please read LICENSE file.
-P.S. I am advocating that more and more people distribute their software under the MIT license because that can help more and more people including yourself.
+- Nagisa is distributed under the MIT license.
+- For more information, please read LICENSE file.
+- P.S. I am advocating that more and more people distribute their software under the MIT license because that can help more and more people including yourself.
 
 # System Requirement
 OS Version: Windows 10 Build 10240 or later
