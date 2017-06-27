@@ -9,11 +9,6 @@
 - Using "using namespace Assassin;" in Assassin project for streamlining the code
 - Add Assassin.BackgroundWorker class for implementing the background task
 - Change the previous description of Changelog.md
-- Change the license to Simplified Free Software Reciprocal License 1.0 or later.
-  - Thanks to bianyifan (https://github.com/bianyifan) for license text advice
-  - Thanks to Eugene Wang Jiun-yau (https://github.com/ewjy) for modify the license text
-  - Thanks to Force.Charlie-I (https://github.com/fcharlie) for license text advice
-  - Thanks to Zihan Chen (https://github.com/vczh) for license text advice
 
 **Nagisa 0.1.14**
 - Add Assassin project for replacing NagisaCore project
