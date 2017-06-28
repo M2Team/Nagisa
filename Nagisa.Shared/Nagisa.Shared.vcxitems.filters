@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)m2async.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)m2base.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Nagisa.Version.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ThirdParty\sqlite3\sqlite3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{d382fa05-3fdd-471f-baa5-d866b8e27e96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\sqlite3">
+      <UniqueIdentifier>{becbc960-f89a-4924-b72a-51ab8d7f95fc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

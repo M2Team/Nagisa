@@ -253,6 +253,11 @@
   <ItemGroup>
     <ResourceCompile Include="Assassin.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThirdParty\sqlite3\sqlite3.vcxproj">
+      <Project>{4d9e86b3-9b5e-422f-9887-8eeed026380f}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

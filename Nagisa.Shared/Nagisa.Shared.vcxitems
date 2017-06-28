@@ -17,5 +17,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)m2async.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)m2base.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Nagisa.Version.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ThirdParty\sqlite3\sqlite3.h" />
   </ItemGroup>
 </Project>

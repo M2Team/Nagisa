@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa", "Nagisa\Nagisa.vcxproj", "{8B490B07-60CB-45A0-91F8-8605ABA29C83}"
 EndProject
@@ -21,6 +21,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa.Shared", "Nagisa.Shared\Nagisa.Shared.vcxitems", "{CA66B9BD-454C-4F8B-9CDB-0AC8C2FE2C14}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Assassin", "Assassin\Assassin.vcxproj", "{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{71B1DE39-96FD-4945-84D3-33C2EEC68979}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite3", "ThirdParty\sqlite3\sqlite3.vcxproj", "{4D9E86B3-9B5E-422F-9887-8EEED026380F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -67,8 +71,23 @@ Global
 		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Release|x64.Build.0 = Release|x64
 		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Release|x86.ActiveCfg = Release|Win32
 		{ABE71EB7-2CB8-44CA-997F-98A0C0A66113}.Release|x86.Build.0 = Release|Win32
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Debug|ARM.Build.0 = Debug|ARM
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Debug|x64.ActiveCfg = Debug|x64
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Debug|x64.Build.0 = Debug|x64
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Debug|x86.ActiveCfg = Debug|Win32
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Debug|x86.Build.0 = Debug|Win32
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Release|ARM.ActiveCfg = Release|ARM
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Release|ARM.Build.0 = Release|ARM
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Release|x64.ActiveCfg = Release|x64
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Release|x64.Build.0 = Release|x64
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Release|x86.ActiveCfg = Release|Win32
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D9E86B3-9B5E-422F-9887-8EEED026380F} = {71B1DE39-96FD-4945-84D3-33C2EEC68979}
 	EndGlobalSection
 EndGlobal

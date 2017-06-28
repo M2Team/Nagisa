@@ -1,5 +1,8 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.16**
+- Add sqlite3 library for saving configurations
+
 **Nagisa 0.1.15**
 - Improve the implemention of m2_async function
   - Add m2_remove_cx_ref for get asynchronous completed hander type 

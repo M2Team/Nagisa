@@ -11,6 +11,9 @@ using namespace Windows::Storage::AccessCache;
 
 Configurations::Configurations()
 {
+	//sqlite3* db;
+	//sqlite3_open("dd", &db);
+	
 	m_FutureAccessList = StorageApplicationPermissions::FutureAccessList;
 	//m_LocalSettings = ApplicationData::Current->LocalSettings;
 
