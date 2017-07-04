@@ -73,3 +73,8 @@ void BackgroundWorker::Run(IBackgroundTaskInstance ^ taskInstance)
 	
 	throw ref new NotImplementedException();
 }
+
+/*
+Assassin.BackgroundWorker
+Assassin.TransferManager
+*/

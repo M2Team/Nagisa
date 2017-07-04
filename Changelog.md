@@ -1,5 +1,11 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.17**
+- Update the license's copyright
+- Add Assassin.TransferManager class for controlling the background task
+- Add support for multi languages (Now support Simplified Chinese and English)
+- Replace MainPage.xaml to blank page for adding new UI
+
 **Nagisa 0.1.16**
 - Add sqlite3 library for saving configurations
 

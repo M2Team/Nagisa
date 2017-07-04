@@ -1,6 +1,6 @@
 ﻿//
 // MainPage.xaml.h
-// MainPage 类的声明。
+// MainPage 类的声明
 //
 
 #pragma once
@@ -12,20 +12,10 @@ namespace Nagisa
 	/// <summary>
 	/// 可用于自身或导航至 Frame 内部的空白页。
 	/// </summary>
-	
+	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class MainPage sealed
 	{
 	public:
 		MainPage();
-
-	private:
-		Assassin::Configurations^ m_Config = nullptr;
-
-		void ConsoleWriteLine(Platform::String^ String);
-
-		void Nagisa_Test_SaveAsButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		void Button_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		void Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		void Button_Click_1(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

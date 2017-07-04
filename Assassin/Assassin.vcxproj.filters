@@ -5,17 +5,49 @@
       <UniqueIdentifier>c12eec55-bdf5-4546-a152-2396a7a1cde1</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="BackgroundWorker">
+      <UniqueIdentifier>{fb26f6ee-0848-4c19-9cab-2056ede6fef8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransferManager">
+      <UniqueIdentifier>{66ee4ec7-2409-4657-9045-4e4692a089ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pch">
+      <UniqueIdentifier>{0e3a0dd8-fe97-483e-b8ef-f01f92c26f9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configurations">
+      <UniqueIdentifier>{1f0edcd0-45dd-43f8-a7f5-2c1394bac96b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Configurations.cpp" />
-    <ClCompile Include="BackgroundWorker.cpp" />
+    <ClCompile Include="BackgroundWorker.cpp">
+      <Filter>BackgroundWorker</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferManager.cpp">
+      <Filter>TransferManager</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="Configurations.cpp">
+      <Filter>Configurations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="Configurations.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="BackgroundWorker.h" />
+    <ClInclude Include="BackgroundWorker.h">
+      <Filter>BackgroundWorker</Filter>
+    </ClInclude>
+    <ClInclude Include="TransferManager.h">
+      <Filter>TransferManager</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="Configurations.h">
+      <Filter>Configurations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Assassin.rc">
