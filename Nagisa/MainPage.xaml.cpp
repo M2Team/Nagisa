@@ -19,9 +19,27 @@ using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
+using namespace Platform::Collections;
+
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 MainPage::MainPage()
 {
 	InitializeComponent();
+}
+
+
+void Nagisa::MainPage::ListView_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	using namespace Assassin;
+	
+	Vector<TransferTask^>^ Tasks = ref new Vector<TransferTask^>();
+
+	Tasks->Append(ref new TransferTask());
+
+	TaskList->ItemsSource = Tasks;
+
+	
+
+
 }

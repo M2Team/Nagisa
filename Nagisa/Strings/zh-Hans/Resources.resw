@@ -117,7 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Test.Text" xml:space="preserve">
-    <value>你好 世界</value>
+  <data name="CancelAppBarButton.Label" xml:space="preserve">
+    <value>取消</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="NewTaskAppBarButton.Label" xml:space="preserve">
+    <value>新建任务</value>
+    <comment>New Task</comment>
+  </data>
+  <data name="NewTaskAppBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>新建任务</value>
+    <comment>New Task</comment>
+  </data>
+  <data name="OpenDownloadsFolderAppBarButton.Label" xml:space="preserve">
+    <value>打开下载文件夹</value>
+    <comment>Open Downloads Folder</comment>
+  </data>
+  <data name="PauseAllAppBarButton.Label" xml:space="preserve">
+    <value>全部暂停</value>
+    <comment>Pause All</comment>
+  </data>
+  <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
+    <value>搜索下载项</value>
+    <comment>Search Downloads</comment>
+  </data>
+  <data name="SettingsAndAboutAppBarButton.Label" xml:space="preserve">
+    <value>设置和关于</value>
+    <comment>Settings &amp; About</comment>
+  </data>
+  <data name="StartAllAppBarButton.Label" xml:space="preserve">
+    <value>全部开始</value>
+    <comment>Start All</comment>
+  </data>
+  <data name="TotalDownloadBandwidthStackPanel.ToolTipService.ToolTip" xml:space="preserve">
+    <value>全局下载速度</value>
+    <comment>Total Download Bandwidth</comment>
+  </data>
+  <data name="TotalUploadBandwidthStackPanel.ToolTipService.ToolTip" xml:space="preserve">
+    <value>全局上传速度</value>
+    <comment>Total Upload Bandwidth</comment>
   </data>
 </root>

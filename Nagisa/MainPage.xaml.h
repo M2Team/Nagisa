@@ -17,5 +17,7 @@ namespace Nagisa
 	{
 	public:
 		MainPage();
+	private:
+		void ListView_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

@@ -13,3 +13,5 @@
 /Nagisa.VC.db
 /Nagisa.VC.VC.opendb
 *.user
+/AppPackages/Nagisa
+/Nagisa/BundleArtifacts

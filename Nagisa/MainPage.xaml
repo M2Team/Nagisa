@@ -3,11 +3,120 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Nagisa"
+    xmlns:Assassin="using:Assassin"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Uid="Test"></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <AutoSuggestBox x:Uid="SearchAutoSuggestBox" Grid.Row="0" QueryIcon="Find"/>
+
+        <ListView x:Name="TaskList" Grid.Row="1" SelectionMode="None" Loaded="ListView_Loaded">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="MinHeight" Value="0"/>
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="Assassin:TransferTask">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="48"/>
+                            <ColumnDefinition Width="48"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="48"/>
+                            <RowDefinition Height="6"/>
+                        </Grid.RowDefinitions>
+
+                        <CheckBox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Margin="8,4" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="8,0,0,0" VerticalAlignment="Stretch">
+                            <CheckBox.Content>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{x:Bind Name, Mode=TwoWay}"/>
+                                    <TextBlock Grid.Row="1" Padding="0,2,0,0" FontSize="12" Text="100 KB/s  13.24 MB / 16.36 MB  00:00:32"/>
+                                </Grid>
+                            </CheckBox.Content>
+                        </CheckBox>
+
+                        <Button Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" Content="&#xE769;" ToolTipService.ToolTip="Pause" FontFamily="Segoe MDL2 Assets" FontSize="20"/>
+                        <Button Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" Content="&#xE768;" ToolTipService.ToolTip="Resume" FontFamily="Segoe MDL2 Assets" FontSize="20"/>
+                        <Button Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" Content="&#xE10C;" ToolTipService.ToolTip="More" FontFamily="Segoe MDL2 Assets" FontSize="20">
+                            <Button.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem Text="Open Folder"/>
+                                    <MenuFlyoutItem Text="Copy Link"/>
+                                    <MenuFlyoutSeparator/>
+                                    <MenuFlyoutItem Text="Cancel"/>
+                                    <MenuFlyoutSeparator/>
+                                    <MenuFlyoutItem Text="Properties"/>
+                                </MenuFlyout>
+                            </Button.Flyout>
+                        </Button>
+
+                        <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Value="95">
+                            <ProgressBar.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.1"/>
+                            </ProgressBar.Background>
+                            <ProgressBar.Foreground>
+                                <SolidColorBrush Color="Green" Opacity="0.8"/>
+                            </ProgressBar.Foreground>
+                        </ProgressBar>
+                        <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Value="5">
+                            <ProgressBar.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.1"/>
+                            </ProgressBar.Background>
+                            <ProgressBar.Foreground>
+                                <SolidColorBrush Color="Orange" Opacity="0.8"/>
+                            </ProgressBar.Foreground>
+                        </ProgressBar>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <CommandBar Grid.Row="2">
+            <CommandBar.Content>
+                <StackPanel Orientation="Horizontal" Padding="0" Margin="0,13,0,0">
+                    <StackPanel x:Uid="TotalDownloadBandwidthStackPanel" Margin="8,0" Orientation="Horizontal">
+                        <FontIcon Margin="0,0,8,0" VerticalAlignment="Center" FontSize="16" Glyph="&#xE74B;"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="16" Text="2.4"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="16" Text=" MB/s"/>
+                    </StackPanel>
+                    <StackPanel x:Uid="TotalUploadBandwidthStackPanel" Margin="8,0" Orientation="Horizontal">
+                        <FontIcon Margin="0,0,8,0"  VerticalAlignment="Center" FontSize="16" Glyph="&#xE74A;"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="16" Text="128"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="16" Text=" KB/s"/>
+                    </StackPanel>
+                </StackPanel>
+            </CommandBar.Content>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Uid="NewTaskAppBarButton" Icon="Add"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="StartAllAppBarButton" Icon="Play"/>
+                <AppBarButton x:Uid="PauseAllAppBarButton" Icon="Pause"/>
+                <AppBarSeparator/>
+                <AppBarButton x:Uid="CancelAppBarButton" Icon="Remove"/>
+                <AppBarSeparator/>
+                <AppBarButton x:Uid="OpenDownloadsFolderAppBarButton" Icon="OpenLocal"/>
+                <AppBarSeparator/>
+                <AppBarButton x:Uid="SettingsAndAboutAppBarButton" Icon="Setting"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+
     </Grid>
 </Page>

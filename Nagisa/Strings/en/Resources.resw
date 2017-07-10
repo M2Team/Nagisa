@@ -117,7 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Test.Text" xml:space="preserve">
-    <value>Hello World</value>
+  <data name="CancelAppBarButton.Label" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="NewTaskAppBarButton.Label" xml:space="preserve">
+    <value>New Task</value>
+    <comment>New Task</comment>
+  </data>
+  <data name="NewTaskAppBarButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>New Task</value>
+    <comment>New Task</comment>
+  </data>
+  <data name="OpenDownloadsFolderAppBarButton.Label" xml:space="preserve">
+    <value>Open Downloads Folder</value>
+    <comment>Open Downloads Folder</comment>
+  </data>
+  <data name="PauseAllAppBarButton.Label" xml:space="preserve">
+    <value>Pause All</value>
+    <comment>Pause All</comment>
+  </data>
+  <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
+    <value>Search Downloads</value>
+    <comment>Search Downloads</comment>
+  </data>
+  <data name="SettingsAndAboutAppBarButton.Label" xml:space="preserve">
+    <value>Settings &amp; About</value>
+    <comment>Settings &amp; About</comment>
+  </data>
+  <data name="StartAllAppBarButton.Label" xml:space="preserve">
+    <value>Start All</value>
+    <comment>Start All</comment>
+  </data>
+  <data name="TotalDownloadBandwidthStackPanel.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Total Download Bandwidth</value>
+    <comment>Total Download Bandwidth</comment>
+  </data>
+  <data name="TotalUploadBandwidthStackPanel.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Total Upload Bandwidth</value>
+    <comment>Total Upload Bandwidth</comment>
   </data>
 </root>

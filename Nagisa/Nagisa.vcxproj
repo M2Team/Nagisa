@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8b490b07-60cb-45a0-91f8-8605aba29c83}</ProjectGuid>
     <RootNamespace>Nagisa</RootNamespace>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>en</DefaultLanguage>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <AppContainerApplication>true</AppContainerApplication>
     <ApplicationType>Windows Store</ApplicationType>
@@ -102,6 +102,9 @@
   <PropertyGroup>
     <PackageCertificateKeyFile>Nagisa_TemporaryKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>21E76EC76D16C698CE1E47A1CAC6163F29AAFAAD</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <OutDir>$(SolutionDir)Output\$(Configuration)_$(Platform)\$(MSBuildProjectName)\</OutDir>

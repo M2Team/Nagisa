@@ -2,14 +2,30 @@
 
 namespace Assassin
 {
-	public enum class TransferTask
+	public enum class TransferStatus
 	{
-		Zero,
-		One,
-		Two,
-		Three
+		Transfering,
+		Paused,
+		Error,
+		Completed
 	};
 
+	
+	public ref class TransferTask sealed
+	{
+	public:
+		TransferTask();
+
+		property Uri^ Link;
+
+		property String^ Name;
+		property String^ StorageAccessName;
+
+		property Platform::Boolean IsSelected;
+		property TransferStatus Status;
+		
+	};
+	
 	
 	public ref class TransferManager sealed
 	{

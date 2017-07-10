@@ -1,5 +1,11 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.18**
+- Change default language to "en" in the appxmanifest file for reduce the warning
+- The color themes follow the Windows settings
+- Exclude the AppXPackage output folder
+- Add new MainPage UI and make command bar and search box multilingual
+
 **Nagisa 0.1.17**
 - Update the license's copyright
 - Add Assassin.TransferManager class for controlling the background task
