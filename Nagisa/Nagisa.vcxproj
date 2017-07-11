@@ -100,8 +100,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <PackageCertificateKeyFile>Nagisa_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>21E76EC76D16C698CE1E47A1CAC6163F29AAFAAD</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>Nagisa_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>9013C5B3923A89EFB9CAF036858471E7C606CC22</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
@@ -196,6 +196,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nagisa_StoreKey.pfx" />
     <None Include="Nagisa_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +283,9 @@
   <ItemGroup>
     <PRIResource Include="Strings\en\Resources.resw" />
     <PRIResource Include="Strings\zh-Hans\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

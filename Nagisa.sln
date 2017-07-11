@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa", "Nagisa\Nagisa.vcxproj", "{8B490B07-60CB-45A0-91F8-8605ABA29C83}"
 EndProject
@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nagisa.Root", "Nagisa.Root"
 	ProjectSection(SolutionItems) = preProject
 		Changelog.md = Changelog.md
 		LICENSE = LICENSE
+		People.md = People.md
 		README.md = README.md
 	EndProjectSection
 EndProject

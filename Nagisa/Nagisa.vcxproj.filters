@@ -187,6 +187,8 @@
     <None Include="Nagisa_TemporaryKey.pfx">
       <Filter>Resources</Filter>
     </None>
+    <None Include="Package.StoreAssociation.xml" />
+    <None Include="Nagisa_StoreKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml" />
