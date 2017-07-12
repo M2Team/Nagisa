@@ -16,6 +16,7 @@ namespace Nagisa
 	{
 	protected:
 		virtual void OnLaunched(Windows::ApplicationModel::Activation::LaunchActivatedEventArgs^ e) override;
+		virtual void OnActivated(Windows::ApplicationModel::Activation::IActivatedEventArgs^ e) override;
 
 	internal:
 		App();
