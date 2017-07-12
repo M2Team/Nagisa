@@ -202,4 +202,7 @@
       <Filter>Strings\zh-Hans</Filter>
     </PRIResource>
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="VCD.xml" />
+  </ItemGroup>
 </Project>

@@ -283,6 +283,11 @@
     <PRIResource Include="Strings\en\Resources.resw" />
     <PRIResource Include="Strings\zh-Hans\Resources.resw" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="VCD.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
