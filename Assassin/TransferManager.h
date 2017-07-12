@@ -23,7 +23,12 @@ namespace Assassin
 
 		property Platform::Boolean IsSelected;
 		property TransferStatus Status;
-		
+
+		property uint64 TotalBytesToReceive;
+		property uint64 BytesReceived;
+
+		property uint64 Bandwidth;
+		property uint64 MaxBandwidth;
 	};
 	
 	

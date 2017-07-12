@@ -18,5 +18,5 @@ OS Version: Windows 10 Build 10240 or later
 - Cortana Integration
 - Muitl-language Support
 
-# The List of Contributors
-- Mouri_Naruto (Mouri_Naruto@Outlook.com)
+# The List of Creators, Contributors, Sponsors and Thanks
+- See People.md for details.

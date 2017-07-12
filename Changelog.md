@@ -1,10 +1,37 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.19**
+- I have registered the Windows Developer Account with Microsoft Imagine
+  - I verified my identity by contacting Microsoft because the following reasons: 
+    - Only teachers have the chance to own their edu e-mail address in my school.
+	- I am unable to get a debit card with Visa or MasterCard because my country only have debit cards with UnionPay now.
+  - Thanks to Jiaen Lee (Microsoft Imagine Student Support)
+- Associate Nagisa to the Windows Developer Account
+- Add Assassin.TransferStatus enum
+  - Add Transfering enum
+  - Add Paused enum
+  - Add Error enum
+  - Add Completed enum
+- Add Assassin.TransferTask class
+  - Add Link property
+  - Add Name property
+  - Add StorageAccessName property
+  - Add IsSelected property
+  - Add Status property
+  - Add TotalBytesToReceive property
+  - Add BytesReceived property
+  - Add Bandwidth property
+  - Add MaxBandwidth property
+- Exclude the AppXPackage output folder
+
 **Nagisa 0.1.18**
 - Change default language to "en" in the appxmanifest file for reduce the warning
 - The color themes follow the Windows settings
 - Exclude the AppXPackage output folder
 - Add new MainPage UI and make command bar and search box multilingual
+  - Thanks to 落樱 (https://github.com/SakuraNeko)
+  - Thanks to 鳶一雨音 (https://github.com/TobiichiAmane)
+  - Thanks to Calyx Hikari (https://github.com/HikariCalyx)
 
 **Nagisa 0.1.17**
 - Update the license's copyright
@@ -18,7 +45,7 @@
 **Nagisa 0.1.15**
 - Improve the implemention of m2_async function
   - Add m2_remove_cx_ref for get asynchronous completed hander type 
-    - Thanks to Pointer@[Vczh]GacUI讨论群
+    - Thanks to Pointer ([Vczh]GacUI讨论群)
 	- Thanks to Zihan Chen (https://github.com/vczh)
   - Add m2_await_internal for streamlining the code
 - Using "using namespace Assassin;" in Assassin project for streamlining the code
