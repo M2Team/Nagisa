@@ -1,18 +1,28 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.20**
+- Merged the source code from 边宇琨 (https://github.com/bianyukun1213)
+  - Pull #1: Let Nagisa respond Cortana voice commands.
+- Now you can use Voice Commands (aka Cortana) to activate Nagisa now , and it 
+  support Simplified Chinese and English. (Under Construction)
+- Add NewTaskDialog (Under Construction)
+
 **Nagisa 0.1.19**
-- I have registered the Windows Developer Account with Microsoft Imagine
-  - I verified my identity by contacting Microsoft because the following reasons: 
-    - Only teachers have the chance to own their edu e-mail address in my school.
-	- I am unable to get a debit card with Visa or MasterCard because my country only have debit cards with UnionPay now.
+- I have registered the Windows Developer Account with Microsoft Imagine.
+  - I verified my identity by contacting Microsoft because the following 
+    reasons:
+    - Only teachers have the chance to own their edu e-mail address in my 
+	  school.
+	- I am unable to get a debit card with Visa or MasterCard because my 
+	  country only have debit cards with UnionPay now.
   - Thanks to Jiaen Lee (Microsoft Imagine Student Support)
 - Associate Nagisa to the Windows Developer Account
-- Add Assassin.TransferStatus enum
+- Add Assassin.TransferStatus enum (Under Construction)
   - Add Transfering enum
   - Add Paused enum
   - Add Error enum
   - Add Completed enum
-- Add Assassin.TransferTask class
+- Add Assassin.TransferTask class (Under Construction)
   - Add Link property
   - Add Name property
   - Add StorageAccessName property
@@ -25,7 +35,8 @@
 - Exclude the AppXPackage output folder
 
 **Nagisa 0.1.18**
-- Change default language to "en" in the appxmanifest file for reduce the warning
+- Change default language to "en" in the appxmanifest file for reduce the
+  warning
 - The color themes follow the Windows settings
 - Exclude the AppXPackage output folder
 - Add new MainPage UI and make command bar and search box multilingual
@@ -48,7 +59,8 @@
     - Thanks to Pointer ([Vczh]GacUI讨论群)
 	- Thanks to Zihan Chen (https://github.com/vczh)
   - Add m2_await_internal for streamlining the code
-- Using "using namespace Assassin;" in Assassin project for streamlining the code
+- Using "using namespace Assassin;" in Assassin project for streamlining the 
+  code
 - Add Assassin.BackgroundWorker class for implementing the background task
 - Change the previous description of Changelog.md
 
@@ -79,7 +91,8 @@
 
 **Nagisa 0.1.10**
 - Add support for HTTPS
-- Add get ErrorCode by COMException for await for C++/CX in Nagisa.Shared\M2AsyncWait.h
+- Add get ErrorCode by COMException for await for C++/CX in 
+  Nagisa.Shared\M2AsyncWait.h
 
 **Nagisa 0.1.9**
 - Add Nagisa.Shared Project

@@ -121,6 +121,14 @@
     <value>Cancel</value>
     <comment>Cancel</comment>
   </data>
+  <data name="ErrorText_FailedToLoadVCDFile" xml:space="preserve">
+    <value>Failed to Voice Command Definition File, you can't use Nagisa via Cortana.</value>
+    <comment>Failed to Voice Command Definition File, you can't use Nagisa via Cortana.</comment>
+  </data>
+  <data name="ErrorText_MessageDialog_Title" xml:space="preserve">
+    <value>Error</value>
+    <comment>Error</comment>
+  </data>
   <data name="NewTaskAppBarButton.Label" xml:space="preserve">
     <value>New Task</value>
     <comment>New Task</comment>

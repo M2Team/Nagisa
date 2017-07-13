@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="zh-hans" Name="NagisaVoiceCommands_zh-hans">
+    <AppName>Nagisa</AppName>
+    <Example>Nagisa，我想下载个文件</Example>
+    <Command Name="DownloadFromClipboard">
+      <Example>Download from clipboard</Example>
+      <ListenFor>[我][想]下载[个][文件]</ListenFor>
+      <Feedback>正在加载Nagisa，请稍候……</Feedback>
+      <Navigate/>
+    </Command>
+  </CommandSet>
+  <CommandSet xml:lang="en" Name="NagisaVoiceCommands_en">
+    <AppName>Nagisa</AppName>
+    <Example>Nagisa, I want to download a file</Example>
+    <Command Name="DownloadFromClipboard">
+      <Example>Download from clipboard</Example>
+      <ListenFor>[I] [want] [to] Download [a] [file]</ListenFor>
+      <Feedback>Launching Nagisa, please wait...</Feedback>
+      <Navigate/>
+    </Command>
+  </CommandSet>
+</VoiceCommands>

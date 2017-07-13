@@ -6,6 +6,8 @@
 #include "pch.h"
 #include "MainPage.xaml.h"
 
+#include "NewTaskDialog.xaml.h"
+
 using namespace Nagisa;
 
 using namespace Platform;
@@ -21,6 +23,7 @@ using namespace Windows::UI::Xaml::Navigation;
 
 using namespace Platform::Collections;
 
+
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 MainPage::MainPage()
@@ -29,7 +32,7 @@ MainPage::MainPage()
 }
 
 
-void Nagisa::MainPage::ListView_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+void Nagisa::MainPage::ListView_Loaded(Object^ sender, RoutedEventArgs^ e)
 {
 	using namespace Assassin;
 	
@@ -42,4 +45,13 @@ void Nagisa::MainPage::ListView_Loaded(Platform::Object^ sender, Windows::UI::Xa
 	
 
 
+}
+
+
+
+
+void Nagisa::MainPage::NewTaskButton_Click(Object^ sender, RoutedEventArgs^ e)
+{
+	NewTaskDialog^ dialog = ref new NewTaskDialog();
+	dialog->ShowAsync();
 }

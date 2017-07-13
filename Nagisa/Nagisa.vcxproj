@@ -184,6 +184,9 @@
     <ClInclude Include="MainPage.xaml.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="NewTaskDialog.xaml.h">
+      <DependentUpon>NewTaskDialog.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h">
       <DependentUpon>App.xaml</DependentUpon>
@@ -205,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="MainPage.xaml.cpp">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="NewTaskDialog.xaml.cpp">
+      <DependentUpon>NewTaskDialog.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -279,16 +285,23 @@
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="NewTaskDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Strings\en\Resources.resw" />
-    <PRIResource Include="Strings\zh-Hans\Resources.resw" />
-  </ItemGroup>
-   <ItemGroup>
-     <None Include="Package.StoreAssociation.xml" />
+    <PRIResource Include="Strings\en\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+    <PRIResource Include="Strings\zh-Hans\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="VCD.xml">
+    <None Include="Package.StoreAssociation.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="NagisaVoiceCommands.xml">
       <SubType>Designer</SubType>
     </Xml>
   </ItemGroup>

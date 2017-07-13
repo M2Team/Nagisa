@@ -104,7 +104,7 @@
                 </StackPanel>
             </CommandBar.Content>
             <CommandBar.PrimaryCommands>
-                <AppBarButton x:Uid="NewTaskAppBarButton" Icon="Add"/>
+                <AppBarButton x:Uid="NewTaskAppBarButton" Icon="Add" Click="NewTaskButton_Click"/>
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="StartAllAppBarButton" Icon="Play"/>

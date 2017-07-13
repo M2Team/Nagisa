@@ -1,9 +1,10 @@
 ﻿# Nagisa - People (Sort in time order)
 
 ## Creator
-- Mouri_Naruto (Mouri_Naruto@Outlook.com)
+- Mouri_Naruto (https://github.com/MouriNaruto)
 
 ## Contributors
+- 边宇琨 (https://github.com/bianyukun1213)
 
 ## Sponsors
 

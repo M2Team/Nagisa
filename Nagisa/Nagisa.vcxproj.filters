@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml" />
+    <Page Include="NewTaskDialog.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -205,6 +206,6 @@
     </PRIResource>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="VCD.xml" />
+    <Xml Include="NagisaVoiceCommands.xml" />
   </ItemGroup>
 </Project>
