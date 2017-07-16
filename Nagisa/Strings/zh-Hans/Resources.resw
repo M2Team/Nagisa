@@ -137,6 +137,18 @@
     <value>新建任务</value>
     <comment>New Task</comment>
   </data>
+  <data name="NewTaskDialog.PrimaryButtonText" xml:space="preserve">
+    <value>确定</value>
+    <comment>OK</comment>
+  </data>
+  <data name="NewTaskDialog.SecondaryButtonText" xml:space="preserve">
+    <value>取消</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="NewTaskDialog.Title" xml:space="preserve">
+    <value>新建任务</value>
+    <comment>New Task</comment>
+  </data>
   <data name="OpenDownloadsFolderAppBarButton.Label" xml:space="preserve">
     <value>打开下载文件夹</value>
     <comment>Open Downloads Folder</comment>
@@ -150,6 +162,18 @@
     <comment>Search Downloads</comment>
   </data>
   <data name="SettingsAndAboutAppBarButton.Label" xml:space="preserve">
+    <value>设置和关于</value>
+    <comment>Settings &amp; About</comment>
+  </data>
+  <data name="SettingsAndAboutDialog.PrimaryButtonText" xml:space="preserve">
+    <value>确定</value>
+    <comment>OK</comment>
+  </data>
+  <data name="SettingsAndAboutDialog.SecondaryButtonText" xml:space="preserve">
+    <value>取消</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="SettingsAndAboutDialog.Title" xml:space="preserve">
     <value>设置和关于</value>
     <comment>Settings &amp; About</comment>
   </data>

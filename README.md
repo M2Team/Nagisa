@@ -13,6 +13,7 @@ OS Version: Windows 10 Build 10240 or later
 
 # Finished Features
 - Muitl-language Support
+- Cortana Integration
 
 # Unfininshed Features
 - HTTP/HTTPS Support
@@ -20,7 +21,6 @@ OS Version: Windows 10 Build 10240 or later
 - WebSocket Support
 - BitTorrent Support
 - ED2K Support
-- Cortana Integration
 
 # How to contribute the code for Nagisa
 - You should send an e-mail to Mouri_Naruto@Outlook.com first.

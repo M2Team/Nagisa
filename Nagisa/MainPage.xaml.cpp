@@ -7,6 +7,7 @@
 #include "MainPage.xaml.h"
 
 #include "NewTaskDialog.xaml.h"
+#include "SettingsAndAboutDialog.xaml.h"
 
 using namespace Nagisa;
 
@@ -53,5 +54,11 @@ void Nagisa::MainPage::ListView_Loaded(Object^ sender, RoutedEventArgs^ e)
 void Nagisa::MainPage::NewTaskButton_Click(Object^ sender, RoutedEventArgs^ e)
 {
 	NewTaskDialog^ dialog = ref new NewTaskDialog();
+	dialog->ShowAsync();
+}
+
+void Nagisa::MainPage::SettingsAndAboutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	SettingsAndAboutDialog^ dialog = ref new SettingsAndAboutDialog();
 	dialog->ShowAsync();
 }

@@ -114,7 +114,7 @@
                 <AppBarSeparator/>
                 <AppBarButton x:Uid="OpenDownloadsFolderAppBarButton" Icon="OpenLocal"/>
                 <AppBarSeparator/>
-                <AppBarButton x:Uid="SettingsAndAboutAppBarButton" Icon="Setting"/>
+                <AppBarButton x:Uid="SettingsAndAboutAppBarButton" Icon="Setting" Click="SettingsAndAboutButton_Click"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
 

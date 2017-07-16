@@ -1,11 +1,18 @@
 ﻿# Nagisa - Changelog
 
+**Nagisa 0.1.21**
+- Add XamlResources.xaml for defining the Nagisa's Xaml Definitions
+  - Add NagisaContentDialogStyle custom style for Vertical ScrollBar support in
+    the ContentDialog
+    - Thanks to 山宏岳 (https://social.msdn.microsoft.com/Profile/山宏岳)
+- Add SettingsAndAboutDialog
+
 **Nagisa 0.1.20**
 - Merged the source code from 边宇琨 (https://github.com/bianyukun1213)
   - Pull #1: Let Nagisa respond Cortana voice commands.
 - Now you can use Voice Commands (aka Cortana) to activate Nagisa now , and it 
-  support Simplified Chinese and English. (Under Construction)
-- Add NewTaskDialog (Under Construction)
+  support Simplified Chinese and English.
+- Add NewTaskDialog
 
 **Nagisa 0.1.19**
 - I have registered the Windows Developer Account with Microsoft Imagine.
@@ -17,21 +24,8 @@
 	  country only have debit cards with UnionPay now.
   - Thanks to Jiaen Lee (Microsoft Imagine Student Support)
 - Associate Nagisa to the Windows Developer Account
-- Add Assassin.TransferStatus enum (Under Construction)
-  - Add Transfering enum
-  - Add Paused enum
-  - Add Error enum
-  - Add Completed enum
-- Add Assassin.TransferTask class (Under Construction)
-  - Add Link property
-  - Add Name property
-  - Add StorageAccessName property
-  - Add IsSelected property
-  - Add Status property
-  - Add TotalBytesToReceive property
-  - Add BytesReceived property
-  - Add Bandwidth property
-  - Add MaxBandwidth property
+- Add Assassin.TransferStatus enum
+- Add Assassin.TransferTask class
 - Exclude the AppXPackage output folder
 
 **Nagisa 0.1.18**

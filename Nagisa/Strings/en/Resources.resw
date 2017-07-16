@@ -137,6 +137,18 @@
     <value>New Task</value>
     <comment>New Task</comment>
   </data>
+  <data name="NewTaskDialog.PrimaryButtonText" xml:space="preserve">
+    <value>OK</value>
+    <comment>OK</comment>
+  </data>
+  <data name="NewTaskDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="NewTaskDialog.Title" xml:space="preserve">
+    <value>New Task</value>
+    <comment>New Task</comment>
+  </data>
   <data name="OpenDownloadsFolderAppBarButton.Label" xml:space="preserve">
     <value>Open Downloads Folder</value>
     <comment>Open Downloads Folder</comment>
@@ -150,6 +162,18 @@
     <comment>Search Downloads</comment>
   </data>
   <data name="SettingsAndAboutAppBarButton.Label" xml:space="preserve">
+    <value>Settings &amp; About</value>
+    <comment>Settings &amp; About</comment>
+  </data>
+  <data name="SettingsAndAboutDialog.PrimaryButtonText" xml:space="preserve">
+    <value>OK</value>
+    <comment>OK</comment>
+  </data>
+  <data name="SettingsAndAboutDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Cancel</comment>
+  </data>
+  <data name="SettingsAndAboutDialog.Title" xml:space="preserve">
     <value>Settings &amp; About</value>
     <comment>Settings &amp; About</comment>
   </data>

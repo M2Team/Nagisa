@@ -1,10 +1,10 @@
 ﻿//
-// NewTaskDialog.xaml.cpp
-// NewTaskDialog 类的实现
+// SettingsAndAboutDialog.xaml.cpp
+// SettingsAndAboutDialog 类的实现
 //
 
 #include "pch.h"
-#include "NewTaskDialog.xaml.h"
+#include "SettingsAndAboutDialog.xaml.h"
 
 using namespace Nagisa;
 
@@ -21,15 +21,15 @@ using namespace Windows::UI::Xaml::Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“内容对话框”项模板
 
-Nagisa::NewTaskDialog::NewTaskDialog()
+Nagisa::SettingsAndAboutDialog::SettingsAndAboutDialog()
 {
 	InitializeComponent();
 }
 
-void Nagisa::NewTaskDialog::OKButtonClick(Windows::UI::Xaml::Controls::ContentDialog^ sender, Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs^ args)
+void Nagisa::SettingsAndAboutDialog::OKButtonClick(Windows::UI::Xaml::Controls::ContentDialog^ sender, Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs^ args)
 {
 }
 
-void Nagisa::NewTaskDialog::CancelButtonClick(Windows::UI::Xaml::Controls::ContentDialog^ sender, Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs^ args)
+void Nagisa::SettingsAndAboutDialog::CancelButtonClick(Windows::UI::Xaml::Controls::ContentDialog^ sender, Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs^ args)
 {
 }

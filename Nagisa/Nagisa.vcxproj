@@ -192,6 +192,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SettingsAndAboutDialog.xaml.h">
+      <DependentUpon>SettingsAndAboutDialog.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="XamlResources.xaml.h">
+      <DependentUpon>XamlResources.xaml</DependentUpon>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -219,6 +225,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SettingsAndAboutDialog.xaml.cpp">
+      <DependentUpon>SettingsAndAboutDialog.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="XamlResources.xaml.cpp">
+      <DependentUpon>XamlResources.xaml</DependentUpon>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +298,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="NewTaskDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SettingsAndAboutDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XamlResources.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

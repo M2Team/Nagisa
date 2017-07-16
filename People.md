@@ -16,3 +16,4 @@
 - 鳶一雨音 (https://github.com/TobiichiAmane)
 - Calyx Hikari (https://github.com/HikariCalyx)
 - Jiaen Lee (Microsoft Imagine Student Support)
+- 山宏岳 (https://social.msdn.microsoft.com/Profile/山宏岳)

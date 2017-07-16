@@ -1,0 +1,44 @@
+﻿<ContentDialog
+    x:Uid="SettingsAndAboutDialog"
+    x:Class="Nagisa.SettingsAndAboutDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nagisa"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    PrimaryButtonClick="OKButtonClick"
+    SecondaryButtonClick="CancelButtonClick"
+    Style="{StaticResource NagisaContentDialogStyle}">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Nagisa" FontSize="32"/>
+            <TextBlock Text="The developer has recognized the interface is rough because it's still in alpha stage and he wants to implement the core features first. He hopes you can understand his thoughts." TextWrapping="Wrap" FontSize="16" Foreground="#FFC00000"/>
+            <TextBlock/>
+            <TextBlock Text="How to test Nagisa" FontSize="24"/>
+            <TextBlock Text="0.Set the root folder"/>
+            <Button Content="Set root folder via FilePicker"/>
+            <TextBlock Text="1.Input the download link and file name which you want to named"/>
+            <TextBox PlaceholderText="Please input the download link here"/>
+            <TextBox x:Name="FileNameTextBox" PlaceholderText="Please input the save file name here"/>
+            <TextBlock Text="2.Click the Save As button"/>
+            <Button Content="Save As"/>
+            <Button Content="SocketDemo"/>
+            <TextBlock Text="3.Wait for the Progress Bar"/>
+            <ProgressBar Value="2"/>
+            <TextBlock Text="Console Output:"/>
+            <TextBox x:Name="OutputConsole"
+                     TextWrapping="Wrap"
+                     Height="128"
+                     MaxHeight="128"
+                     IsReadOnly="True"
+                     AcceptsReturn="True"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     ScrollViewer.VerticalScrollMode="Enabled"/>
+            
+            <TextBlock FontSize="20" Margin="0,16,0,4" Text="关于此应用" />
+            <TextBlock Text="M2-Team Nagisa 0.1.21"/>
+            <TextBlock Text="© M2-Team. All rights reserved."/>
+        </StackPanel>
+    </Grid>
+</ContentDialog>
