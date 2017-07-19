@@ -23,10 +23,10 @@ namespace Nagisa
 
 	[Windows::UI::Xaml::Data::Bindable]
 	[Windows::Foundation::Metadata::WebHostHidden]
-	public ref class NagisaStatusToBackgroundConverter sealed : Windows::UI::Xaml::Data::IValueConverter
+	public ref class NagisaStatusCompletedToCollapsedConverter sealed : Windows::UI::Xaml::Data::IValueConverter
 	{
 	public:
-		NagisaStatusToBackgroundConverter();
+		NagisaStatusCompletedToCollapsedConverter();
 
 		// Inherited via IValueConverter
 		virtual Platform::Object ^ Convert(Platform::Object ^value, Windows::UI::Xaml::Interop::TypeName targetType, Platform::Object ^parameter, Platform::String ^language);

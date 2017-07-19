@@ -476,8 +476,8 @@
     </Style>
 
     <local:NagisaStatusToForegroundConverter x:Name="NagisaStatusToForegroundConverter"/>
-    <local:NagisaStatusToBackgroundConverter x:Name="NagisaStatusToBackgroundConverter"/>
 
+    <local:NagisaStatusCompletedToCollapsedConverter x:Name="NagisaStatusCompletedToCollapsedConverter"/>
     <local:NagisaStatusErrorToVisibilityConverter x:Name="NagisaStatusErrorToVisibilityConverter"/>
     <local:NagisaStatusPausedToVisibilityConverter x:Name="NagisaStatusPausedToVisibilityConverter"/>
     <local:NagisaStatusRunningToVisibilityConverter x:Name="NagisaStatusRunningToVisibilityConverter"/>

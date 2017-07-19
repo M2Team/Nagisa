@@ -49,7 +49,11 @@
                 <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="-48,0,0,0" VerticalAlignment="Stretch" 
                              Value="{x:Bind Progress, Mode=OneWay}"
                              Foreground="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusToForegroundConverter}}"
-                             Background="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusToBackgroundConverter}}"/>
+                             Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusCompletedToCollapsedConverter}}">
+                    <ProgressBar.Background>
+                        <SolidColorBrush Color="Black" Opacity="0.1"/>
+                    </ProgressBar.Background>
+                </ProgressBar>
             </Grid>
         </DataTemplate>
         

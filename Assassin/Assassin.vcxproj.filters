@@ -14,9 +14,6 @@
     <Filter Include="pch">
       <UniqueIdentifier>{0e3a0dd8-fe97-483e-b8ef-f01f92c26f9c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Configurations">
-      <UniqueIdentifier>{1f0edcd0-45dd-43f8-a7f5-2c1394bac96b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackgroundWorker.cpp">
@@ -27,9 +24,6 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>pch</Filter>
-    </ClCompile>
-    <ClCompile Include="Configurations.cpp">
-      <Filter>Configurations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,9 +38,6 @@
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>pch</Filter>
-    </ClInclude>
-    <ClInclude Include="Configurations.h">
-      <Filter>Configurations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

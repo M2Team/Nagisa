@@ -61,27 +61,24 @@ Object^ Nagisa::NagisaStatusToForegroundConverter::ConvertBack(Object^ value, Ty
 	throw ref new Platform::NotImplementedException();
 }
 
-Nagisa::NagisaStatusToBackgroundConverter::NagisaStatusToBackgroundConverter()
+Nagisa::NagisaStatusCompletedToCollapsedConverter::NagisaStatusCompletedToCollapsedConverter()
 {
 
 }
 
-Object^ Nagisa::NagisaStatusToBackgroundConverter::Convert(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
+Object^ Nagisa::NagisaStatusCompletedToCollapsedConverter::Convert(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
 {
 	IBox<TransferStatus>^ status = dynamic_cast<IBox<TransferStatus>^>(value);
-	Color color = Colors::Black;
 
 	if (status != nullptr && status->Value == TransferStatus::Completed)
 	{
-		color = Colors::Transparent;
+		return Visibility::Collapsed;
 	}
 
-	auto brush = ref new SolidColorBrush(color);
-	brush->Opacity = 0.1;
-	return brush;
+	return Visibility::Visible;
 }
 
-Object^ Nagisa::NagisaStatusToBackgroundConverter::ConvertBack(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
+Object^ Nagisa::NagisaStatusCompletedToCollapsedConverter::ConvertBack(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
 {
 	throw ref new Platform::NotImplementedException();
 }

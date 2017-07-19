@@ -26,9 +26,32 @@ namespace Assassin
 
 	public ref class TransferManager sealed
 	{
+	private:
+		Windows::Storage::AccessCache::StorageItemAccessList^ m_FutureAccessList = nullptr;
+
+		Windows::Storage::StorageFolder^ m_DownloadsFolder = nullptr;
+		Windows::Storage::StorageFolder^ GetDownloadsFolder();
+
 	public:
 		TransferManager();
 
+		property String^ Version
+		{
+			Platform::String^ get();
+		}
+
+		property String^ UserAgent
+		{
+			Platform::String^ get();
+		}
+
+		property Windows::Storage::StorageFolder^ DownloadsFolder
+		{
+			Windows::Storage::StorageFolder^ get();
+			void set(Windows::Storage::StorageFolder^ value);
+		}
+
+		
 
 
 		/*void TaskAdd();
