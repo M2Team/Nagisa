@@ -4,34 +4,26 @@ namespace Assassin
 {
 	public enum class TransferStatus
 	{
-		Transfering,
+		Running,
 		Paused,
 		Error,
 		Completed
 	};
-
 	
 	public ref class TransferTask sealed
 	{
 	public:
-		TransferTask();
+		TransferTask(Platform::String^ Description, float64 Progress, TransferStatus Status);
 
-		property Uri^ Link;
-
-		property String^ Name;
-		property String^ StorageAccessName;
-
-		property Platform::Boolean IsSelected;
-		property TransferStatus Status;
-
-		property uint64 TotalBytesToReceive;
+		property Platform::String^ Description;
+		property Windows::Foundation::Uri^ RequestedUri;
+		property Windows::Storage::StorageFile^ ResultFile;
+		property Assassin::TransferStatus Status;
+		property float64 Progress;
 		property uint64 BytesReceived;
-
-		property uint64 Bandwidth;
-		property uint64 MaxBandwidth;
+		property uint64 TotalBytesToReceive;	
 	};
-	
-	
+
 	public ref class TransferManager sealed
 	{
 	public:

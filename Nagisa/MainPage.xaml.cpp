@@ -39,12 +39,12 @@ void Nagisa::MainPage::ListView_Loaded(Object^ sender, RoutedEventArgs^ e)
 	
 	Vector<TransferTask^>^ Tasks = ref new Vector<TransferTask^>();
 
-	Tasks->Append(ref new TransferTask());
+	Tasks->Append(ref new TransferTask(L"Task #1", 10, TransferStatus::Running));
+	Tasks->Append(ref new TransferTask(L"Task #2", 30, TransferStatus::Error));
+	Tasks->Append(ref new TransferTask(L"Task #3", 60, TransferStatus::Paused));
+	Tasks->Append(ref new TransferTask(L"Task #4", 100, TransferStatus::Completed));
 
-	TaskList->ItemsSource = Tasks;
-
-	
-
+	TaskList->ItemsSource = Tasks->GetView();
 
 }
 
@@ -61,4 +61,10 @@ void Nagisa::MainPage::SettingsAndAboutButton_Click(Platform::Object^ sender, Wi
 {
 	SettingsAndAboutDialog^ dialog = ref new SettingsAndAboutDialog();
 	dialog->ShowAsync();
+}
+
+
+void Nagisa::MainPage::AutoSuggestBox_QuerySubmitted(Windows::UI::Xaml::Controls::AutoSuggestBox^ sender, Windows::UI::Xaml::Controls::AutoSuggestBoxQuerySubmittedEventArgs^ args)
+{
+	
 }

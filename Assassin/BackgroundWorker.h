@@ -2,15 +2,12 @@
 
 namespace Assassin
 {
-	using namespace Windows::ApplicationModel::Background;
-	using namespace Windows::Foundation::Metadata;
-
-	[WebHostHidden]
-	public ref class BackgroundWorker sealed : public IBackgroundTask
+	[Windows::Foundation::Metadata::WebHostHidden]
+	public ref class BackgroundWorker sealed : public Windows::ApplicationModel::Background::IBackgroundTask
 	{
 	public:
 		BackgroundWorker();
-		virtual void Run(IBackgroundTaskInstance^ taskInstance);
+		virtual void Run(Windows::ApplicationModel::Background::IBackgroundTaskInstance^ taskInstance);
 
 	};
 }

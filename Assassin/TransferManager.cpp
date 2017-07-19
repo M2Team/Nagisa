@@ -5,17 +5,15 @@ using namespace Platform;
 using namespace Platform::Collections;
 
 using namespace Assassin;
+using namespace Windows::UI::Xaml;
 
-Assassin::TransferTask::TransferTask()
+Assassin::TransferTask::TransferTask(String^ Description, float64 Progress, TransferStatus Status)
 {
-	IsSelected = true;
-	
-	Status = TransferStatus::Paused;
-
-	Name = L"Task #2";
+	this->Description = Description;
+	this->Progress = Progress;
+	this->Status = Status;
 
 }
-
 
 Assassin::TransferManager::TransferManager()
 {

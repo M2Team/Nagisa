@@ -7,6 +7,53 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        
+        <DataTemplate x:Name="NagisaListViewItemTemplate" x:DataType="Assassin:TransferTask">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="48"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="6"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,4,8,4" VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="{x:Bind Description, Mode=OneWay}"/>
+                    <TextBlock Grid.Row="1" Padding="0,2,0,0" FontSize="12" Text="100 KB/s  13.24 MB / 16.36 MB  00:00:32"/>
+                </Grid>
+
+                <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource NagisaListViewItemButtonStyle}" Content="&#xE769;" ToolTipService.ToolTip="Pause" Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusRunningToVisibilityConverter}}"/>
+                <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource NagisaListViewItemButtonStyle}" Content="&#xE768;" ToolTipService.ToolTip="Resume" Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusPausedToVisibilityConverter}}"/>
+                <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource NagisaListViewItemButtonStyle}" Content="&#xE72C;" ToolTipService.ToolTip="Restart" Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusErrorToVisibilityConverter}}"/>
+                <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource NagisaListViewItemButtonStyle}" Content="&#xE10C;" ToolTipService.ToolTip="More">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="Open Folder"/>
+                            <MenuFlyoutItem Text="Copy Link"/>
+                            <MenuFlyoutSeparator/>
+                            <MenuFlyoutItem Text="Remove"/>
+                            <MenuFlyoutSeparator/>
+                            <MenuFlyoutItem Text="Properties"/>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+
+                <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="-48,0,0,0" VerticalAlignment="Stretch" 
+                             Value="{x:Bind Progress, Mode=OneWay}"
+                             Foreground="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusToForegroundConverter}}"
+                             Background="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusToBackgroundConverter}}"/>
+            </Grid>
+        </DataTemplate>
+        
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -14,80 +61,12 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <AutoSuggestBox x:Uid="SearchAutoSuggestBox" Grid.Row="0" QueryIcon="Find"/>
+        <AutoSuggestBox x:Uid="SearchAutoSuggestBox" Grid.Row="0" QueryIcon="Find" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
 
-        <ListView x:Name="TaskList" Grid.Row="1" SelectionMode="None" Loaded="ListView_Loaded">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="MinHeight" Value="0"/>
-                    <Setter Property="Padding" Value="0"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="Assassin:TransferTask">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="48"/>
-                            <ColumnDefinition Width="48"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="48"/>
-                            <RowDefinition Height="6"/>
-                        </Grid.RowDefinitions>
-
-                        <CheckBox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Margin="8,4" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Padding="8,0,0,0" VerticalAlignment="Stretch">
-                            <CheckBox.Content>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Text="{x:Bind Name, Mode=TwoWay}"/>
-                                    <TextBlock Grid.Row="1" Padding="0,2,0,0" FontSize="12" Text="100 KB/s  13.24 MB / 16.36 MB  00:00:32"/>
-                                </Grid>
-                            </CheckBox.Content>
-                        </CheckBox>
-
-                        <Button Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" Content="&#xE769;" ToolTipService.ToolTip="Pause" FontFamily="Segoe MDL2 Assets" FontSize="20"/>
-                        <Button Grid.Row="0" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" Content="&#xE768;" ToolTipService.ToolTip="Resume" FontFamily="Segoe MDL2 Assets" FontSize="20"/>
-                        <Button Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" Content="&#xE10C;" ToolTipService.ToolTip="More" FontFamily="Segoe MDL2 Assets" FontSize="20">
-                            <Button.Flyout>
-                                <MenuFlyout>
-                                    <MenuFlyoutItem Text="Open Folder"/>
-                                    <MenuFlyoutItem Text="Copy Link"/>
-                                    <MenuFlyoutSeparator/>
-                                    <MenuFlyoutItem Text="Cancel"/>
-                                    <MenuFlyoutSeparator/>
-                                    <MenuFlyoutItem Text="Properties"/>
-                                </MenuFlyout>
-                            </Button.Flyout>
-                        </Button>
-
-                        <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Value="95">
-                            <ProgressBar.Background>
-                                <SolidColorBrush Color="Black" Opacity="0.1"/>
-                            </ProgressBar.Background>
-                            <ProgressBar.Foreground>
-                                <SolidColorBrush Color="Green" Opacity="0.8"/>
-                            </ProgressBar.Foreground>
-                        </ProgressBar>
-                        <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Value="5">
-                            <ProgressBar.Background>
-                                <SolidColorBrush Color="Black" Opacity="0.1"/>
-                            </ProgressBar.Background>
-                            <ProgressBar.Foreground>
-                                <SolidColorBrush Color="Orange" Opacity="0.8"/>
-                            </ProgressBar.Foreground>
-                        </ProgressBar>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-        </ListView>
-
+        <ListView x:Name="TaskList" Grid.Row="1" SelectionMode="Multiple" Loaded="ListView_Loaded" 
+                  ItemContainerStyle="{StaticResource NagisaListViewItemExpandedStyle}"
+                  ItemTemplate="{StaticResource NagisaListViewItemTemplate}"/>
+        
         <CommandBar Grid.Row="2">
             <CommandBar.Content>
                 <StackPanel Orientation="Horizontal" Padding="0" Margin="0,13,0,0">
