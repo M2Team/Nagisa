@@ -10,7 +10,8 @@
 namespace Nagisa
 {
 	/// <summary>
-	/// 提供特定于应用程序的行为，以补充默认的应用程序类。
+	/// Provides application-specific behavior to supplement the default 
+	/// Application class.
 	/// </summary>
 	ref class App sealed
 	{

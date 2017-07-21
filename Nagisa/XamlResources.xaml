@@ -476,10 +476,9 @@
     </Style>
 
     <local:NagisaStatusToForegroundConverter x:Name="NagisaStatusToForegroundConverter"/>
-
     <local:NagisaStatusCompletedToCollapsedConverter x:Name="NagisaStatusCompletedToCollapsedConverter"/>
-    <local:NagisaStatusErrorToVisibilityConverter x:Name="NagisaStatusErrorToVisibilityConverter"/>
-    <local:NagisaStatusPausedToVisibilityConverter x:Name="NagisaStatusPausedToVisibilityConverter"/>
-    <local:NagisaStatusRunningToVisibilityConverter x:Name="NagisaStatusRunningToVisibilityConverter"/>
-
+    <local:NagisaStatusToOperationButtonIconConverter x:Name="NagisaStatusToOperationButtonIconConverter"/>
+    <local:NagisaStatusToOperationButtonToolTipConverter x:Name="NagisaStatusToOperationButtonToolTipConverter"/>
+    <local:NagisaItemSourceEmptyToVisibilityConverter x:Name="NagisaItemSourceEmptyToVisibilityConverter"/>
+    
 </ResourceDictionary>

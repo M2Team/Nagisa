@@ -35,10 +35,10 @@ namespace Nagisa
 
 	[Windows::UI::Xaml::Data::Bindable]
 	[Windows::Foundation::Metadata::WebHostHidden]
-	public ref class NagisaStatusErrorToVisibilityConverter sealed : Windows::UI::Xaml::Data::IValueConverter
+	public ref class NagisaStatusToOperationButtonIconConverter sealed : Windows::UI::Xaml::Data::IValueConverter
 	{
 	public:
-		NagisaStatusErrorToVisibilityConverter();
+		NagisaStatusToOperationButtonIconConverter();
 
 		// Inherited via IValueConverter
 		virtual Platform::Object ^ Convert(Platform::Object ^value, Windows::UI::Xaml::Interop::TypeName targetType, Platform::Object ^parameter, Platform::String ^language);
@@ -47,10 +47,10 @@ namespace Nagisa
 
 	[Windows::UI::Xaml::Data::Bindable]
 	[Windows::Foundation::Metadata::WebHostHidden]
-	public ref class NagisaStatusPausedToVisibilityConverter sealed : Windows::UI::Xaml::Data::IValueConverter
+	public ref class NagisaStatusToOperationButtonToolTipConverter sealed : Windows::UI::Xaml::Data::IValueConverter
 	{
 	public:
-		NagisaStatusPausedToVisibilityConverter();
+		NagisaStatusToOperationButtonToolTipConverter();
 
 		// Inherited via IValueConverter
 		virtual Platform::Object ^ Convert(Platform::Object ^value, Windows::UI::Xaml::Interop::TypeName targetType, Platform::Object ^parameter, Platform::String ^language);
@@ -59,10 +59,10 @@ namespace Nagisa
 
 	[Windows::UI::Xaml::Data::Bindable]
 	[Windows::Foundation::Metadata::WebHostHidden]
-	public ref class NagisaStatusRunningToVisibilityConverter sealed : Windows::UI::Xaml::Data::IValueConverter
+	public ref class NagisaItemSourceEmptyToVisibilityConverter sealed : Windows::UI::Xaml::Data::IValueConverter
 	{
 	public:
-		NagisaStatusRunningToVisibilityConverter();
+		NagisaItemSourceEmptyToVisibilityConverter();
 
 		// Inherited via IValueConverter
 		virtual Platform::Object ^ Convert(Platform::Object ^value, Windows::UI::Xaml::Interop::TypeName targetType, Platform::Object ^parameter, Platform::String ^language);

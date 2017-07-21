@@ -11,3 +11,5 @@
 #include "App.xaml.h"
 
 #include <m2async.h>
+
+#include <m2base_winrt.h>

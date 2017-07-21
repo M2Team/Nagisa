@@ -28,12 +28,16 @@ namespace Assassin
 	{
 	private:
 		Windows::Storage::AccessCache::StorageItemAccessList^ m_FutureAccessList = nullptr;
-
 		Windows::Storage::StorageFolder^ m_DownloadsFolder = nullptr;
 		Windows::Storage::StorageFolder^ GetDownloadsFolder();
 
+
+		Platform::Collections::Vector<Assassin::TransferTask^>^ m_TaskList = nullptr;
+
 	public:
 		TransferManager();
+
+		//Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVectorView<Assassin::TransferTask^>^>^ GetCurrentDownloadsAsync();
 
 		property String^ Version
 		{

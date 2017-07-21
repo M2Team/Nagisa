@@ -153,6 +153,18 @@
     <value>打开下载文件夹</value>
     <comment>Open Downloads Folder</comment>
   </data>
+  <data name="OperationButtonToolTip_Pause" xml:space="preserve">
+    <value>暂停</value>
+    <comment>Pause</comment>
+  </data>
+  <data name="OperationButtonToolTip_Resume" xml:space="preserve">
+    <value>继续</value>
+    <comment>Resume</comment>
+  </data>
+  <data name="OperationButtonToolTip_Retry" xml:space="preserve">
+    <value>重试</value>
+    <comment>Retry</comment>
+  </data>
   <data name="PauseAllAppBarButton.Label" xml:space="preserve">
     <value>全部暂停</value>
     <comment>Pause All</comment>
@@ -180,6 +192,10 @@
   <data name="StartAllAppBarButton.Label" xml:space="preserve">
     <value>全部开始</value>
     <comment>Start All</comment>
+  </data>
+  <data name="TaskListNoItemsTextBlock.Text" xml:space="preserve">
+    <value>没有下载项</value>
+    <comment>No Downloads</comment>
   </data>
   <data name="TotalDownloadBandwidthStackPanel.ToolTipService.ToolTip" xml:space="preserve">
     <value>全局下载速度</value>

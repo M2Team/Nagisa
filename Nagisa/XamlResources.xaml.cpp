@@ -20,6 +20,8 @@ using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
 using namespace Assassin;
+using namespace Platform::Collections;
+using namespace Windows::ApplicationModel::Resources;
 using namespace Windows::UI;
 using namespace Windows::UI::Xaml::Interop;
 
@@ -83,60 +85,84 @@ Object^ Nagisa::NagisaStatusCompletedToCollapsedConverter::ConvertBack(Platform:
 	throw ref new Platform::NotImplementedException();
 }
 
-Nagisa::NagisaStatusErrorToVisibilityConverter::NagisaStatusErrorToVisibilityConverter()
+Nagisa::NagisaStatusToOperationButtonIconConverter::NagisaStatusToOperationButtonIconConverter()
 {
 
 }
 
-Object^ Nagisa::NagisaStatusErrorToVisibilityConverter::Convert(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
+Object^ Nagisa::NagisaStatusToOperationButtonIconConverter::Convert(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
 {
 	IBox<TransferStatus>^ status = dynamic_cast<IBox<TransferStatus>^>(value);
+	String^ IconString = L"\xE72C";
 
-	if (status != nullptr && status->Value == TransferStatus::Error)
+	if (status != nullptr)
 	{
-		return Visibility::Visible;
+		switch (status->Value)
+		{
+		case TransferStatus::Paused:
+			IconString = L"\xE768";
+			break;
+		case TransferStatus::Running:
+			IconString = L"\xE769";
+			break;
+		default:
+			break;
+		}
 	}
 
-	return Visibility::Collapsed;
+	return IconString;
 }
 
-Object^ Nagisa::NagisaStatusErrorToVisibilityConverter::ConvertBack(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
+Object^ Nagisa::NagisaStatusToOperationButtonIconConverter::ConvertBack(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
 {
 	throw ref new Platform::NotImplementedException();
 }
 
-Nagisa::NagisaStatusPausedToVisibilityConverter::NagisaStatusPausedToVisibilityConverter()
+Nagisa::NagisaStatusToOperationButtonToolTipConverter::NagisaStatusToOperationButtonToolTipConverter()
 {
 
 }
 
-Object^ Nagisa::NagisaStatusPausedToVisibilityConverter::Convert(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
+Object^ Nagisa::NagisaStatusToOperationButtonToolTipConverter::Convert(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
 {
 	IBox<TransferStatus>^ status = dynamic_cast<IBox<TransferStatus>^>(value);
+	ResourceLoader^ resourceLoader = ResourceLoader::GetForCurrentView();
 
-	if (status != nullptr && status->Value == TransferStatus::Paused)
+	String^ ButtonToolTipResource = L"OperationButtonToolTip_Retry";
+
+	if (status != nullptr)
 	{
-		return Visibility::Visible;
+		switch (status->Value)
+		{
+		case TransferStatus::Paused:
+			ButtonToolTipResource = L"OperationButtonToolTip_Resume";
+			break;
+		case TransferStatus::Running:
+			ButtonToolTipResource = L"OperationButtonToolTip_Pause";
+			break;
+		default:
+			break;
+		}
 	}
 
-	return Visibility::Collapsed;
+	return resourceLoader->GetString(ButtonToolTipResource);
 }
 
-Object^ Nagisa::NagisaStatusPausedToVisibilityConverter::ConvertBack(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
+Object^ Nagisa::NagisaStatusToOperationButtonToolTipConverter::ConvertBack(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
 {
 	throw ref new Platform::NotImplementedException();
 }
 
-Nagisa::NagisaStatusRunningToVisibilityConverter::NagisaStatusRunningToVisibilityConverter()
+Nagisa::NagisaItemSourceEmptyToVisibilityConverter::NagisaItemSourceEmptyToVisibilityConverter()
 {
 
 }
 
-Object^ Nagisa::NagisaStatusRunningToVisibilityConverter::Convert(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
+Object^ Nagisa::NagisaItemSourceEmptyToVisibilityConverter::Convert(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
 {
-	IBox<TransferStatus>^ status = dynamic_cast<IBox<TransferStatus>^>(value);
+	VectorView<TransferTask^>^ ItemSource = dynamic_cast<VectorView<TransferTask^>^>(value);
 
-	if (status != nullptr && status->Value == TransferStatus::Running)
+	if (ItemSource == nullptr || ItemSource->Size == 0)
 	{
 		return Visibility::Visible;
 	}
@@ -144,7 +170,7 @@ Object^ Nagisa::NagisaStatusRunningToVisibilityConverter::Convert(Platform::Obje
 	return Visibility::Collapsed;
 }
 
-Object^ Nagisa::NagisaStatusRunningToVisibilityConverter::ConvertBack(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
+Object^ Nagisa::NagisaItemSourceEmptyToVisibilityConverter::ConvertBack(Platform::Object^ value, TypeName targetType, Object^ parameter, String^ language)
 {
 	throw ref new Platform::NotImplementedException();
 }

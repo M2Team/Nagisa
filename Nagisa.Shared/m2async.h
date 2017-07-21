@@ -12,6 +12,7 @@ License: The MIT License
 
 using namespace Platform;
 using namespace Windows::Foundation;
+using namespace Windows::System::Threading;
 
 #include <Windows.h>
 
@@ -101,6 +102,11 @@ template<typename TAsyncAction>
 inline void m2_await(TAsyncAction action)
 {
 	m2_await_internal(action);
+}
+
+namespace M2
+{
+	//public ref class AsyncAction sealed : IAsyncAction
 }
 
 #endif

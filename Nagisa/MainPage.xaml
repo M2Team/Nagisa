@@ -30,10 +30,17 @@
                     <TextBlock Grid.Row="1" Padding="0,2,0,0" FontSize="12" Text="100 KB/s  13.24 MB / 16.36 MB  00:00:32"/>
                 </Grid>
 
-                <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource NagisaListViewItemButtonStyle}" Content="&#xE769;" ToolTipService.ToolTip="Pause" Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusRunningToVisibilityConverter}}"/>
-                <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource NagisaListViewItemButtonStyle}" Content="&#xE768;" ToolTipService.ToolTip="Resume" Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusPausedToVisibilityConverter}}"/>
-                <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource NagisaListViewItemButtonStyle}" Content="&#xE72C;" ToolTipService.ToolTip="Restart" Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusErrorToVisibilityConverter}}"/>
-                <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource NagisaListViewItemButtonStyle}" Content="&#xE10C;" ToolTipService.ToolTip="More">
+                <Button Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource NagisaListViewItemButtonStyle}"
+                        Content="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusToOperationButtonIconConverter}}"
+                        ToolTipService.ToolTip="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusToOperationButtonToolTipConverter}}"
+                        Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusCompletedToCollapsedConverter}}"/>
+                <Button Grid.Row="0"
+                        Grid.Column="2"
+                        Style="{StaticResource NagisaListViewItemButtonStyle}"
+                        Content="&#xE10C;"
+                        ToolTipService.ToolTip="More">
                     <Button.Flyout>
                         <MenuFlyout>
                             <MenuFlyoutItem Text="Open Folder"/>
@@ -65,11 +72,20 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <AutoSuggestBox x:Uid="SearchAutoSuggestBox" Grid.Row="0" QueryIcon="Find" QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
+        <AutoSuggestBox x:Uid="SearchAutoSuggestBox" Grid.Row="0" QueryIcon="Find" QuerySubmitted="AutoSuggestBox_QuerySubmitted" TextChanged="AutoSuggestBox_TextChanged"/>
 
         <ListView x:Name="TaskList" Grid.Row="1" SelectionMode="Multiple" Loaded="ListView_Loaded" 
                   ItemContainerStyle="{StaticResource NagisaListViewItemExpandedStyle}"
-                  ItemTemplate="{StaticResource NagisaListViewItemTemplate}"/>
+                  ItemTemplate="{StaticResource NagisaListViewItemTemplate}">
+            
+            <ListView.Header>
+                <TextBlock x:Uid="TaskListNoItemsTextBlock"
+                           TextAlignment="Center" 
+                           Margin="16"
+                           Visibility="{x:Bind TaskList.ItemsSource, Mode=OneWay, Converter={StaticResource NagisaItemSourceEmptyToVisibilityConverter}}"/>
+            </ListView.Header>
+
+        </ListView>
         
         <CommandBar Grid.Row="2">
             <CommandBar.Content>

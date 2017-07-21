@@ -201,7 +201,7 @@ void App::OnActivated(IActivatedEventArgs^ e)
 		//	md->ShowAsync();
 		//}
 		//上面的代码好像有问题，会导致Nagisa从Cortana启动后闪退。
-		MessageDialog^ md = ref new MessageDialog("你好！", "Nagisa：");
+		MessageDialog^ md = ref new MessageDialog("你好！", "Nagisa");
 		md->ShowAsync();
 	}
 	auto rootFrame = dynamic_cast<Frame^>(Window::Current->Content);
