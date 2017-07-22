@@ -6,7 +6,7 @@
 
 ## Changelog
 
-**Nagisa 0.1 [Revision 24]**
+**Nagisa 0.1 [Revision 25]**
 
 - Changed
   - Add a universal and friendly user interface
