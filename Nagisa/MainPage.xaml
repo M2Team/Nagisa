@@ -43,7 +43,7 @@
                         ToolTipService.ToolTip="More">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Text="Open Folder"/>
+                            <MenuFlyoutItem Text="Open Folder" Click="MenuFlyoutItem_Click"/>
                             <MenuFlyoutItem Text="Copy Link"/>
                             <MenuFlyoutSeparator/>
                             <MenuFlyoutItem Text="Remove"/>

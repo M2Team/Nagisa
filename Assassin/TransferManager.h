@@ -37,7 +37,7 @@ namespace Assassin
 	public:
 		TransferManager();
 
-		//Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVectorView<Assassin::TransferTask^>^>^ GetCurrentDownloadsAsync();
+		Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVectorView<Assassin::TransferTask^>^>^ GetCurrentDownloadsAsync();
 
 		property String^ Version
 		{

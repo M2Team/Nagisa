@@ -6,8 +6,8 @@ using namespace Platform::Collections;
 
 using namespace concurrency;
 using namespace Assassin;
-using namespace Windows::UI::Xaml;
 using namespace Windows::Foundation;
+using namespace Windows::Foundation::Collections;
 using namespace Windows::Storage;
 using namespace Windows::Storage::AccessCache;
 
@@ -24,9 +24,19 @@ Assassin::TransferManager::TransferManager()
 	//sqlite3* db;
 	//sqlite3_open("dd", &db);
 
+	m_TaskList = ref new Vector<TransferTask^>();
+
 	m_FutureAccessList = StorageApplicationPermissions::FutureAccessList;
 
 	m_DownloadsFolder = GetDownloadsFolder();
+}
+
+IAsyncOperation<IVectorView<TransferTask^>^>^ Assassin::TransferManager::GetCurrentDownloadsAsync()
+{	
+	return create_async([this]() -> IVectorView<TransferTask^>^
+	{	
+		return m_TaskList->GetView();
+	});
 }
 
 StorageFolder^ Assassin::TransferManager::GetDownloadsFolder()

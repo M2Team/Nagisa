@@ -36,6 +36,10 @@ MainPage::MainPage()
 
 void Nagisa::MainPage::ListView_Loaded(Object^ sender, RoutedEventArgs^ e)
 {	
+	TransferManager^ a = ref new TransferManager();
+
+	//auto b = a->GetCurrentDownloadsAsync();
+	
 	Tasks = ref new Vector<TransferTask^>();
 
 	Tasks->Append(ref new TransferTask(L"Task #1", 10, TransferStatus::Running));
@@ -106,4 +110,15 @@ void Nagisa::MainPage::AutoSuggestBox_TextChanged(Windows::UI::Xaml::Controls::A
 
 		TaskList->ItemsSource = result->GetView();
 	}
+}
+
+
+void Nagisa::MainPage::MenuFlyoutItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	using namespace Windows::UI::Popups;
+	
+	TransferTask^ Task = dynamic_cast<TransferTask^>(dynamic_cast<FrameworkElement^>(sender)->DataContext);
+
+	MessageDialog^ messageDialog = ref new MessageDialog(Task->Description, L"dialogTitle");
+	messageDialog->ShowAsync();
 }
