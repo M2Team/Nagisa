@@ -20,7 +20,7 @@ namespace Nagisa
 		MainPage();
 
 	private:
-		Platform::Collections::Vector<Assassin::TransferTask^>^ Tasks = nullptr;
+		Assassin::TransferManager^ m_TransferManager = nullptr;
 
 		void ListView_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void NewTaskButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);

@@ -193,6 +193,26 @@
     <value>Start All</value>
     <comment>Start All</comment>
   </data>
+  <data name="TaskItemCopyLinkMenuItem.Text" xml:space="preserve">
+    <value>Copy Link</value>
+    <comment>Copy Link</comment>
+  </data>
+  <data name="TaskItemMoreButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>More</value>
+    <comment>More</comment>
+  </data>
+  <data name="TaskItemOpenFolderMenuItem.Text" xml:space="preserve">
+    <value>Open Folder</value>
+    <comment>Open Folder</comment>
+  </data>
+  <data name="TaskItemPropertiesMenuItem.Text" xml:space="preserve">
+    <value>Properties</value>
+    <comment>Properties</comment>
+  </data>
+  <data name="TaskItemRemoveMenuItem.Text" xml:space="preserve">
+    <value>Remove</value>
+    <comment>Remove</comment>
+  </data>
   <data name="TaskListNoItemsTextBlock.Text" xml:space="preserve">
     <value>No Downloads</value>
     <comment>No Downloads</comment>

@@ -1,3 +1,10 @@
+/******************************************************************************
+Project: Assassin
+Description: Implemention for Transfer Manager
+File Name: TransferManager.cpp
+License: The MIT License
+******************************************************************************/
+
 #include "pch.h"
 #include "TransferManager.h"
 
@@ -10,6 +17,7 @@ using namespace Windows::Foundation;
 using namespace Windows::Foundation::Collections;
 using namespace Windows::Storage;
 using namespace Windows::Storage::AccessCache;
+using namespace Windows::System::Threading;
 
 Assassin::TransferTask::TransferTask(String^ Description, float64 Progress, TransferStatus Status)
 {
@@ -19,25 +27,70 @@ Assassin::TransferTask::TransferTask(String^ Description, float64 Progress, Tran
 
 }
 
+
+
+
 Assassin::TransferManager::TransferManager()
 {
-	//sqlite3* db;
-	//sqlite3_open("dd", &db);
+	m_Tasks = ref new Vector<TransferTask^>();
 
-	m_TaskList = ref new Vector<TransferTask^>();
+	m_Tasks->Append(ref new TransferTask(L"Task #1", 10, TransferStatus::Running));
+	m_Tasks->Append(ref new TransferTask(L"Task #2", 30, TransferStatus::Error));
+	m_Tasks->Append(ref new TransferTask(L"Task #3", 60, TransferStatus::Paused));
+	m_Tasks->Append(ref new TransferTask(L"Task #4", 100, TransferStatus::Completed));
 
 	m_FutureAccessList = StorageApplicationPermissions::FutureAccessList;
 
 	m_DownloadsFolder = GetDownloadsFolder();
 }
 
-IAsyncOperation<IVectorView<TransferTask^>^>^ Assassin::TransferManager::GetCurrentDownloadsAsync()
+// The TransferManager::GetTasksAsync method gets all transfer tasks which 
+// matches the SearchFilter. If the SearchFilter not defined, it will return 
+// all transfer tasks.
+IAsyncOperation<IVectorView<TransferTask^>^>^ Assassin::TransferManager::GetTasksAsync(String ^ SearchFilter)
 {	
-	return create_async([this]() -> IVectorView<TransferTask^>^
-	{	
-		return m_TaskList->GetView();
+	return m2_create_async_operation([this, SearchFilter]() -> IVectorView<TransferTask^>^
+	{
+		IVectorView<TransferTask^>^ Result = nullptr;
+
+		if (SearchFilter == nullptr || SearchFilter->IsEmpty())
+		{
+			Result = m_Tasks->GetView();
+		}
+		else
+		{
+			Vector<TransferTask^>^ FilteredResult = ref new Vector<TransferTask^>();
+
+			for (auto Task : m_Tasks)
+			{
+				if (m2_base_winrt_find_sub_string(Task->Description, SearchFilter, true))
+				{
+					FilteredResult->Append(Task);
+				}
+			}
+
+			Result = FilteredResult->GetView();
+		}
+
+		return Result;
 	});
 }
+
+// The TransferManager::GetTasksAsync method gets all transfer tasks.
+IAsyncOperation<IVectorView<TransferTask^>^>^ Assassin::TransferManager::GetTasksAsync()
+{
+	return GetTasksAsync(nullptr);
+}
+
+
+
+
+
+
+
+
+
+
 
 StorageFolder^ Assassin::TransferManager::GetDownloadsFolder()
 {

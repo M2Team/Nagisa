@@ -1,7 +1,15 @@
+/******************************************************************************
+Project: Assassin
+Description: Definition for Transfer Manager
+File Name: TransferManager.h
+License: The MIT License
+******************************************************************************/
+
 #pragma once
 
 namespace Assassin
 {
+	// Transfer Task Status
 	public enum class TransferStatus
 	{
 		Running,
@@ -10,6 +18,7 @@ namespace Assassin
 		Completed
 	};
 	
+	// Transfer Task Object
 	public ref class TransferTask sealed
 	{
 	public:
@@ -24,6 +33,7 @@ namespace Assassin
 		property uint64 TotalBytesToReceive;	
 	};
 
+	// Transfer Manager Object
 	public ref class TransferManager sealed
 	{
 	private:
@@ -32,13 +42,19 @@ namespace Assassin
 		Windows::Storage::StorageFolder^ GetDownloadsFolder();
 
 
-		Platform::Collections::Vector<Assassin::TransferTask^>^ m_TaskList = nullptr;
+		Platform::Collections::Vector<Assassin::TransferTask^>^ m_Tasks = nullptr;
 
 	public:
 		TransferManager();
 
-		Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVectorView<Assassin::TransferTask^>^>^ GetCurrentDownloadsAsync();
+		// The TransferManager::GetTasksAsync method gets all transfer tasks 
+		// which matches the SearchFilter. If the SearchFilter not defined, it 
+		// will return all transfer tasks.
+		Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVectorView<Assassin::TransferTask^>^>^ GetTasksAsync(Platform::String^ SearchFilter);
 
+		// The TransferManager::GetTasksAsync method gets all transfer tasks.
+		Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVectorView<Assassin::TransferTask^>^>^ GetTasksAsync();
+		
 		property String^ Version
 		{
 			Platform::String^ get();

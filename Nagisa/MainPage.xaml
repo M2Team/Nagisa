@@ -36,19 +36,19 @@
                         Content="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusToOperationButtonIconConverter}}"
                         ToolTipService.ToolTip="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusToOperationButtonToolTipConverter}}"
                         Visibility="{x:Bind Status, Mode=OneWay, Converter={StaticResource NagisaStatusCompletedToCollapsedConverter}}"/>
-                <Button Grid.Row="0"
+                <Button x:Uid="TaskItemMoreButton" 
+                        Grid.Row="0"
                         Grid.Column="2"
                         Style="{StaticResource NagisaListViewItemButtonStyle}"
-                        Content="&#xE10C;"
-                        ToolTipService.ToolTip="More">
+                        Content="&#xE10C;">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Text="Open Folder" Click="MenuFlyoutItem_Click"/>
-                            <MenuFlyoutItem Text="Copy Link"/>
+                            <MenuFlyoutItem x:Uid="TaskItemOpenFolderMenuItem" Click="MenuFlyoutItem_Click"/>
+                            <MenuFlyoutItem x:Uid="TaskItemCopyLinkMenuItem"/>
                             <MenuFlyoutSeparator/>
-                            <MenuFlyoutItem Text="Remove"/>
+                            <MenuFlyoutItem x:Uid="TaskItemRemoveMenuItem"/>
                             <MenuFlyoutSeparator/>
-                            <MenuFlyoutItem Text="Properties"/>
+                            <MenuFlyoutItem x:Uid="TaskItemPropertiesMenuItem"/>
                         </MenuFlyout>
                     </Button.Flyout>
                 </Button>

@@ -22,11 +22,6 @@ OS Version: Windows 10 Build 10240 or later
 - BitTorrent Support
 - ED2K Support
 
-# 3rd-party Libraries
-- SQLite3
-  - Website: http://www.sqlite.org
-  - License: http://www.sqlite.org/copyright.html
-
 # How to contribute the code for Nagisa
 - You should send an e-mail to Mouri_Naruto@Outlook.com first.
 - If you add a larger piece of code, you can opt to make that file or set of 

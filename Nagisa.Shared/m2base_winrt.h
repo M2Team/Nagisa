@@ -1,5 +1,5 @@
 ﻿/******************************************************************************
-Project:M2-Team Common Library
+Project: M2-Team Common Library
 Description: Implemention for base functions for Windows Runtime
 File Name: m2base_winrt.h
 License: The MIT License
@@ -12,12 +12,10 @@ License: The MIT License
 
 #include <Windows.h>
 
-/*
-The m2_base_winrt_find_sub_string function finds a sub string from a source 
-string. 
-The ignore_case option can determines whether to ignore case.
-If success, it will return true.
-*/
+// The m2_base_winrt_find_sub_string function finds a sub string from a source 
+// string. 
+// The ignore_case option can determines whether to ignore case.
+// If success, it will return true.
 static bool m2_base_winrt_find_sub_string(
 	Platform::String^ source_string,
 	Platform::String^ sub_string,

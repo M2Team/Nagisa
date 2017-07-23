@@ -6,7 +6,7 @@
 
 ## Changelog
 
-**Nagisa 0.1 [Revision 25]**
+**Nagisa 0.1 [Revision 26]**
 
 - Changed
   - Add a universal and friendly user interface
@@ -17,7 +17,10 @@
     - The SearchBox in the main user interface will show the search result when
 	  you inputing or after click search button.
 	- Using a modified style ContentDialog to implement other user interfaces
-  - Add M2-Team Common Library for sharing source code.
+	- Using ProgressBar with colors to represent task status (Green represents 
+	  Running. Orange represents Paused. Red represents Error. Transparent 
+	  represents Completed.)
+  - Add Nagisa.Shared project for sharing source code.
     - Add implementions about synchronizing the version number
 	  (Nagisa.Shared\Nagisa.Version.h)
     - Add implementions about finding a sub string for windows runtime
@@ -26,9 +29,14 @@
 	  (Nagisa.Shared\m2base.h)
     - Add implementions about waiting asynchronous call
 	  (Nagisa.Shared\m2async.h)
-  - Add a transfer engine for Nagisa called Assassin
-    - Add sqlite3 library for saving configurations, but I was wondering if it 
-	  would be worthwhile.
+    - Add implementions about creating a IAsyncOperation Windows Runtime 
+	  asynchronous construct based on a user supplied lambda or function 
+	  object. (Nagisa.Shared\m2async.h)
+  - Add Assassin Library, the transfer engine of project Nagisa
+    - Add BackgroundWorker class to do the actual operation in the background
+	- Add TransferStatus enum to represent the status of a transfer task
+	- Add TransferTask class to represent a transfer task
+    - Add TransferManager class to manage the transfer tasks
 
 - Notice
   - This is the Initial Release

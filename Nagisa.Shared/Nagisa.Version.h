@@ -1,5 +1,5 @@
 ﻿/******************************************************************************
-Project: Nagisa
+Project: Nagisa.Shared
 Description: Nagisa Version Definition
 File Name: Nagisa.Version.h
 License: The MIT License
@@ -12,7 +12,7 @@ License: The MIT License
 
 #define NAGISA_VER_MAJOR 0
 #define NAGISA_VER_MINOR 1
-#define NAGISA_VER_BUILD 25
+#define NAGISA_VER_BUILD 26
 #define NAGISA_VER_REV 0
 #endif
 

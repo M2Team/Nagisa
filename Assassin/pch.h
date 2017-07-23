@@ -3,8 +3,8 @@
 #include <collection.h>
 #include <ppltasks.h>
 
-#include <m2async.h>
-
 #include <Nagisa.Version.h>
 
-#include <ThirdParty\sqlite3\sqlite3.h>
+#include <m2async.h>
+#include <m2base.h>
+#include <m2base_winrt.h>

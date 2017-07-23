@@ -193,6 +193,26 @@
     <value>全部开始</value>
     <comment>Start All</comment>
   </data>
+  <data name="TaskItemCopyLinkMenuItem.Text" xml:space="preserve">
+    <value>复制链接</value>
+    <comment>Copy Link</comment>
+  </data>
+  <data name="TaskItemMoreButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>更多</value>
+    <comment>More</comment>
+  </data>
+  <data name="TaskItemOpenFolderMenuItem.Text" xml:space="preserve">
+    <value>打开目录</value>
+    <comment>Open Folder</comment>
+  </data>
+  <data name="TaskItemPropertiesMenuItem.Text" xml:space="preserve">
+    <value>属性</value>
+    <comment>Properties</comment>
+  </data>
+  <data name="TaskItemRemoveMenuItem.Text" xml:space="preserve">
+    <value>移除</value>
+    <comment>Remove</comment>
+  </data>
   <data name="TaskListNoItemsTextBlock.Text" xml:space="preserve">
     <value>没有下载项</value>
     <comment>No Downloads</comment>
