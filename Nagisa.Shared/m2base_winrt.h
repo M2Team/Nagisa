@@ -21,7 +21,7 @@ static bool m2_base_winrt_find_sub_string(
 	Platform::String^ sub_string,
 	bool ignore_case)
 {
-	return (FindNLSStringEx(
+	return (::FindNLSStringEx(
 		nullptr,
 		(ignore_case ? NORM_IGNORECASE : 0) | FIND_FROMSTART,
 		source_string->Data(),

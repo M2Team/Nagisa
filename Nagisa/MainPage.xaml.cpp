@@ -23,9 +23,11 @@ using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
 using namespace Assassin;
+using namespace concurrency;
 using namespace Platform::Collections;
 using namespace Windows::System::Threading;
 using namespace Windows::UI::Core;
+using namespace Windows::UI::Popups;
 
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -33,23 +35,24 @@ using namespace Windows::UI::Core;
 MainPage::MainPage()
 {
 	InitializeComponent();
-}
 
-void Nagisa::MainPage::ListView_Loaded(Object^ sender, RoutedEventArgs^ e)
-{	
-	m_TransferManager = ref new TransferManager();
-
-	ThreadPool::RunAsync(ref new WorkItemHandler([this](IAsyncAction^ workItem)
+	std::thread([this]()
 	{
-		auto tasks = m2_await(m_TransferManager->GetTasksAsync());
+		m_TransferManager = ref new TransferManager();
+
+		IVectorView<TransferTask^>^ tasks = m2_await(m_TransferManager->GetTasksAsync());
 
 		this->Dispatcher->RunAsync(
 			CoreDispatcherPriority::Normal, ref new DispatchedHandler([this, tasks]()
 		{
 			TaskList->ItemsSource = tasks;
 		}));
+	}).detach();
+}
 
-	}));
+void Nagisa::MainPage::ListView_Loaded(Object^ sender, RoutedEventArgs^ e)
+{
+	
 }
 
 void Nagisa::MainPage::NewTaskButton_Click(Object^ sender, RoutedEventArgs^ e)
@@ -58,34 +61,17 @@ void Nagisa::MainPage::NewTaskButton_Click(Object^ sender, RoutedEventArgs^ e)
 	dialog->ShowAsync();
 }
 
-void Nagisa::MainPage::SettingsAndAboutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+void Nagisa::MainPage::SettingsAndAboutButton_Click(Object^ sender, RoutedEventArgs^ e)
 {
 	SettingsAndAboutDialog^ dialog = ref new SettingsAndAboutDialog();
 	dialog->ShowAsync();
 }
 
-void Nagisa::MainPage::AutoSuggestBox_QuerySubmitted(Windows::UI::Xaml::Controls::AutoSuggestBox^ sender, Windows::UI::Xaml::Controls::AutoSuggestBoxQuerySubmittedEventArgs^ args)
-{
-	String^ SearchFilter = sender->Text;
-
-	ThreadPool::RunAsync(ref new WorkItemHandler([this, SearchFilter](IAsyncAction^ workItem)
-	{
-		auto result = m2_await(m_TransferManager->GetTasksAsync(SearchFilter));
-
-		this->Dispatcher->RunAsync(
-			CoreDispatcherPriority::Normal, ref new DispatchedHandler([this, result]()
-		{
-			TaskList->ItemsSource = result;
-		}));
-
-	}));
-}
-
-void Nagisa::MainPage::AutoSuggestBox_TextChanged(Windows::UI::Xaml::Controls::AutoSuggestBox^ sender, Windows::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs^ args)
+void Nagisa::MainPage::AutoSuggestBox_Search(AutoSuggestBox^ sender, DependencyObject^ args)
 {
 	String^ SearchFilter = sender->Text;
 	
-	ThreadPool::RunAsync(ref new WorkItemHandler([this, SearchFilter](IAsyncAction^ workItem)
+	std::thread([this, SearchFilter]()
 	{
 		auto result = m2_await(m_TransferManager->GetTasksAsync(SearchFilter));
 
@@ -94,15 +80,13 @@ void Nagisa::MainPage::AutoSuggestBox_TextChanged(Windows::UI::Xaml::Controls::A
 		{
 			TaskList->ItemsSource = result;
 		}));
-
-	}));
+	}).detach();
 }
+
 
 
 void Nagisa::MainPage::MenuFlyoutItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	using namespace Windows::UI::Popups;
-	
 	TransferTask^ Task = dynamic_cast<TransferTask^>(dynamic_cast<FrameworkElement^>(sender)->DataContext);
 
 	auto a = TaskList->SelectedItems;

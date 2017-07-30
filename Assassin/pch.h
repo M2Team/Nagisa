@@ -3,6 +3,8 @@
 #include <collection.h>
 #include <ppltasks.h>
 
+#include <thread>
+
 #include <Nagisa.Version.h>
 
 #include <m2async.h>

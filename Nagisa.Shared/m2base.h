@@ -20,14 +20,13 @@ License: The MIT License
 #include <string>
 #include <Windows.h>
 
-
 // The m2_base_utf8_to_utf16 function converts from UTF-8 string to UTF-16 
 // string.
 static std::wstring m2_base_utf8_to_utf16(const std::string& utf8_string)
 {
 	std::wstring utf16_string;
 
-	int utf16_string_length = MultiByteToWideChar(
+	int utf16_string_length = ::MultiByteToWideChar(
 		CP_UTF8,
 		0,
 		utf8_string.data(),
@@ -37,7 +36,7 @@ static std::wstring m2_base_utf8_to_utf16(const std::string& utf8_string)
 	if (utf16_string_length > 0)
 	{
 		utf16_string.resize(utf16_string_length);
-		MultiByteToWideChar(
+		::MultiByteToWideChar(
 			CP_UTF8,
 			0,
 			utf8_string.data(),
@@ -56,7 +55,7 @@ static std::string m2_base_utf16_to_utf8(const std::wstring& utf16_string)
 {
 	std::string utf8_string;
 
-	int utf8_string_length = WideCharToMultiByte(
+	int utf8_string_length = ::WideCharToMultiByte(
 		CP_UTF8,
 		0,
 		utf16_string.data(),
@@ -68,7 +67,7 @@ static std::string m2_base_utf16_to_utf8(const std::wstring& utf16_string)
 	if (utf8_string_length > 0)
 	{
 		utf8_string.resize(utf8_string_length);
-		WideCharToMultiByte(
+		::WideCharToMultiByte(
 			CP_UTF8,
 			0,
 			utf16_string.data(),

@@ -72,7 +72,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <AutoSuggestBox x:Uid="SearchAutoSuggestBox" Grid.Row="0" QueryIcon="Find" QuerySubmitted="AutoSuggestBox_QuerySubmitted" TextChanged="AutoSuggestBox_TextChanged"/>
+        <AutoSuggestBox x:Uid="SearchAutoSuggestBox" Grid.Row="0" QueryIcon="Find" QuerySubmitted="AutoSuggestBox_Search" TextChanged="AutoSuggestBox_Search"/>
 
         <ListView x:Name="TaskList" Grid.Row="1" SelectionMode="Multiple" Loaded="ListView_Loaded" 
                   ItemContainerStyle="{StaticResource NagisaListViewItemExpandedStyle}"

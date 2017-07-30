@@ -2,14 +2,36 @@
 
 ## Notice
 - This is the changelog about project Nagisa.
-- For more information on the names of persons mentioned here, please read People.md.
+- For more information on the names of persons mentioned here, please read 
+  People.md.
 
 ## Changelog
 
-**Nagisa 0.1 [Revision 26]**
+**Nagisa 0.1 Stage 2[Revision 27]**
 
 - Changed
-  - Add a universal and friendly user interface
+  - Nagisa (User Experience)
+    - Improve the performance by using asynchronous call in Main UI constructor
+    - Reduce the binary size via using std::thread instead of 
+	  concurrency::create_task()
+	- Merge AutoSuggestBox_QuerySubmitted and AutoSuggestBox_TextChanged event 
+	  to AutoSuggestBox_Search event in Main UI 
+  - Nagisa.Shared (For sharing source code)
+    - Improve implementions about waiting asynchronous call
+	  (Nagisa.Shared\m2async.h)
+	- Improve implementions about creating a IAsyncOperation Windows Runtime 
+	  asynchronous construct based on a user supplied lambda or function 
+	  object. (Nagisa.Shared\m2async.h)
+  - Assassin (The transfer engine)
+    - Add TransferManager::GetTasksAsync() for get all transfer tasks or search
+	  specific transfer tasks.
+- Notice
+  - None
+
+**Nagisa 0.1 Stage 1[Revision 26]**
+
+- Changed
+  - Nagisa (User Experience)
     - Added a more recognizable icon
     - The color themes follow the Windows settings
     - Add multi languages support (Now support Simplified Chinese and English)
@@ -20,7 +42,8 @@
 	- Using ProgressBar with colors to represent task status (Green represents 
 	  Running. Orange represents Paused. Red represents Error. Transparent 
 	  represents Completed.)
-  - Add Nagisa.Shared project for sharing source code.
+	- Add "New Task" and "Settings & About" Dialog
+  - Nagisa.Shared (For sharing source code)
     - Add implementions about synchronizing the version number
 	  (Nagisa.Shared\Nagisa.Version.h)
     - Add implementions about finding a sub string for windows runtime
@@ -32,7 +55,7 @@
     - Add implementions about creating a IAsyncOperation Windows Runtime 
 	  asynchronous construct based on a user supplied lambda or function 
 	  object. (Nagisa.Shared\m2async.h)
-  - Add Assassin Library, the transfer engine of project Nagisa
+  - Assassin (The transfer engine)
     - Add BackgroundWorker class to do the actual operation in the background
 	- Add TransferStatus enum to represent the status of a transfer task
 	- Add TransferTask class to represent a transfer task

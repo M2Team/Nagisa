@@ -27,9 +27,6 @@ Assassin::TransferTask::TransferTask(String^ Description, float64 Progress, Tran
 
 }
 
-
-
-
 Assassin::TransferManager::TransferManager()
 {
 	m_Tasks = ref new Vector<TransferTask^>();
@@ -48,7 +45,7 @@ Assassin::TransferManager::TransferManager()
 // matches the SearchFilter. If the SearchFilter not defined, it will return 
 // all transfer tasks.
 IAsyncOperation<IVectorView<TransferTask^>^>^ Assassin::TransferManager::GetTasksAsync(String ^ SearchFilter)
-{	
+{		
 	return m2_create_async_operation([this, SearchFilter]() -> IVectorView<TransferTask^>^
 	{
 		IVectorView<TransferTask^>^ Result = nullptr;

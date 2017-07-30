@@ -118,21 +118,24 @@ void App::OnLaunched(LaunchActivatedEventArgs^ e)
 	Install Voice Command Definition File if you want to use Nagisa via Cortana
 	or update the phrase list for use Nagisa via Cortana better.
 	*/
-	try
+	std::thread([this]()
 	{
-		StorageFolder^ appFolder = Package::Current->InstalledLocation;
-		StorageFile^ vcdStorageFile = m2_await(appFolder->GetFileAsync(L"NagisaVoiceCommands.xml"));
-		m2_await(VoiceCommandDefinitionManager::InstallCommandDefinitionsFromStorageFileAsync(vcdStorageFile));
-	}
-	catch (Exception^ ex)
-	{
-		ResourceLoader^ resourceLoader = ResourceLoader::GetForCurrentView();
+		try
+		{
+			StorageFolder^ appFolder = Package::Current->InstalledLocation;
+			StorageFile^ vcdStorageFile = m2_await(appFolder->GetFileAsync(L"NagisaVoiceCommands.xml"));
+			m2_await(VoiceCommandDefinitionManager::InstallCommandDefinitionsFromStorageFileAsync(vcdStorageFile));
+		}
+		catch (Exception^ ex)
+		{
+			ResourceLoader^ resourceLoader = ResourceLoader::GetForCurrentView();
 
-		String^ dialogTitle = resourceLoader->GetString(L"ErrorText_MessageDialog_Title");
-		String^ dialogText = resourceLoader->GetString(L"ErrorText_FailedToLoadVCDFile");
-		MessageDialog^ messageDialog = ref new MessageDialog(dialogText, dialogTitle);
-		messageDialog->ShowAsync();
-	}
+			String^ dialogTitle = resourceLoader->GetString(L"ErrorText_MessageDialog_Title");
+			String^ dialogText = resourceLoader->GetString(L"ErrorText_FailedToLoadVCDFile");
+			MessageDialog^ messageDialog = ref new MessageDialog(dialogText, dialogTitle);
+			messageDialog->ShowAsync();
+		}
+	}).detach();
 }
 
 /// <summary>

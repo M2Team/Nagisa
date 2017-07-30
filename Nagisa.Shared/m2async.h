@@ -16,19 +16,32 @@ using namespace Windows::System::Threading;
 
 #include <Windows.h>
 
+#include <thread>
 
 namespace M2
 {
 	namespace Helpers
 	{
 		template<class T>
-		struct RemoveCXReference
+		struct RemoveReference
 		{
 			typedef T Type;
 		};
 
 		template<class T>
-		struct RemoveCXReference<T^>
+		struct RemoveReference<T&>
+		{
+			typedef T Type;
+		};
+
+		template<class T>
+		struct RemoveReference<T&&>
+		{
+			typedef T Type;
+		};
+
+		template<class T>
+		struct RemoveReference<T^>
 		{
 			typedef T Type;
 		};
@@ -43,97 +56,54 @@ namespace M2
 		};
 	}
 
-	// The M2::AsyncWaitInternal function tries to wait asynchronous call and 
-	// return nothing.
-	// Throw a COM exception if the function fails.
-	template<typename TAsyncResult>
-	inline void AsyncWaitInternal(TAsyncResult result)
-	{
-		// Create an event object for wait the asynchronous call.
-		HANDLE hEvent = CreateEventExW(nullptr, nullptr, 0, EVENT_ALL_ACCESS);
-		if (nullptr != hEvent)
-		{
-			// Set event signaled to end wait when completed.
-			result->Completed =
-				ref new Helpers::RemoveCXReference<decltype(result->Completed)>::Type(
-					[hEvent](IAsyncInfo^ asyncInfo, AsyncStatus asyncStatus)
-			{
-				UNREFERENCED_PARAMETER(asyncInfo);
-				UNREFERENCED_PARAMETER(asyncStatus);
-
-				if (asyncStatus != AsyncStatus::Started)
-				{
-					SetEvent(hEvent);
-				}		
-			});
-
-			// Wait event object signaled.
-			WaitForSingleObjectEx(hEvent, INFINITE, FALSE);
-
-			// Close the event object handle before return.
-			CloseHandle(hEvent);
-		}
-		else
-		{
-			// Throw a COM exception if failed to create an event object.
-			throw ref new COMException(__HRESULT_FROM_WIN32(GetLastError()));
-		}
-
-		// Throw a COM exception if asynchronous call failed.
-		if (AsyncStatus::Error == result->Status)
-		{
-			throw ref new COMException(result->ErrorCode.Value);
-		}
-	}
-
 	// Implemention of IAsyncOperation interface
 	template<typename TFunction>
 	ref class AsyncOperationImpl sealed : IAsyncOperation<typename Helpers::AsyncLambdaTypeTraits<TFunction>::_ReturnType>
 	{
 	private:
-		IAsyncAction^ m_action = nullptr;
+		AsyncStatus m_Status;
+		HResult m_ErrorCode;
+		uint32 m_Id;
+
 		typename Helpers::AsyncLambdaTypeTraits<TFunction>::_ReturnType m_result = nullptr;
+		AsyncOperationCompletedHandler<typename Helpers::AsyncLambdaTypeTraits<TFunction>::_ReturnType>^ m_CompletedHandler = nullptr;
 
 	internal:
 		AsyncOperationImpl<TFunction>(const TFunction& function)
+			: m_Status(AsyncStatus::Started), m_Id(1)
 		{
-			m_action = ThreadPool::RunAsync(ref new WorkItemHandler([this, function](IAsyncAction^ workItem)
+			m_ErrorCode.Value = S_OK;
+			
+			std::thread([this, function]()
 			{
 				m_result = function();
-			}));
 
-			// Call completed handler when completed.
-			m_action->Completed =
-				ref new Helpers::RemoveCXReference<decltype(m_action->Completed)>::Type(
-					[this](IAsyncInfo^ asyncInfo, AsyncStatus asyncStatus)
-			{
-				UNREFERENCED_PARAMETER(asyncInfo);
-				UNREFERENCED_PARAMETER(asyncStatus);
+				m_Status = AsyncStatus::Completed;
 
-				if (Completed)
+				if (nullptr != m_CompletedHandler)
 				{
-					Completed->Invoke(this, Status);
+					m_CompletedHandler->Invoke(this, Status);
 				}
-			});
+			}).detach();
 		}
 
 	public:
 
 		virtual void Cancel()
 		{
-			m_action->Cancel();
+
 		}
 
 		virtual void Close()
 		{
-			m_action->Close();
+			
 		}
 
 		virtual property HResult ErrorCode
 		{
 			HResult get()
 			{
-				return m_action->ErrorCode;
+				return m_ErrorCode;
 			}
 		}
 
@@ -141,7 +111,7 @@ namespace M2
 		{
 			uint32 get()
 			{
-				return m_action->Id;
+				return m_Id;
 			}
 		}
 
@@ -149,7 +119,7 @@ namespace M2
 		{
 			AsyncStatus get()
 			{
-				return m_action->Status;
+				return m_Status;
 			}
 		}
 
@@ -158,34 +128,31 @@ namespace M2
 			return m_result;
 		}
 
-		virtual property AsyncOperationCompletedHandler<typename Helpers::AsyncLambdaTypeTraits<TFunction>::_ReturnType>^ Completed;
+		virtual property AsyncOperationCompletedHandler<typename Helpers::AsyncLambdaTypeTraits<TFunction>::_ReturnType>^ Completed
+		{
+			AsyncOperationCompletedHandler<typename Helpers::AsyncLambdaTypeTraits<TFunction>::_ReturnType>^ get()
+			{
+				return m_CompletedHandler;
+			}
+
+			void set(AsyncOperationCompletedHandler<typename Helpers::AsyncLambdaTypeTraits<TFunction>::_ReturnType>^ value)
+			{
+				m_CompletedHandler = value;
+
+				if (AsyncStatus::Started != m_Status)
+				{
+					std::thread([this]()
+					{
+						if (nullptr != m_CompletedHandler)
+						{
+							m_CompletedHandler->Invoke(this, Status);
+						}
+					}).detach();
+				}
+			}
+		}
 	};
-}
 
-// The m2_await function tries to wait asynchronous call and return result.
-// Throw a COM exception if the function fails.
-template<typename TResult>
-inline TResult m2_await(IAsyncOperation<TResult>^ operation)
-{
-	M2::AsyncWaitInternal(operation);
-	return operation->GetResults();
-}
-
-// The m2_await function tries to wait asynchronous call and return result.
-// Throw a COM exception if the function fails.
-template<typename TResult, typename TProgress>
-inline TResult m2_await(IAsyncOperationWithProgress<TResult, TProgress>^ operation)
-{
-	M2::AsyncWaitInternal(operation);
-	return operation->GetResults();
-}
-
-// The m2_await function tries to wait asynchronous call and return nothing.
-// Throw a COM exception if the function fails.
-template<typename TAsyncAction>
-inline void m2_await(TAsyncAction action)
-{
-	M2::AsyncWaitInternal(action);
 }
 
 // The m2_create_async_operation function creates a IAsyncOperation Windows 
@@ -198,6 +165,33 @@ IAsyncOperation<typename M2::Helpers::AsyncLambdaTypeTraits<TFunction>::_ReturnT
 	return ref new M2::AsyncOperationImpl<TFunction>(function);
 }
 
+// The m2_await function tries to wait asynchronous call and return result or 
+// nothing. The function will throw a COM exception if the function fails.
+template<typename TAsync>
+inline auto m2_await(TAsync async) -> decltype(async->GetResults())
+{
+	// Save the status of asynchronous call.
+	AsyncStatus asyncStatus = AsyncStatus::Started;
 
+	// Wait the asynchronous call until asyncStatus is not Started via calling 
+	// SleepEx() for sleep 50ms every time because Microsoft says that all UWP 
+	// APIs that can't guarantee to complete within 50ms has been made 
+	// asynchronous and its name suffixed with Async. 
+	while (AsyncStatus::Started == asyncStatus)
+	{
+		::SleepEx(50, FALSE);
+
+		asyncStatus = async->Status;
+	}
+
+	// Throw a COM exception if asynchronous call failed.
+	if (AsyncStatus::Error == asyncStatus)
+	{
+		throw COMException::CreateException(async->ErrorCode.Value);
+	}
+
+	// Return the result of asynchronous call.
+	return async->GetResults();
+}
 
 #endif

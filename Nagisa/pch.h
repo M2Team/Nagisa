@@ -10,6 +10,8 @@
 
 #include "App.xaml.h"
 
-#include <m2async.h>
+#include <thread>
 
+#include <m2base.h>
 #include <m2base_winrt.h>
+#include <m2async.h>
