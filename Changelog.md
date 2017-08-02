@@ -7,7 +7,7 @@
 
 ## Changelog
 
-**Nagisa 0.1 Stage 2[Revision 27]**
+**Nagisa 0.1 Stage 2 [Revision 28]**
 
 - Changed
   - Nagisa (User Experience)
@@ -22,13 +22,15 @@
 	- Improve implementions about creating a IAsyncOperation Windows Runtime 
 	  asynchronous construct based on a user supplied lambda or function 
 	  object. (Nagisa.Shared\m2async.h)
-  - Assassin (The transfer engine)
-    - Add TransferManager::GetTasksAsync() for get all transfer tasks or search
-	  specific transfer tasks.
+  - Assassin (Transfer Engine)
+    - Remove all implements to header file for writing code like C#
+    - Add TransferManager::GetTasksAsync() for getting all transfer tasks or 
+	  search specific transfer tasks.
+	- Add TransferManager::Version property for getting Nagisa's version.
 - Notice
   - None
 
-**Nagisa 0.1 Stage 1[Revision 26]**
+**Nagisa 0.1 Stage 1 [Revision 26]**
 
 - Changed
   - Nagisa (User Experience)
@@ -55,7 +57,7 @@
     - Add implementions about creating a IAsyncOperation Windows Runtime 
 	  asynchronous construct based on a user supplied lambda or function 
 	  object. (Nagisa.Shared\m2async.h)
-  - Assassin (The transfer engine)
+  - Assassin (Transfer Engine)
     - Add BackgroundWorker class to do the actual operation in the background
 	- Add TransferStatus enum to represent the status of a transfer task
 	- Add TransferTask class to represent a transfer task
