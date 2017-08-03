@@ -19,9 +19,10 @@ namespace Nagisa
 	public:
 		MainPage();
 
-	private:
+	internal:
 		Assassin::TransferManager^ m_TransferManager = nullptr;
 
+	private:
 		void ListView_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void NewTaskButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void SettingsAndAboutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);

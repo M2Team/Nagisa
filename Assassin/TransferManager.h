@@ -17,13 +17,13 @@ using namespace Windows::Storage;
 using namespace Windows::Storage::AccessCache;
 
 // The NAGetVersion function gets the version.
-String^ NAGetVersion()
+inline String^ NAGetVersion()
 {
 	return NAGISA_VERSION_STRING;
 }
 
 // The NAGetDefaultUserAgentString function gets the default User Agent string.
-String^ NAGetDefaultUserAgentString()
+inline String^ NAGetDefaultUserAgentString()
 {
 	return
 		L"Mozilla/5.0 "

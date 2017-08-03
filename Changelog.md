@@ -7,7 +7,7 @@
 
 ## Changelog
 
-**Nagisa 0.1 Stage 2 [Revision 29]**
+**Nagisa 0.1 Stage 2 [Revision 30]**
 
 - Changed
   - Nagisa (User Experience)
@@ -17,6 +17,7 @@
     - Merge AutoSuggestBox_QuerySubmitted and AutoSuggestBox_TextChanged event 
       to AutoSuggestBox_Search event in Main UI      
     - The "New Task" Dialog has been initially constructed
+    - The "Settings & About" Dialog has been initially constructed
   - Nagisa.Shared (For sharing source code)
     - Improve implementions about waiting asynchronous call
       (Nagisa.Shared\m2async.h)
@@ -31,6 +32,8 @@
     - Add NAGetVersion function for getting the version.
     - Add NAGetDefaultUserAgentString function for getting the default User 
       Agent string.
+
+
 - Notice
   - None
 

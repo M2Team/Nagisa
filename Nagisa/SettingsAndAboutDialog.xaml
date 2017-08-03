@@ -9,25 +9,25 @@
     mc:Ignorable="d"
     PrimaryButtonClick="OKButtonClick"
     SecondaryButtonClick="CancelButtonClick"
-    Style="{StaticResource NagisaContentDialogStyle}">
+    Style="{StaticResource NagisaContentDialogStyle}"
+    Loaded="ContentDialog_Loaded">
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Vertical">
-                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="默认下载目录"/>
+                <TextBlock x:Uid="DefaultDownloadFolderTitle" Style="{StaticResource SubtitleTextBlockStyle}"/>
                 <TextBlock Text="C:\Users\Mouri\Downloads"/>
-                <Button Content="修改"/>
+                <Button x:Uid="DefaultDownloadFolderModifyButton"/>
             </StackPanel>
             
             <StackPanel Orientation="Vertical">
-                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="用户代理"/>
-                <TextBox Text="Mozilla/5.0 (Windows NT 10.0; Nagisa/0.1.28) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240"/>
-                <Button Content="恢复默认设置"/>
+                <TextBlock x:Uid="RestoreDefaultUserAgentTitle" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                <TextBox x:Name="RestoreDefaultUserAgentTextBox"/>
+                <Button x:Uid="RestoreDefaultUserAgentButton" Click="RestoreDefaultUserAgentButton_Click"/>
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
-                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="关于此应用" />
-                <TextBlock Text="M2-Team Nagisa 0.1.23"/>
-                <TextBlock Text="© M2-Team. All rights reserved."/>
+                <TextBlock x:Uid="AboutNagisaTitle" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                <TextBlock x:Name="AboutNagisaText"/>
             </StackPanel>
                 
         </StackPanel>

@@ -64,6 +64,7 @@ void Nagisa::MainPage::NewTaskButton_Click(Object^ sender, RoutedEventArgs^ e)
 void Nagisa::MainPage::SettingsAndAboutButton_Click(Object^ sender, RoutedEventArgs^ e)
 {
 	SettingsAndAboutDialog^ dialog = ref new SettingsAndAboutDialog();
+	dialog->m_TransferManager = this->m_TransferManager;
 	dialog->ShowAsync();
 }
 

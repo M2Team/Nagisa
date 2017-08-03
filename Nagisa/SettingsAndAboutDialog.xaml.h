@@ -14,8 +14,14 @@ namespace Nagisa
 	{
 	public:
 		SettingsAndAboutDialog();
+
+	internal:
+		Assassin::TransferManager^ m_TransferManager = nullptr;
+
 	private:
 		void OKButtonClick(Windows::UI::Xaml::Controls::ContentDialog^ sender, Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs^ args);
 		void CancelButtonClick(Windows::UI::Xaml::Controls::ContentDialog^ sender, Windows::UI::Xaml::Controls::ContentDialogButtonClickEventArgs^ args);
+		void ContentDialog_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void RestoreDefaultUserAgentButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

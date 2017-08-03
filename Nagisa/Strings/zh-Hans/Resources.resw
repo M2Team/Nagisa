@@ -117,9 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutNagisaTitle.Text" xml:space="preserve">
+    <value>关于此应用</value>
+    <comment>About this app</comment>
+  </data>
   <data name="CancelAppBarButton.Label" xml:space="preserve">
     <value>取消</value>
     <comment>Cancel</comment>
+  </data>
+  <data name="DefaultDownloadFolderModifyButton.Content" xml:space="preserve">
+    <value>修改</value>
+    <comment>Modify</comment>
+  </data>
+  <data name="DefaultDownloadFolderTitle.Text" xml:space="preserve">
+    <value>默认下载目录</value>
+    <comment>Default Download Folder</comment>
   </data>
   <data name="DownloadSourceSettingImportButton.Content" xml:space="preserve">
     <value>导入</value>
@@ -192,6 +204,14 @@
   <data name="PauseAllAppBarButton.Label" xml:space="preserve">
     <value>全部暂停</value>
     <comment>Pause All</comment>
+  </data>
+  <data name="RestoreDefaultUserAgentButton.Content" xml:space="preserve">
+    <value>恢复默认</value>
+    <comment>Restore Default</comment>
+  </data>
+  <data name="RestoreDefaultUserAgentTitle.Text" xml:space="preserve">
+    <value>用户代理</value>
+    <comment>User Agent</comment>
   </data>
   <data name="SavePathSettingBrowseButton.Content" xml:space="preserve">
     <value>浏览</value>
