@@ -10,8 +10,26 @@
     PrimaryButtonClick="OKButtonClick"
     SecondaryButtonClick="CancelButtonClick"
     Style="{StaticResource NagisaContentDialogStyle}">
-    <Grid>
-        
-    </Grid>
 
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Uid="DownloadSourceSettingTitle" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox x:Uid="DownloadSourceSettingTextBox" Text="https://www.m2soft.com/NagisaDemo.appx"/>
+            <Button x:Uid="DownloadSourceSettingImportButton"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Uid="FileNameSettingTitle" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox Text="NagisaDemo.appx"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Uid="SavePathSettingTitle" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBox x:Uid="SavePathSettingTextBox" IsReadOnly="True" Text="C:\Users\Mouri\Downloads"/>
+            <Button x:Uid="SavePathSettingBrowseButton"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Uid="ExpectedSizeTitle" Style="{StaticResource SubtitleTextBlockStyle}"/>
+            <TextBlock Text="102 KB"/>
+        </StackPanel>
+    </StackPanel>
+    
 </ContentDialog>

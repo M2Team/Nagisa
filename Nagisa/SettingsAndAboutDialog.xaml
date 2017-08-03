@@ -13,13 +13,19 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Vertical">
-                <TextBlock FontSize="20" Margin="0,0,0,4" Text="默认下载目录"/>
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="默认下载目录"/>
                 <TextBlock Text="C:\Users\Mouri\Downloads"/>
                 <Button Content="修改"/>
             </StackPanel>
+            
+            <StackPanel Orientation="Vertical">
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="用户代理"/>
+                <TextBox Text="Mozilla/5.0 (Windows NT 10.0; Nagisa/0.1.28) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240"/>
+                <Button Content="恢复默认设置"/>
+            </StackPanel>
 
             <StackPanel Orientation="Vertical">
-                <TextBlock FontSize="20" Margin="0,16,0,4" Text="关于此应用" />
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="关于此应用" />
                 <TextBlock Text="M2-Team Nagisa 0.1.23"/>
                 <TextBlock Text="© M2-Team. All rights reserved."/>
             </StackPanel>

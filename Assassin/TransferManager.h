@@ -7,12 +7,32 @@ License: The MIT License
 
 #pragma once
 
+#include "pch.h"
+
 using namespace Platform;
 using namespace Platform::Collections;
 using namespace Windows::Foundation;
 using namespace Windows::Foundation::Collections;
 using namespace Windows::Storage;
 using namespace Windows::Storage::AccessCache;
+
+// The NAGetVersion function gets the version.
+String^ NAGetVersion()
+{
+	return NAGISA_VERSION_STRING;
+}
+
+// The NAGetDefaultUserAgentString function gets the default User Agent string.
+String^ NAGetDefaultUserAgentString()
+{
+	return
+		L"Mozilla/5.0 "
+		L"(Windows NT 10.0; Nagisa/" NAGISA_VERSION_STRING L") "
+		L"AppleWebKit/537.36 (KHTML, like Gecko) "
+		L"Chrome/42.0.2311.135 "
+		L"Safari/537.36 "
+		L"Edge/12.10240";
+}
 
 namespace Assassin
 {
@@ -71,6 +91,17 @@ namespace Assassin
 	public:
 		TransferManager()
 		{
+			/*auto applicationData = ApplicationData::Current;
+			auto version = applicationData->Version;
+
+			version = version;
+			
+			ApplicationDataContainer^ localSettings = ApplicationData::Current->LocalSettings;
+			ApplicationDataContainer^ container = localSettings->CreateContainer("Nagisa", ApplicationDataCreateDisposition::Always);*/
+
+			
+			
+			
 			m_Tasks = ref new Vector<TransferTask^>();
 
 			m_Tasks->Append(ref new TransferTask(L"Task #1", 10, TransferStatus::Running));
@@ -83,12 +114,32 @@ namespace Assassin
 			m_DownloadsFolder = GetDownloadsFolder();
 		}
 
-		// The TransferManager::GetTasksAsync property gets Nagisa's Version
+		// The TransferManager::GetTasksAsync property gets the version
 		property String^ Version
 		{
 			String^ get()
 			{
-				return NAGISA_VERSION_STRING;
+				return ::NAGetVersion();
+			}
+		}
+
+		// Add TransferManager::UserAgent property gets or sets the User Agent 
+		// string.
+		property String^ UserAgent
+		{
+			String^ get()
+			{
+				return ::NAGetDefaultUserAgentString();
+			}
+
+			/*
+			
+			    - Add TransferManager::UserAgent property for getting or setting the User Agent string.
+			*/
+
+			void set(String^ value)
+			{
+
 			}
 		}
 
@@ -129,20 +180,6 @@ namespace Assassin
 		IAsyncOperation<IVectorView<TransferTask^>^>^ GetTasksAsync()
 		{
 			return GetTasksAsync(nullptr);
-		}	
-
-		property String^ UserAgent
-		{
-			String^ get()
-			{
-				return
-					L"Mozilla/5.0 "
-					L"(Windows NT 10.0; Nagisa/" NAGISA_VERSION_STRING L") "
-					L"AppleWebKit/537.36 (KHTML, like Gecko) "
-					L"Chrome/42.0.2311.135 "
-					L"Safari/537.36 "
-					L"Edge/12.10240";
-			}
 		}
 
 		property StorageFolder^ DownloadsFolder

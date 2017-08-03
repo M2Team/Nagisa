@@ -121,6 +121,22 @@
     <value>Cancel</value>
     <comment>Cancel</comment>
   </data>
+  <data name="DownloadSourceSettingImportButton.Content" xml:space="preserve">
+    <value>Import</value>
+    <comment>Import</comment>
+  </data>
+  <data name="DownloadSourceSettingImportButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Import from BitTorrent or download list file</value>
+    <comment>Import from BitTorrent or download list file</comment>
+  </data>
+  <data name="DownloadSourceSettingTextBox.PlaceholderText" xml:space="preserve">
+    <value>Please input the download link</value>
+    <comment>Please input the download link</comment>
+  </data>
+  <data name="DownloadSourceSettingTitle.Text" xml:space="preserve">
+    <value>Download Source</value>
+    <comment>Download Source</comment>
+  </data>
   <data name="ErrorText_FailedToLoadVCDFile" xml:space="preserve">
     <value>Failed to Voice Command Definition File, you can't use Nagisa via Cortana.</value>
     <comment>Failed to Voice Command Definition File, you can't use Nagisa via Cortana.</comment>
@@ -128,6 +144,14 @@
   <data name="ErrorText_MessageDialog_Title" xml:space="preserve">
     <value>Error</value>
     <comment>Error</comment>
+  </data>
+  <data name="ExpectedSizeTitle.Text" xml:space="preserve">
+    <value>Expected Size</value>
+    <comment>Expected Size</comment>
+  </data>
+  <data name="FileNameSettingTitle.Text" xml:space="preserve">
+    <value>File Name</value>
+    <comment>File Name</comment>
   </data>
   <data name="NewTaskAppBarButton.Label" xml:space="preserve">
     <value>New Task</value>
@@ -168,6 +192,18 @@
   <data name="PauseAllAppBarButton.Label" xml:space="preserve">
     <value>Pause All</value>
     <comment>Pause All</comment>
+  </data>
+  <data name="SavePathSettingBrowseButton.Content" xml:space="preserve">
+    <value>Browse</value>
+    <comment>Browse</comment>
+  </data>
+  <data name="SavePathSettingTextBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Because of the AppX restriction, please specify the path by use "Browse" button</value>
+    <comment>Because of the AppX restriction, please specify the path by use "Browse" button</comment>
+  </data>
+  <data name="SavePathSettingTitle.Text" xml:space="preserve">
+    <value>Save Path</value>
+    <comment>Save Path</comment>
   </data>
   <data name="SearchAutoSuggestBox.PlaceholderText" xml:space="preserve">
     <value>Search Downloads</value>

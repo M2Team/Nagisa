@@ -7,6 +7,8 @@ License: The MIT License
 
 #pragma once
 
+#include "pch.h"
+
 using namespace Platform;
 using namespace Windows::ApplicationModel::Background;
 using namespace Windows::Networking::Sockets;
