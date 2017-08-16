@@ -7,22 +7,29 @@ License: The MIT License
 
 #pragma once
 
-#include "pch.h"
-
-using namespace Platform;
-using namespace Platform::Collections;
-using namespace Windows::Foundation;
-using namespace Windows::Foundation::Collections;
-using namespace Windows::Storage;
-using namespace Windows::Storage::AccessCache;
-
 // The NAGetVersion function gets the version.
+//
+// Parameters:
+//
+// N/A
+//
+// Return value:
+//
+// The return value is the version string.
 inline String^ NAGetVersion()
 {
 	return NAGISA_VERSION_STRING;
 }
 
 // The NAGetDefaultUserAgentString function gets the default User Agent string.
+//
+// Parameters:
+//
+// N/A
+//
+// Return value:
+//
+// The return value is the default User Agent string.
 inline String^ NAGetDefaultUserAgentString()
 {
 	return
@@ -33,6 +40,13 @@ inline String^ NAGetDefaultUserAgentString()
 		L"Safari/537.36 "
 		L"Edge/12.10240";
 }
+
+using namespace Platform;
+using namespace Platform::Collections;
+using namespace Windows::Foundation;
+using namespace Windows::Foundation::Collections;
+using namespace Windows::Storage;
+using namespace Windows::Storage::AccessCache;
 
 namespace Assassin
 {
@@ -98,9 +112,9 @@ namespace Assassin
 			
 			ApplicationDataContainer^ localSettings = ApplicationData::Current->LocalSettings;
 			ApplicationDataContainer^ container = localSettings->CreateContainer("Nagisa", ApplicationDataCreateDisposition::Always);*/
+			
 
-			
-			
+
 			
 			m_Tasks = ref new Vector<TransferTask^>();
 
@@ -139,7 +153,7 @@ namespace Assassin
 
 			void set(String^ value)
 			{
-
+				
 			}
 		}
 

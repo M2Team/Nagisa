@@ -7,7 +7,7 @@
 
 ## Changelog
 
-**Nagisa 0.1 Stage 2 [Revision 30]**
+**Nagisa 0.1 Stage 2 [Revision 31]**
 
 - Changed
   - Nagisa (User Experience)
@@ -19,8 +19,8 @@
     - The "New Task" Dialog has been initially constructed
     - The "Settings & About" Dialog has been initially constructed
   - Nagisa.Shared (For sharing source code)
-    - Improve implementions about waiting asynchronous call
-      (Nagisa.Shared\m2async.h)
+    - m2_await(): Improve the implementation, use non-blocking way to wait 
+	  asynchronous call and add timeout support. (Nagisa.Shared\m2async.h)
     - Improve implementions about creating a IAsyncOperation Windows Runtime 
       asynchronous construct based on a user supplied lambda or function 
       object. (Nagisa.Shared\m2async.h)
@@ -32,6 +32,7 @@
     - Add NAGetVersion function for getting the version.
     - Add NAGetDefaultUserAgentString function for getting the default User 
       Agent string.
+
 
 
 - Notice

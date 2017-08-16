@@ -12,9 +12,132 @@ License: The MIT License
 
 using namespace Platform;
 using namespace Windows::Foundation;
-using namespace Windows::System::Threading;
 
 #include <Windows.h>
+
+// The m2_await function uses the non-blocking way to try to wait asynchronous
+// call.
+//
+// Parameters:
+//
+// async
+//     The asynchronous call you want to wait.
+//
+// Return value:
+//
+// The return value is determined by the asynchronous call.
+// The function will throw a COM exception if the function fails. 
+template<typename TAsync>
+inline auto m2_await(TAsync async) -> decltype(async->GetResults())
+{
+	// Wait the asynchronous call until the status is not Started.
+	while (true)
+	{
+		// Get and save the status of asynchronous call.
+		AsyncStatus status = async->Status;
+
+		if (AsyncStatus::Started == status)
+		{
+			// Calling SleepEx() for sleep 50ms every time because Microsoft 
+			// says that all UWP APIs that can't guarantee to complete within 
+			// 50ms has been made asynchronous and its name suffixed with 
+			// Async.
+			::SleepEx(50, FALSE);
+		}
+		else if (AsyncStatus::Completed == status)
+		{
+			// Jump out for return value when asynchronous call succeeded
+			break;
+		}
+		else
+		{
+			int ErrorCode = E_ABORT;
+
+			if (AsyncStatus::Canceled != status)
+			{
+				// If the status is not Canceled, get the error code.
+				ErrorCode = async->ErrorCode.Value;
+			}
+
+			// Throw a COM exception when asynchronous call cancelled or 
+			// failed.			
+			throw COMException::CreateException(ErrorCode);
+		}
+	}
+
+	// Return the result of asynchronous call.
+	return async->GetResults();
+}
+
+// The m2_await function uses the non-blocking way to try to wait asynchronous
+// call.
+//
+// Parameters:
+//
+// async
+//     The asynchronous call you want to wait.
+// timeout
+//     The maximum time interval for waiting the asynchronous call, in 
+//     milliseconds.
+//
+// Return value:
+//
+// The return value is determined by the asynchronous call.
+// The function will throw a COM exception if the function fails. 
+template<typename TAsync>
+inline auto m2_await(TAsync async, int32 timeout)
+-> decltype(async->GetResults())
+{
+	while (true)
+	{
+		// Get and save the status of asynchronous call.
+		AsyncStatus status = async->Status;
+
+		// Wait the asynchronous call until the status is not Started or the 
+		// timeout interval has been elapsed.
+		if (AsyncStatus::Started == status && timeout > 0)
+		{
+			// Calling SleepEx() for sleep 50ms every time because Microsoft 
+			// says that all UWP APIs that can't guarantee to complete within 
+			// 50ms has been made asynchronous and its name suffixed with 
+			// Async.
+			::SleepEx(50, FALSE);
+			timeout -= 50;
+		}
+		else if (AsyncStatus::Completed == status)
+		{
+			// Jump out for return value when asynchronous call succeeded
+			break;
+		}
+		else
+		{
+			int ErrorCode = E_ABORT;
+
+			if (AsyncStatus::Started == status)
+			{
+				// If the status is still Started, the timeout interval has 
+				// been elapsed.
+				async->Cancel();
+				ErrorCode = __HRESULT_FROM_WIN32(ERROR_TIMEOUT);
+			}
+			else if (AsyncStatus::Canceled != status)
+			{
+				// If the status is not Canceled, get the error code.
+				ErrorCode = async->ErrorCode.Value;
+			}
+
+			// Throw a COM exception when asynchronous call cancelled, failed 
+			// or timeout.			
+			throw COMException::CreateException(ErrorCode);
+
+		}
+	}
+
+	// Return the result of asynchronous call.
+	return async->GetResults();
+}
+
+using namespace Windows::System::Threading;
 
 #include <thread>
 
@@ -163,35 +286,6 @@ template<typename TFunction>
 IAsyncOperation<typename M2::Helpers::AsyncLambdaTypeTraits<TFunction>::_ReturnType>^ m2_create_async_operation(const TFunction& function)
 {
 	return ref new M2::AsyncOperationImpl<TFunction>(function);
-}
-
-// The m2_await function tries to wait asynchronous call and return result or 
-// nothing. The function will throw a COM exception if the function fails.
-template<typename TAsync>
-inline auto m2_await(TAsync async) -> decltype(async->GetResults())
-{
-	// Save the status of asynchronous call.
-	AsyncStatus asyncStatus = AsyncStatus::Started;
-
-	// Wait the asynchronous call until asyncStatus is not Started via calling 
-	// SleepEx() for sleep 50ms every time because Microsoft says that all UWP 
-	// APIs that can't guarantee to complete within 50ms has been made 
-	// asynchronous and its name suffixed with Async. 
-	while (AsyncStatus::Started == asyncStatus)
-	{
-		::SleepEx(50, FALSE);
-
-		asyncStatus = async->Status;
-	}
-
-	// Throw a COM exception if asynchronous call failed.
-	if (AsyncStatus::Error == asyncStatus)
-	{
-		throw COMException::CreateException(async->ErrorCode.Value);
-	}
-
-	// Return the result of asynchronous call.
-	return async->GetResults();
 }
 
 #endif
