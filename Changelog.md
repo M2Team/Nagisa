@@ -7,7 +7,15 @@
 
 ## Changelog
 
-**Nagisa 0.1 Milestone 1 [Revision 65]** 
+**Nagisa 0.1 Milestone 2 [Revision 66]** 
+- Exclude the output file
+- Add Nagisa.Application project for implementing the user interface.
+- Add Nagisa.Assassin project for implementing the transfer library.
+- Add Nagisa.Shared for sharing the source code.
+- Add the icon asset.
+- Add the version info in the binaries.
+
+**Nagisa 0.1 Milestone 2 [Revision 65]** 
 - Reset the project.
 
 ## Deprecated Revisions

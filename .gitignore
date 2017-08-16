@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/Output
+/AppPackages
+/Nagisa.Application/Generated Files
+/Nagisa.Application/BundleArtifacts
