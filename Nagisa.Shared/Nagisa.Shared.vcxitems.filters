@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)m2async.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)m2base.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Nagisa.Version.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)m2base_winrt.h" />
-  </ItemGroup>
-</Project>
