@@ -2,7 +2,6 @@
     x:Class="Nagisa.Application.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Nagisa_Application"
-    RequestedTheme="Light">
+    xmlns:local="using:Nagisa_Application">
 
 </Application>

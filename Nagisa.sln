@@ -22,9 +22,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa.Assassin", "Nagisa.A
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa.Application", "Nagisa.Application\Nagisa.Application.vcxproj", "{01773773-EDE0-4433-A639-B59C5D0D3B0C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa.Shared", "Nagisa.Shared\Nagisa.Shared.vcxproj", "{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Nagisa.Shared", "Nagisa.Shared\Nagisa.Shared.vcxitems", "{4E33EB4F-BB00-4F5F-A80D-64F0EB443E89}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Nagisa.Shared\Nagisa.Shared.vcxitems*{01773773-ede0-4433-a639-b59c5d0d3b0c}*SharedItemsImports = 4
+		Nagisa.Shared\Nagisa.Shared.vcxitems*{4e33eb4f-bb00-4f5f-a80d-64f0eb443e89}*SharedItemsImports = 9
+		Nagisa.Shared\Nagisa.Shared.vcxitems*{78da130c-d3cf-4bf6-a26f-921da02a2b1d}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
 		Debug|x64 = Debug|x64
@@ -64,18 +69,6 @@ Global
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|x86.ActiveCfg = Release|Win32
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|x86.Build.0 = Release|Win32
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|x86.Deploy.0 = Release|Win32
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Debug|ARM.ActiveCfg = Debug|ARM
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Debug|ARM.Build.0 = Debug|ARM
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Debug|x64.ActiveCfg = Debug|x64
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Debug|x64.Build.0 = Debug|x64
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Debug|x86.ActiveCfg = Debug|Win32
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Debug|x86.Build.0 = Debug|Win32
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Release|ARM.ActiveCfg = Release|ARM
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Release|ARM.Build.0 = Release|ARM
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Release|x64.ActiveCfg = Release|x64
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Release|x64.Build.0 = Release|x64
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Release|x86.ActiveCfg = Release|Win32
-		{44A3FCC0-3536-4E84-AABE-9A06FF5163B4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
