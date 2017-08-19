@@ -7,6 +7,14 @@
 
 ## Changelog
 
+**Nagisa 0.1 Milestone 2 [Revision 68]** 
+- Update the copyright of the source code license.
+- Add M2GetInspectable() in Nagisa.Shared project
+- Modify functions in Nagisa.Shared project
+  - m2_await_internal()
+  - m2_await()
+  - M2GetPointerFromIBuffer()
+
 **Nagisa 0.1 Milestone 2 [Revision 67]** 
 - The color themes of Nagisa follows the options in Windows Settings.
 - Change the project type of Nagisa.Shared project.

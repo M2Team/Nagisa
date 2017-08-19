@@ -10,13 +10,15 @@ License: The MIT License
 #include "M2.Helpers.WinRT.h"
 
 #include <Windows.h>
-#include <wrl.h>
+#include <wrl/client.h>
 
+#include <asyncinfo.h>
 #include <robuffer.h>
-#include <windows.foundation.h>
 
-using namespace Microsoft::WRL;
-using namespace ABI::Windows::Foundation;
+using Microsoft::WRL::ComPtr;
+using ABI::Windows::Foundation::AsyncStatus;
+using Windows::Storage::Streams::IBuffer;
+using Windows::Storage::Streams::IBufferByteAccess;
 
 // The m2_await_internal function uses the non-blocking way to try to wait 
 // asynchronous call.
@@ -34,24 +36,21 @@ using namespace ABI::Windows::Foundation;
 //
 // If the function succeeds, the return value is S_OK.
 // If the function fails, the return value is the HRESULT error code.
-HRESULT m2_await_internal(
-	Windows::Foundation::IAsyncInfo^ async,
-	int32 timeout) throw()
+HRESULT m2_await_internal(ComPtr<IInspectable>& async, int32 timeout) throw()
 {
 	HRESULT hr = S_OK;
 	HRESULT hrResult = S_OK;
-	IAsyncInfo* pAsyncInfo = nullptr;
-	AsyncStatus status = AsyncStatus::Started;
-	IInspectable* pAsyncObject = reinterpret_cast<IInspectable*>(async);
+	ComPtr<IAsyncInfo> asyncInfo;
+	AsyncStatus status = AsyncStatus::Started;	
 
 	// Get the IAsyncInfo interface.
-	hr = pAsyncObject->QueryInterface(IID_PPV_ARGS(&pAsyncInfo));
+	hr = async.As(&asyncInfo);
 	if (SUCCEEDED(hr))
 	{
 		// Wait the asynchronous call until the status is not Started or the 
 		// timeout interval has been elapsed.
 		while (
-			SUCCEEDED(hr = pAsyncInfo->get_Status(&status)) &&
+			SUCCEEDED(hr = asyncInfo->get_Status(&status)) &&
 			AsyncStatus::Started == status &&
 			(timeout == -1 || timeout > 0))
 		{
@@ -76,7 +75,7 @@ HRESULT m2_await_internal(
 				// Cancel the asynchronous call and set error code if the 
 				// status is still Started, the timeout interval has been 
 				// elapsed.
-				hr = pAsyncInfo->Cancel();
+				hr = asyncInfo->Cancel();
 				hrResult = __HRESULT_FROM_WIN32(ERROR_TIMEOUT);
 			}
 			else if (AsyncStatus::Canceled == status)
@@ -87,12 +86,9 @@ HRESULT m2_await_internal(
 			else
 			{
 				// If the status is other value, get and set the error code.
-				hr = pAsyncInfo->get_ErrorCode(&hrResult);
+				hr = asyncInfo->get_ErrorCode(&hrResult);
 			}
 		}
-
-		// Release the interface.
-		pAsyncInfo->Release();
 	}
 
 	return (SUCCEEDED(hr) ? hrResult : hr);
@@ -114,21 +110,14 @@ HRESULT m2_await_internal(
 // Warning: 
 // The lifetime of the returned buffer is controlled by the lifetime of the 
 // buffer object that's passed to this method. When the buffer has been 
-// released, the pointer becomes invalid and must not be used.  
-byte* M2GetPointerFromIBuffer(
-	Windows::Storage::Streams::IBuffer^ Buffer) throw()
+// released, the pointer becomes invalid and must not be used.
+byte* M2GetPointerFromIBuffer(IBuffer^ Buffer) throw()
 {
 	byte* pBuffer = nullptr;
-
-	Windows::Storage::Streams::IBufferByteAccess* pBufferByteAccess = nullptr;
-	IInspectable* pBufferObject = reinterpret_cast<IInspectable*>(Buffer);
-
-	if (SUCCEEDED(pBufferObject->QueryInterface(
-		IID_PPV_ARGS(&pBufferByteAccess))))
+	ComPtr<IBufferByteAccess> bufferByteAccess;
+	if (SUCCEEDED(M2GetInspectable(Buffer).As(&bufferByteAccess)))
 	{
-		pBufferByteAccess->Buffer(&pBuffer);
-
-		pBufferByteAccess->Release();
+		bufferByteAccess->Buffer(&pBuffer);
 	}
 
 	return pBuffer;
