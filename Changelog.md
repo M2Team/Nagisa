@@ -7,9 +7,19 @@
 
 ## Changelog
 
+**Nagisa 0.1 Milestone 2 [Revision 69]** 
+- Add functions in Nagisa.Shared project.
+  - M2MakeIBuffer()
+  - M2MakeUTF16String()
+  - M2MakeUTF8String()
+- Rename functions in Nagisa.Shared project.
+  - m2_await_internal() to M2AsyncWait()
+  - m2_await() to M2AsyncWait()
+  - M2GetPointerFromIBuffer() to M2GetPointer()
+
 **Nagisa 0.1 Milestone 2 [Revision 68]** 
 - Update the copyright of the source code license.
-- Add M2GetInspectable() in Nagisa.Shared project
+- Add M2GetInspectable() in Nagisa.Shared project.
 - Modify functions in Nagisa.Shared project
   - m2_await_internal()
   - m2_await()
@@ -18,7 +28,7 @@
 **Nagisa 0.1 Milestone 2 [Revision 67]** 
 - The color themes of Nagisa follows the options in Windows Settings.
 - Change the project type of Nagisa.Shared project.
-- Add functions in Nagisa.Shared project
+- Add functions in Nagisa.Shared project.
   - m2_await_internal()
   - m2_await()
   - M2GetPointerFromIBuffer()
