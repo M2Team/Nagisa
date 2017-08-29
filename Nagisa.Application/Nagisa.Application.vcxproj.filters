@@ -8,6 +8,15 @@
       <UniqueIdentifier>65f34697-02aa-4f83-b8ed-263e0f417d00</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
     </Filter>
+    <Filter Include="Strings">
+      <UniqueIdentifier>{d6db1962-7d90-442c-871d-a13dfb04c43d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Strings\en">
+      <UniqueIdentifier>{8d67f1db-76eb-4e6b-aa42-3d3e7c29872f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Strings\zh-Hans">
+      <UniqueIdentifier>{e926cc87-ad8d-40c7-a8f8-d4ad9362a8fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -172,5 +181,13 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Nagisa.Application.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\en\MainPage.resw">
+      <Filter>Strings\en</Filter>
+    </PRIResource>
+    <PRIResource Include="Strings\zh-Hans\MainPage.resw">
+      <Filter>Strings\zh-Hans</Filter>
+    </PRIResource>
   </ItemGroup>
 </Project>

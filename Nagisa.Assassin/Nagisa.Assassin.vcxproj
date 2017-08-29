@@ -234,8 +234,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Class1.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="TransferManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -246,7 +246,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Class1.cpp" />
+    <ClCompile Include="TransferManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Nagisa.Assassin.rc" />

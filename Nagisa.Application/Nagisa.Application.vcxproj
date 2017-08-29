@@ -279,6 +279,10 @@
   <ItemGroup>
     <ResourceCompile Include="Nagisa.Application.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\en\MainPage.resw" />
+    <PRIResource Include="Strings\zh-Hans\MainPage.resw" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
