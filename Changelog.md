@@ -7,6 +7,10 @@
 
 ## Changelog
 
+**Nagisa 0.1 Milestone 2 [Revision 71]**
+- Fix compile errors in revision 70.
+- Add M2FindSubString() function in Nagisa.Shared project.
+
 **Nagisa 0.1 Milestone 2 [Revision 70]**
 - Remove the useless Nagisa.Assassin.Class1 class created via Visual Studio.
 - Add Nagisa.Assassin.TransferTaskStatus enum to define the status (Canceled, 
@@ -32,7 +36,7 @@
 
 **Nagisa 0.1 Milestone 2 [Revision 68]** 
 - Update the copyright of the source code license.
-- Add M2GetInspectable() in Nagisa.Shared project.
+- Add M2GetInspectable() function in Nagisa.Shared project.
 - Modify functions in Nagisa.Shared project
   - m2_await_internal()
   - m2_await()

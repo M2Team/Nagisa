@@ -24,6 +24,4 @@ using namespace Windows::UI::Xaml::Navigation;
 MainPage::MainPage()
 {
 	InitializeComponent();
-
-	auto class1 = ref new Assassin::Class1();
 }

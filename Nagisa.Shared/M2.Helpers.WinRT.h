@@ -180,4 +180,21 @@ wstring M2MakeUTF16String(String^& PlatformString);
 // The return value is the UTF-8 string.
 string M2MakeUTF8String(String^& PlatformString);
 
+// The M2MakeUTF8String function finds a sub string from a source string.
+//
+// Parameters:
+//
+// SourceString
+//     The source string.
+// SubString
+//     The sub string.
+// IgnoreCase
+//     The option can determines whether to ignore case.
+//
+// Return value:
+//
+// If success, it will return true.
+bool M2FindSubString(
+	String^& SourceString, String^& SubString, bool IgnoreCase);
+
 #endif // _M2_HELPERS_WINRT_
