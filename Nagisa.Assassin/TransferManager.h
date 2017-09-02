@@ -13,10 +13,7 @@ License: The MIT License
 namespace Nagisa
 {
 	namespace Assassin
-	{
-		using ::Windows::Foundation::Uri;
-		using ::Windows::Storage::StorageFile;
-		
+	{	
 		// TransferTaskStatus - Defines the status of a transfer task.
 		public enum class TransferTaskStatus
 		{
@@ -32,16 +29,19 @@ namespace Nagisa
 		public ref class TransferTask sealed
 		{
 		public:
-			property String^ Description;
-			property Uri^ RequestedUri;
-			property StorageFile^ ResultFile;
+			property Platform::String^ Description;
+			property Windows::Foundation::Uri^ RequestedUri;
+			property Windows::Storage::StorageFile^ ResultFile;
 			property TransferTaskStatus Status;
 			property float64 Progress;
 			property uint64 BytesReceived;
 			property uint64 TotalBytesToReceive;
 
 		internal:
-			TransferTask(String^ Description, float64 Progress, TransferTaskStatus Status);
+			TransferTask(
+				Platform::String^ Description,
+				float64 Progress, 
+				TransferTaskStatus Status);
 		};
 		
 		// TransferManager - Provide ways to manage the transfer engine.

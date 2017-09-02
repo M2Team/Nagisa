@@ -7,6 +7,9 @@
 
 ## Changelog
 
+**Nagisa 0.1 Milestone 2 [Revision 72]**
+- Improve the implementions. 
+
 **Nagisa 0.1 Milestone 2 [Revision 71]**
 - Fix compile errors in revision 70.
 - Add M2FindSubString() function in Nagisa.Shared project.

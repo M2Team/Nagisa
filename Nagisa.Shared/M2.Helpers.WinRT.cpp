@@ -12,21 +12,29 @@ License: The MIT License
 #include <Windows.h>
 #include <wrl\client.h>
 #include <wrl\implements.h>
-
 #include <robuffer.h>
 #include <windows.foundation.h>
 #include <windows.storage.streams.h>
 
 #include <string>
 
-using ::Microsoft::WRL::MakeAndInitialize;
-using ::Microsoft::WRL::RuntimeClass;
-using ::Microsoft::WRL::RuntimeClassFlags;
-using ::Microsoft::WRL::RuntimeClassType;
+using Microsoft::WRL::ComPtr;
+using Microsoft::WRL::MakeAndInitialize;
+using Microsoft::WRL::RuntimeClass;
+using Microsoft::WRL::RuntimeClassFlags;
+using Microsoft::WRL::RuntimeClassType;
 
-using abi_AsyncStatus = ::ABI::Windows::Foundation::AsyncStatus;
+using Platform::Object;
+using Platform::String;
+
+using Windows::Storage::Streams::IBuffer;
+
+using abi_AsyncStatus = ABI::Windows::Foundation::AsyncStatus;
 using abi_IBuffer = ABI::Windows::Storage::Streams::IBuffer;
-using abi_IBufferByteAccess = ::Windows::Storage::Streams::IBufferByteAccess;
+using abi_IBufferByteAccess = Windows::Storage::Streams::IBufferByteAccess;
+
+using std::string;
+using std::wstring;
 
 // The M2AsyncWait function uses the non-blocking way to try to wait 
 // asynchronous call.
@@ -66,7 +74,7 @@ HRESULT M2AsyncWait(ComPtr<IInspectable>& Async, int32 Timeout) throw()
 			// Microsoft says that all UWP APIs that can't guarantee to 
 			// complete within 50ms has been made asynchronous and its name
 			// suffixed with Async.
-			::SleepEx(50, FALSE);
+			SleepEx(50, FALSE);
 			if (Timeout != -1)
 				Timeout -= 50;
 		}
@@ -233,7 +241,7 @@ wstring M2MakeUTF16String(const string& UTF8String)
 {
 	wstring UTF16String;
 
-	int UTF16StringLength = ::MultiByteToWideChar(
+	int UTF16StringLength = MultiByteToWideChar(
 		CP_UTF8,
 		0,
 		UTF8String.data(),
@@ -243,7 +251,7 @@ wstring M2MakeUTF16String(const string& UTF8String)
 	if (UTF16StringLength > 0)
 	{
 		UTF16String.resize(UTF16StringLength);
-		::MultiByteToWideChar(
+		MultiByteToWideChar(
 			CP_UTF8,
 			0,
 			UTF8String.data(),
@@ -269,7 +277,7 @@ string M2MakeUTF8String(const wstring& UTF16String)
 {
 	string UTF8String;
 
-	int UTF8StringLength = ::WideCharToMultiByte(
+	int UTF8StringLength = WideCharToMultiByte(
 		CP_UTF8,
 		0,
 		UTF16String.data(),
@@ -281,7 +289,7 @@ string M2MakeUTF8String(const wstring& UTF16String)
 	if (UTF8StringLength > 0)
 	{
 		UTF8String.resize(UTF8StringLength);
-		::WideCharToMultiByte(
+		WideCharToMultiByte(
 			CP_UTF8,
 			0,
 			UTF16String.data(),

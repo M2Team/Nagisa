@@ -15,16 +15,6 @@ License: The MIT License
 
 #include <string>
 
-using Microsoft::WRL::ComPtr;
-
-using ::Platform::COMException;
-using ::Platform::Object;
-using ::Platform::String;
-using ::Windows::Storage::Streams::IBuffer;
-
-using ::std::string;
-using ::std::wstring;
-
 // The M2GetInspectable function retrieves the IInspectable interface from the 
 // provided C++/CX object. 
 //
@@ -37,9 +27,11 @@ using ::std::wstring;
 //
 // The return value is the IInspectable interface from the provided C++/CX 
 // object.
-inline ComPtr<IInspectable> M2GetInspectable(Object^ object) throw()
+inline Microsoft::WRL::ComPtr<IInspectable> M2GetInspectable(
+	Platform::Object^ object) throw()
 {
-	return ComPtr<IInspectable>(reinterpret_cast<IInspectable*>(object));
+	return Microsoft::WRL::ComPtr<IInspectable>(
+		reinterpret_cast<IInspectable*>(object));
 }
 
 // The M2AsyncWait function uses the non-blocking way to try to wait 
@@ -58,7 +50,8 @@ inline ComPtr<IInspectable> M2GetInspectable(Object^ object) throw()
 //
 // If the function succeeds, the return value is S_OK.
 // If the function fails, the return value is the HRESULT error code.
-HRESULT M2AsyncWait(ComPtr<IInspectable>& Async, int32 Timeout) throw();
+HRESULT M2AsyncWait(
+	Microsoft::WRL::ComPtr<IInspectable>& Async, int32 Timeout) throw();
 
 // The M2AsyncWait function uses the non-blocking way to try to wait 
 // asynchronous call.
@@ -85,7 +78,7 @@ inline auto M2AsyncWait(
 	HRESULT hr = M2AsyncWait(M2GetInspectable(Async), Timeout);
 	if (FAILED(hr))
 	{
-		throw COMException::CreateException(hr);
+		throw Platform::COMException::CreateException(hr);
 	}
 
 	// Return the result of asynchronous call.
@@ -109,7 +102,7 @@ inline auto M2AsyncWait(
 // The lifetime of the returned buffer is controlled by the lifetime of the 
 // buffer object that's passed to this method. When the buffer has been 
 // released, the pointer becomes invalid and must not be used.
-byte* M2GetPointer(IBuffer^ Buffer) throw();
+byte* M2GetPointer(Windows::Storage::Streams::IBuffer^ Buffer) throw();
 
 // The M2MakeIBuffer function retrieves the IBuffer object from the provided 
 // raw pointer.
@@ -130,7 +123,8 @@ byte* M2GetPointer(IBuffer^ Buffer) throw();
 // The lifetime of the returned IBuffer object is controlled by the lifetime of
 // the raw pointer that's passed to this method. When the raw pointer has been 
 // released, the IBuffer object becomes invalid and must not be used.
-IBuffer^ M2MakeIBuffer(byte* Pointer, UINT32 Capacity) throw();
+Windows::Storage::Streams::IBuffer^ M2MakeIBuffer(
+	byte* Pointer, UINT32 Capacity) throw();
 
 // The M2MakeUTF16String function converts from UTF-8 string to UTF-16 string.
 //
@@ -142,7 +136,7 @@ IBuffer^ M2MakeIBuffer(byte* Pointer, UINT32 Capacity) throw();
 // Return value:
 //
 // The return value is the UTF-16 string.
-wstring M2MakeUTF16String(const string& UTF8String);
+std::wstring M2MakeUTF16String(const std::string& UTF8String);
 
 // The M2MakeUTF8String function converts from UTF-16 string to UTF-8 string.
 //
@@ -154,7 +148,7 @@ wstring M2MakeUTF16String(const string& UTF8String);
 // Return value:
 //
 // The return value is the UTF-8 string.
-string M2MakeUTF8String(const wstring& UTF16String);
+std::string M2MakeUTF8String(const std::wstring& UTF16String);
 
 // The M2MakeUTF16String function converts from C++/CX string to UTF-16 string.
 //
@@ -166,7 +160,7 @@ string M2MakeUTF8String(const wstring& UTF16String);
 // Return value:
 //
 // The return value is the UTF-16 string.
-wstring M2MakeUTF16String(String^& PlatformString);
+std::wstring M2MakeUTF16String(Platform::String^& PlatformString);
 
 // The M2MakeUTF8String function converts from C++/CX string to UTF-8 string.
 //
@@ -178,7 +172,7 @@ wstring M2MakeUTF16String(String^& PlatformString);
 // Return value:
 //
 // The return value is the UTF-8 string.
-string M2MakeUTF8String(String^& PlatformString);
+std::string M2MakeUTF8String(Platform::String^& PlatformString);
 
 // The M2MakeUTF8String function finds a sub string from a source string.
 //
@@ -195,6 +189,8 @@ string M2MakeUTF8String(String^& PlatformString);
 //
 // If success, it will return true.
 bool M2FindSubString(
-	String^& SourceString, String^& SubString, bool IgnoreCase);
+	Platform::String^& SourceString,
+	Platform::String^& SubString,
+	bool IgnoreCase);
 
 #endif // _M2_HELPERS_WINRT_
