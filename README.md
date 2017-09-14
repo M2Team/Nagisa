@@ -1,5 +1,8 @@
 # Nagisa - One of Download Utilities for Windows Universal Platform.
 
+- Mouri_Naruto's Notice: I emptied this project in revision 65 because of 
+  refactoring source code.
+
 # License
 
 - Nagisa is distributed under the MIT license.

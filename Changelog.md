@@ -7,6 +7,10 @@
 
 ## Changelog
 
+**Nagisa 0.1 Milestone 2 [Revision 73]**
+- Update the documents.
+- Add "First Run" dialog.
+
 **Nagisa 0.1 Milestone 2 [Revision 72]**
 - Improve the implementions. 
 
@@ -63,11 +67,6 @@
 - Add the icon asset.
 - Add the version info in the binaries and version definition header.
 - Associate Nagisa's configuation with my Windows Developer Account.
-  - Thanks for Jiaen Lee's help. I have registered the Windows Developer 
-    Account with Microsoft Imagine via verified my identity by contacting 
-    Microsoft because only teachers have the chance to own their edu e-mail 
-    address in my school and I am unable to get a debit card with Visa or 
-    MasterCard because my country only have debit cards with UnionPay now.
 
 **Nagisa 0.1 Milestone 2 [Revision 65]** 
 - Reset the project.

@@ -19,6 +19,8 @@ namespace Nagisa
 		public:
 			MainPage();
 
+		private:
+			void Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		};
 	}
 }

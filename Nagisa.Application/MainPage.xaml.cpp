@@ -6,6 +6,8 @@
 #include "pch.h"
 #include "MainPage.xaml.h"
 
+#include "FirstRunDialog.xaml.h"
+
 using namespace Nagisa::Application;
 
 using namespace Platform;
@@ -24,4 +26,11 @@ using namespace Windows::UI::Xaml::Navigation;
 MainPage::MainPage()
 {
 	InitializeComponent();
+}
+
+
+void Nagisa::Application::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	FirstRunDialog^ dialog = ref new FirstRunDialog();
+	dialog->ShowAsync();
 }
