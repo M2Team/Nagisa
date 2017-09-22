@@ -7,6 +7,12 @@
 
 ## Changelog
 
+**Nagisa 0.1 Milestone 2 [Revision 74]**
+- Update the copyright of the source code license.
+- Add CustomContentDialogStyle to make the ContentDialog of the Windows 10 
+  Build 10240 support the ScrollViewer.
+- Add the warning tip in the "First Run" dialog.
+
 **Nagisa 0.1 Milestone 2 [Revision 73]**
 - Update the documents.
 - Add "First Run" dialog.

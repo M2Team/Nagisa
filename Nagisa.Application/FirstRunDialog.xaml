@@ -10,8 +10,19 @@
     PrimaryButtonText="OK"
     SecondaryButtonText="Cancel"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    Style="{ThemeResource CustomContentDialogStyle}">
 
     <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock TextWrapping="WrapWholeWords" Foreground="Red" Text="In the revision 65, Nagisa's repository had been emptied because of refactoring source code."/>
+                <TextBlock TextWrapping="WrapWholeWords" Foreground="Red" Text="This is the early development version !"/>
+                <TextBlock TextWrapping="WrapWholeWords" Foreground="Red" Text="This application is only half finished at this stage because of the development progress."/>
+               
+            </StackPanel>
+        </ScrollViewer>
+
+        
     </Grid>
 </ContentDialog>

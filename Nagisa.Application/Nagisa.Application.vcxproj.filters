@@ -25,12 +25,14 @@
     <ClCompile Include="App.xaml.cpp" />
     <ClCompile Include="MainPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="FirstRunDialog.xaml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h" />
     <ClInclude Include="MainPage.xaml.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="FirstRunDialog.xaml.h" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -42,6 +44,7 @@
   <ItemGroup>
     <Page Include="MainPage.xaml" />
     <Page Include="FirstRunDialog.xaml" />
+    <Page Include="CustomContentDialogStyle.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\SmallTile.scale-100.png">
