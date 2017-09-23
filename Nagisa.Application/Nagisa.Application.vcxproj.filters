@@ -17,6 +17,9 @@
     <Filter Include="Strings\zh-Hans">
       <UniqueIdentifier>{e926cc87-ad8d-40c7-a8f8-d4ad9362a8fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="XamlResources">
+      <UniqueIdentifier>{108049d6-ddb7-442f-9041-c3b20d4ebc22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -44,7 +47,15 @@
   <ItemGroup>
     <Page Include="MainPage.xaml" />
     <Page Include="FirstRunDialog.xaml" />
-    <Page Include="CustomContentDialogStyle.xaml" />
+    <Page Include="CustomContentDialogStyle.xaml">
+      <Filter>XamlResources</Filter>
+    </Page>
+    <Page Include="CustomListViewItemStyle.xaml">
+      <Filter>XamlResources</Filter>
+    </Page>
+    <Page Include="CustomIconButtonStyle.xaml">
+      <Filter>XamlResources</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\SmallTile.scale-100.png">

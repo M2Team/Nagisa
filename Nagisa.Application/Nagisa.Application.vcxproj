@@ -198,6 +198,12 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomIconButtonStyle.xaml">
+      <DeploymentContent>true</DeploymentContent>
+    </Page>
+    <Page Include="CustomListViewItemStyle.xaml">
+      <DeploymentContent>true</DeploymentContent>
+    </Page>
     <Page Include="FirstRunDialog.xaml">
       <SubType>Designer</SubType>
     </Page>

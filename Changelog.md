@@ -7,6 +7,11 @@
 
 ## Changelog
 
+**Nagisa 0.1 Milestone 2 [Revision 75]**
+- Fix the source code license.
+- Add CustomListViewItemStyle and CustomIconButtonStyle to implement the 
+  Nagisa's Task List.
+
 **Nagisa 0.1 Milestone 2 [Revision 74]**
 - Update the copyright of the source code license.
 - Add CustomContentDialogStyle to make the ContentDialog of the Windows 10 

@@ -8,6 +8,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="CustomContentDialogStyle.xaml"/>
+                <ResourceDictionary Source="CustomListViewItemStyle.xaml"/>
+                <ResourceDictionary Source="CustomIconButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
