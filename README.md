@@ -3,22 +3,14 @@
 - Mouri_Naruto's Notice: I emptied this project in revision 65 because of 
   refactoring source code.
 
-# License
-
-- Nagisa is distributed under the MIT license.
-- For more information, please read LICENSE file.
-- P.S. I am advocating that more and more people distribute their software 
-  under the MIT license because that can help more and more people including 
-  yourself.
-
 # System Requirement
 OS Version: Windows 10 Build 10240 or later
 
 # Finished Features
 - Muitl-language Support
-- Cortana Integration
 
 # Unfininshed Features
+- Cortana Integration
 - HTTP/HTTPS Support
 - FTP/FTPS/SFTP Support
 - WebSocket Support
@@ -35,7 +27,9 @@ OS Version: Windows 10 Build 10240 or later
   must use "GPL compatible" licenses (As I want to allow users to use this 
   project properly in GPL licensed environments).
 - If you have not mentioned, the source code which you have contributed will 
-  use the same license as this project's.
+  use the same license as this project's.
 
-# The List of Creators, Contributors, Sponsors and Thanks
-- See People.md for details.
+# Documents
+- [Nagisa's License](LICENSE)
+- [Nagisa's Changelog](Changelog.md)
+- [Nagisa's Relevant People](People.md)
