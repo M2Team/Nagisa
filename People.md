@@ -1,4 +1,4 @@
-﻿# Nagisa - People (Sort in time order)
+﻿# Nagisa - Relevant People (Sort in time order)
 
 ## Creator
 - Mouri_Naruto (https://github.com/MouriNaruto)
