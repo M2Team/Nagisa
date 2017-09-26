@@ -9,8 +9,9 @@
 ## Changelog
 
 **Nagisa 0.1 Preview 1**
-- [r77] Modify the Changelog.
-- [r76] Modify the Changelog.
+- [r78] Update Documents.
+- [r77] Modify the format of Changelog.
+- [r76] Modify the format of Changelog.
 - [r76] Modify the AppX Package output folder.
 - [r75] Fix the source code license.
 - [r75] Add CustomListViewItemStyle and CustomIconButtonStyle to implement the 
