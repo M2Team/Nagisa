@@ -56,6 +56,9 @@
     <Page Include="CustomIconButtonStyle.xaml">
       <Filter>XamlResources</Filter>
     </Page>
+    <Page Include="CustomConverters.xaml">
+      <Filter>XamlResources</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\SmallTile.scale-100.png">

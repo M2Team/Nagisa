@@ -183,6 +183,9 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CustomConverters.xaml.h">
+      <DependentUpon>CustomConverters.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="FirstRunDialog.xaml.h">
       <DependentUpon>FirstRunDialog.xaml</DependentUpon>
     </ClInclude>
@@ -199,6 +202,9 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CustomConverters.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CustomIconButtonStyle.xaml">
       <DeploymentContent>true</DeploymentContent>
     </Page>
@@ -224,6 +230,9 @@
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="CustomConverters.xaml.cpp">
+      <DependentUpon>CustomConverters.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="FirstRunDialog.xaml.cpp">
       <DependentUpon>FirstRunDialog.xaml</DependentUpon>

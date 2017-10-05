@@ -10,6 +10,61 @@
     Loaded="Page_Loaded">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView SelectionMode="Multiple" ItemContainerStyle="{StaticResource CustomListViewItemStyle}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="Assassin:TransferTask">
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="48"/>
+                            <ColumnDefinition Width="48"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="48"/>
+                            <RowDefinition Height="6"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid VerticalAlignment="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Description"/>
+                            <TextBlock Grid.Row="1" Padding="0,2,0,0" FontSize="12" Text="100 KB/s  13.24 MB / 16.36 MB  00:00:32"/>
+                        </Grid>
+
+                        <Button Grid.Row="0"
+                        Grid.Column="1"
+                        Content="&#xE72C;"
+                        Style="{StaticResource CustomIconButtonStyle}"/>
+                        <Button x:Uid="TaskItemMoreButton" 
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Style="{StaticResource CustomIconButtonStyle}"
+                        Content="&#xE10C;">
+                            <Button.Flyout>
+                                <MenuFlyout>
+                                    <MenuFlyoutItem x:Uid="TaskItemOpenFolderMenuItem"/>
+                                    <MenuFlyoutItem x:Uid="TaskItemCopyLinkMenuItem"/>
+                                    <MenuFlyoutSeparator/>
+                                    <MenuFlyoutItem x:Uid="TaskItemRemoveMenuItem"/>
+                                    <MenuFlyoutSeparator/>
+                                    <MenuFlyoutItem x:Uid="TaskItemPropertiesMenuItem"/>
+                                </MenuFlyout>
+                            </Button.Flyout>
+                        </Button>
+
+                        <ProgressBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="-48,0,0,0" VerticalAlignment="Stretch">
+                            <ProgressBar.Background>
+                                <SolidColorBrush Color="Black" Opacity="0.1"/>
+                            </ProgressBar.Background>
+                        </ProgressBar>
+                    </Grid>
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -57,56 +112,7 @@
                     </ProgressBar.Background>
                 </ProgressBar>
             </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="48"/>
-                    <ColumnDefinition Width="48"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="48"/>
-                    <RowDefinition Height="6"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Description"/>
-                    <TextBlock Grid.Row="1" Padding="0,2,0,0" FontSize="12" Text="100 KB/s  13.24 MB / 16.36 MB  00:00:32"/>
-                </Grid>
-
-                <Button Grid.Row="0"
-                        Grid.Column="1"
-                        Content="&#xE72C;"
-                        Style="{StaticResource CustomIconButtonStyle}"/>
-                <Button x:Uid="TaskItemMoreButton" 
-                        Grid.Row="0"
-                        Grid.Column="2"
-                        Style="{StaticResource CustomIconButtonStyle}"
-                        Content="&#xE10C;">
-                    <Button.Flyout>
-                        <MenuFlyout>
-                            <MenuFlyoutItem x:Uid="TaskItemOpenFolderMenuItem"/>
-                            <MenuFlyoutItem x:Uid="TaskItemCopyLinkMenuItem"/>
-                            <MenuFlyoutSeparator/>
-                            <MenuFlyoutItem x:Uid="TaskItemRemoveMenuItem"/>
-                            <MenuFlyoutSeparator/>
-                            <MenuFlyoutItem x:Uid="TaskItemPropertiesMenuItem"/>
-                        </MenuFlyout>
-                    </Button.Flyout>
-                </Button>
-
-                <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="-48,0,0,0" VerticalAlignment="Stretch">
-                    <ProgressBar.Background>
-                        <SolidColorBrush Color="Black" Opacity="0.1"/>
-                    </ProgressBar.Background>
-                </ProgressBar>
-            </Grid>
-            <TextBlock Text="Test Task #2"/>
-            <TextBlock Text="Test Task #3"/>
-            <TextBlock Text="Test Task #4"/>
+            
         </ListView>
     </Grid>
 </Page>
