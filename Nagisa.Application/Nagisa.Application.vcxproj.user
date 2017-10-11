@@ -19,7 +19,17 @@
     <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
     <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <DebuggerMachineName>192.168.1.102:4022 (Mouri-Desktop-2)</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <DebuggerMachineName>192.168.1.102:4022 (Mouri-Desktop-2)</DebuggerMachineName>
+    <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
+    <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <DebuggerMachineName>192.168.1.102:4022 (Mouri-Desktop-2)</DebuggerMachineName>
     <DebuggerRequireAuthentication>False</DebuggerRequireAuthentication>
     <DebuggerFlavor>UWPRemoteDebugger</DebuggerFlavor>

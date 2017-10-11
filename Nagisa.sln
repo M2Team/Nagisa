@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nagisa.Icon", "Nagisa.Icon", "{FCCCDA7A-C4F5-4D02-A775-08AEA06A0AFC}"
 	ProjectSection(SolutionItems) = preProject
@@ -32,21 +32,27 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Debug|ARM.ActiveCfg = Debug|ARM
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Debug|ARM.Build.0 = Debug|ARM
+		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Debug|ARM64.Build.0 = Debug|ARM64
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Debug|x64.ActiveCfg = Debug|x64
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Debug|x64.Build.0 = Debug|x64
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Debug|x86.ActiveCfg = Debug|Win32
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Debug|x86.Build.0 = Debug|Win32
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Release|ARM.ActiveCfg = Release|ARM
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Release|ARM.Build.0 = Release|ARM
+		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Release|ARM64.ActiveCfg = Release|ARM64
+		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Release|ARM64.Build.0 = Release|ARM64
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Release|x64.ActiveCfg = Release|x64
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Release|x64.Build.0 = Release|x64
 		{78DA130C-D3CF-4BF6-A26F-921DA02A2B1D}.Release|x86.ActiveCfg = Release|Win32
@@ -54,6 +60,9 @@ Global
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Debug|ARM.ActiveCfg = Debug|ARM
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Debug|ARM.Build.0 = Debug|ARM
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Debug|ARM.Deploy.0 = Debug|ARM
+		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Debug|ARM64.Build.0 = Debug|ARM64
+		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Debug|ARM64.Deploy.0 = Debug|ARM64
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Debug|x64.ActiveCfg = Debug|x64
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Debug|x64.Build.0 = Debug|x64
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Debug|x64.Deploy.0 = Debug|x64
@@ -63,6 +72,9 @@ Global
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|ARM.ActiveCfg = Release|ARM
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|ARM.Build.0 = Release|ARM
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|ARM.Deploy.0 = Release|ARM
+		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|ARM64.ActiveCfg = Release|ARM64
+		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|ARM64.Build.0 = Release|ARM64
+		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|ARM64.Deploy.0 = Release|ARM64
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|x64.ActiveCfg = Release|x64
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|x64.Build.0 = Release|x64
 		{01773773-EDE0-4433-A639-B59C5D0D3B0C}.Release|x64.Deploy.0 = Release|x64
