@@ -9,6 +9,12 @@
 ## Changelog
 
 **Nagisa 0.1 Preview 1**
+- [r92] Synchronize the version and add missing changelog.
+- [r92] Modify the AppX Package output settings.
+- [r91] Add the ARM64 platform support.
+- [r91] Remove UseDotNetNativeToolchain option in Nagisa.Application project to
+  support the ARM64 platform and improve the speed of compiling.
+- [r90] Add CustomConverters.xaml and related files.
 - [r89] Synchronize the version and add missing changelog.
 - [r88] Update Package.appxmanifest.
 - [r87] Update Nagisa.Version.h.

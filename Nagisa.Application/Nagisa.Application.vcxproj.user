@@ -11,8 +11,8 @@
     <PackageLogoSource>F:\Works\Nagisa\Nagisa.Icon\Nagisa.png</PackageLogoSource>
     <AppxShowAllApps>False</AppxShowAllApps>
     <AppxPackageIsForStore>True</AppxPackageIsForStore>
-    <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
-    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+    <AppxBuildConfigurationSelection>x86|x64|arm|arm64</AppxBuildConfigurationSelection>
+    <PackageOptionalProjectsInIdeBuilds>True</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <DebuggerMachineName>192.168.1.102:4022 (Mouri-Desktop-2)</DebuggerMachineName>
