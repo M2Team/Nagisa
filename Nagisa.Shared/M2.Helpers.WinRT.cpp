@@ -29,86 +29,13 @@ using Platform::String;
 
 using Windows::Storage::Streams::IBuffer;
 
-using abi_AsyncStatus = ABI::Windows::Foundation::AsyncStatus;
 using abi_IBuffer = ABI::Windows::Storage::Streams::IBuffer;
 using abi_IBufferByteAccess = Windows::Storage::Streams::IBufferByteAccess;
 
 using std::string;
 using std::wstring;
 
-// The M2AsyncWait function uses the non-blocking way to try to wait 
-// asynchronous call.
-//
-// Parameters:
-//
-// Async
-//     The asynchronous call you want to wait.
-// Timeout
-//     The maximum time interval for waiting the asynchronous call, in 
-//     milliseconds. A value of -1 indicates that the suspension should not 
-//     time out.
-//
-// Return value:
-//
-// If the function succeeds, the return value is S_OK.
-// If the function fails, the return value is the HRESULT error code.
-HRESULT M2AsyncWait(ComPtr<IInspectable>& Async, int32 Timeout) throw()
-{
-	HRESULT hr = S_OK;
-	HRESULT hrResult = S_OK;
-	ComPtr<IAsyncInfo> asyncInfo;
-	abi_AsyncStatus status = AsyncStatus::Started;	
-
-	// Get the IAsyncInfo interface.
-	hr = Async.As(&asyncInfo);
-	if (SUCCEEDED(hr))
-	{
-		// Wait the asynchronous call until the status is not Started or the 
-		// timeout interval has been elapsed.
-		while (
-			SUCCEEDED(hr = asyncInfo->get_Status(&status)) &&
-			AsyncStatus::Started == status &&
-			(Timeout == -1 || Timeout > 0))
-		{
-			// Calling SleepEx() for sleep 50ms every time because 
-			// Microsoft says that all UWP APIs that can't guarantee to 
-			// complete within 50ms has been made asynchronous and its name
-			// suffixed with Async.
-			SleepEx(50, FALSE);
-			if (Timeout != -1)
-				Timeout -= 50;
-		}
-
-		// Check the status if no error when call the interface.
-		if (SUCCEEDED(hr))
-		{
-			if (AsyncStatus::Completed == status)
-			{
-				// Just do nothing if succeeded.
-			}
-			else if (AsyncStatus::Started == status)
-			{
-				// Cancel the asynchronous call and set error code if the 
-				// status is still Started, the timeout interval has been 
-				// elapsed.
-				hr = asyncInfo->Cancel();
-				hrResult = __HRESULT_FROM_WIN32(ERROR_TIMEOUT);
-			}
-			else if (AsyncStatus::Canceled == status)
-			{
-				// If the status is Cancelled, set the error code.
-				hrResult = E_ABORT;
-			}
-			else
-			{
-				// If the status is other value, get and set the error code.
-				hr = asyncInfo->get_ErrorCode(&hrResult);
-			}
-		}
-	}
-
-	return (SUCCEEDED(hr) ? hrResult : hr);
-}
+#include <type_traits>
 
 // The M2GetPointer function retrieves the raw pointer from the provided 
 // IBuffer object. 

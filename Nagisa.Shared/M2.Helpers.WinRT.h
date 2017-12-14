@@ -15,6 +15,9 @@ License: The MIT License
 
 #include <string>
 
+#include "M2RemoveReference.h"
+#include "M2AsyncWait.h"
+
 // The M2GetInspectable function retrieves the IInspectable interface from the 
 // provided C++/CX object. 
 //
@@ -32,57 +35,6 @@ inline Microsoft::WRL::ComPtr<IInspectable> M2GetInspectable(
 {
 	return Microsoft::WRL::ComPtr<IInspectable>(
 		reinterpret_cast<IInspectable*>(object));
-}
-
-// The M2AsyncWait function uses the non-blocking way to try to wait 
-// asynchronous call.
-//
-// Parameters:
-//
-// Async
-//     The asynchronous call you want to wait.
-// Timeout
-//     The maximum time interval for waiting the asynchronous call, in 
-//     milliseconds. A value of -1 indicates that the suspension should not 
-//     time out.
-//
-// Return value:
-//
-// If the function succeeds, the return value is S_OK.
-// If the function fails, the return value is the HRESULT error code.
-HRESULT M2AsyncWait(
-	Microsoft::WRL::ComPtr<IInspectable>& Async, int32 Timeout) throw();
-
-// The M2AsyncWait function uses the non-blocking way to try to wait 
-// asynchronous call.
-//
-// Parameters:
-//
-// Async
-//     The asynchronous call you want to wait.
-// Timeout
-//     The maximum time interval for waiting the asynchronous call, in 
-//     milliseconds. A value of -1 indicates that the suspension should not 
-//     time out.
-//
-// Return value:
-//
-// The return value is determined by the asynchronous call.
-// The function will throw a COM exception if the function fails. 
-template<typename TAsync>
-inline auto M2AsyncWait(
-	TAsync Async, int32 Timeout = -1) -> decltype(Async->GetResults())
-{
-	// Wait the asynchronous call until the status is not Started or the 
-	// timeout interval has been elapsed.
-	HRESULT hr = M2AsyncWait(M2GetInspectable(Async), Timeout);
-	if (FAILED(hr))
-	{
-		throw Platform::COMException::CreateException(hr);
-	}
-
-	// Return the result of asynchronous call.
-	return Async->GetResults();
 }
 
 // The M2GetPointer function retrieves the raw pointer from the provided 

@@ -18,6 +18,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)M2.Helpers.WinRT.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)M2AsyncWait.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)M2RemoveReference.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Nagisa.Version.h" />
   </ItemGroup>
 </Project>
